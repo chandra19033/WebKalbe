@@ -19,11 +19,23 @@
 
     .title {
         background-image: linear-gradient(#28ABDA, #5EDFF8);
+        height: 300px;
         width: 250px;
     }
 
     .d-flex {
         gap: 20px;
+    }
+
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 70%;
+    }
+
+    .p {
+        margin: 10px;
     }
 </style>
 
@@ -44,19 +56,32 @@
     </div>
 </section>
 
-<section>
-    <div class="d-flex d-flex justify-content-center">
+<section class="py-5">
+    <div class="d-flex justify-content-center">
         <div class="title justify-content-center d-flex py-3 mb-5">
-            <h1 style="font-weight: 800; font-size: 20px; color:white; text-shadow: 0px 2.53109px 25.3109px rgba(0, 63, 145, 0.42);">Daftar Pelatihan</h1>
+            <div style=" color:white;">
+                <img src="<?= base_url("assets/daftar_pelatihan.png") ?>" style="height: 180px" class="center">
+                <p style=" font-weight: 800; font-size: 32px; text-align: center;">Daftar Pelatihan</p>
+            </div>
+        </div>
+
+        <div class="title justify-content-center d-flex py-3 mb-5">
+            <div style=" color:white;">
+                <img src="<?= base_url("assets/daftarkan_subkoordinat.png") ?>" style="height: 180px" class="center">
+                <p style=" font-weight: 800; font-size: 32px; text-align: center;">Daftarkan Sub Koordinat</p>
+            </div>
         </div>
         <div class="title justify-content-center d-flex py-3 mb-5">
-            <h1 style="font-weight: 800; font-size: 20px; color:white; text-shadow: 0px 2.53109px 25.3109px rgba(0, 63, 145, 0.42);">Daftarkan Sub Koordinat</h1>
+            <div style=" color:white;">
+                <img src="<?= base_url("assets/list_subkoordinat.png") ?>" style="height: 180px" class="center">
+                <p style=" font-weight: 800; font-size: 32px; text-align: center;">List Sub Koordinat</p>
+            </div>
         </div>
         <div class="title justify-content-center d-flex py-3 mb-5">
-            <h1 style="font-weight: 800; font-size: 20px; color:white; text-shadow: 0px 2.53109px 25.3109px rgba(0, 63, 145, 0.42);">List Sub Koordinat</h1>
-        </div>
-        <div class="title justify-content-center d-flex py-3 mb-5">
-            <h1 style="font-weight: 800; font-size: 20px; color:white; text-shadow: 0px 2.53109px 25.3109px rgba(0, 63, 145, 0.42);">Approve Pelatihan</h1>
+            <div style=" color:white;">
+                <img src="<?= base_url("assets/approve.png") ?>" style="height: 180px" class="center">
+                <p style=" font-weight: 800; font-size: 32px; text-align: center;">Approve Pelatihan</p>
+            </div>
         </div>
     </div>
 </section>
