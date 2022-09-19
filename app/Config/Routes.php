@@ -38,7 +38,7 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get('/profile', 'Home::profile');
 $routes->get('/login', 'Home::login');
-$routes->get('/list-pelatihan', 'Home::list_pelatihan');
+$routes->get('/list_pelatihan', 'Home::list_pelatihan');
 
 /*
  * --------------------------------------------------------------------
