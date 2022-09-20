@@ -1,3 +1,6 @@
+<?= $this->extend('layouts/template'); ?>
+
+<?= $this->section('content'); ?>
 <style>
     .left-side {
         border-right: 1px solid white;
@@ -93,43 +96,25 @@
             <thead>
                 <tr>
                     <th scope="col">No</th>
+                    <th scope="col">Nama Karyawan</th>
                     <th scope="col">Nama Pelatihan</th>
                     <th scope="col">Penyelenggara</th>
                     <th scope="col">Status</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</th>
-                    <td>Design Thinking</td>
-                    <td>HRD</td>
-                    <td><a class="bg-primary" href="">Terdaftar</a></td>
-                </tr>
-                <tr>
-                    <td>2</th>
-                    <td>UI/UX Design Training</td>
-                    <td>HRD</td>
-                    <td><a class="bg-primary" href="">Terdaftar</a></td>
-                </tr>
-                <tr>
-                    <td>3</th>
-                    <td>Design Business Thinking</td>
-                    <td>HRD</td>
-                    <td><a class="bg-primary" href="">Terdaftar</a></td>
-                </tr>
-                <tr>
-                    <td>4</th>
-                    <td>Design Web Training</td>
-                    <td>HRD</td>
-                    <td><a class="bg-primary" href="">Terdaftar</a></td>
-                </tr>
-                <tr>
-                    <td>5</th>
-                    <td>Design Thinking</td>
-                    <td>HRD</td>
-                    <td><a class="bg-primary" href="">Terdaftar</a></td>
-                </tr>
+                <?php $i = 1; ?>
+                <?php foreach ($pelatihan as $p) : ?>
+                    <tr>
+                        <td><?= $i++; ?></th>
+                        <td><?= $p['nama_karyawan']; ?></td>
+                        <td><?= $p['nama_pelatihan']; ?></td>
+                        <td><?= $p['penyelenggara']; ?></td>
+                        <td><a class="bg-primary" href="">Terdaftar</a></td>
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>
 </section>
+<?= $this->endSection(); ?>

@@ -2,8 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models\PelatihanModel;
-
 class Home extends BaseController
 {
     public function index()
@@ -15,11 +13,6 @@ class Home extends BaseController
 
     public function profile()
     {
-        $pelatihanModel = new PelatihanModel();
-        dd($pelatihanModel->findAll());
-        // $pelatihan = $pelatihanModel->findAll();
-        // dd($pelatihan);
-
         echo view('layouts/header');
         echo view('pages/profile');
         echo view('layouts/footer');

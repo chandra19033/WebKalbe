@@ -1,3 +1,6 @@
+<?= $this->extend('layouts/template'); ?>
+
+<?= $this->section('content'); ?>
 <style>
     .home {
         /* The image used */
@@ -85,3 +88,4 @@
         </div>
     </div>
 </section>
+<?= $this->endSection(); ?>
