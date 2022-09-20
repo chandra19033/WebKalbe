@@ -75,6 +75,7 @@
 
         .table th {
             background-color: #428042;
+            color: white;
         }
 
         .table a {
