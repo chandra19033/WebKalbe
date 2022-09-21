@@ -22,13 +22,19 @@ class Pages extends BaseController
 
     public function profile()
     {
-        $pelatihan = $this->pelatihanModel->findAll();
-
+        // $db = \Config\Database::connect();
+        // $builder = $db->table('daftar_pelatihan');
+        // $builder->where('nama_karyawan', 'ARI GUNAWAN GUNAIDI');
+        // $pelatihan = $builder->get()->getResult();
+        // $pelatihan = $builder;
+        // $nama_karyawan = 'ARI GUNAWAN GUNAIDI';
+        // $pelatihan = $this->pelatihanModel->where('nama_karyawan', 'ARI GUNAWAN GUNAIDI');
+        $pelatihan = $this->pelatihanModel->getPelatihan();
         $data = [
             'title' => 'Profile',
             'pelatihan' => $pelatihan
         ];
-
+        var_dump($pelatihan);
         echo view('pages/profile', $data);
     }
 
