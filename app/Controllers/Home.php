@@ -31,4 +31,12 @@ class Home extends BaseController
         echo view('pages/list_pelatihan');
         echo view('layouts/footer');
     }
+
+    public function list_subkoordinat()
+    {
+        echo view('layouts/header');
+        echo view('pages/list_subkoordinat');
+        echo view('layouts/footer');
+    }
+}
 }

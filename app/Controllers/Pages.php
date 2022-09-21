@@ -39,4 +39,20 @@ class Pages extends BaseController
         ];
         return view('pages/login', $data);
     }
+
+    public function list_pelatihan()
+    {
+        $data = [
+            'title' => 'list_pelatihan'
+        ];
+        return view('pages/list_pelatihan', $data);
+    }
+
+    public function list_subkoordinat()
+    {
+        $data = [
+            'title' => 'list_subkoordinat'
+        ];
+        return view('pages/list_subkoordinat', $data);
+    }
 }
