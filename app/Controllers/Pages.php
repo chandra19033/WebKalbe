@@ -34,8 +34,9 @@ class Pages extends BaseController
 
     public function login()
     {
-        echo view('layouts/header');
-        echo view('pages/login');
-        echo view('layouts/footer');
+        $data = [
+            'title' => 'login'
+        ];
+        return view('pages/login', $data);
     }
 }

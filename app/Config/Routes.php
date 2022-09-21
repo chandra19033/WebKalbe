@@ -43,6 +43,7 @@ $routes->set404Override();
 
 $routes->get('/', 'Pages::index');
 $routes->get('/pages/profile', 'Pages::profile');
+$routes->get('/pages/login', 'Pages::login');
 
 /*
  * --------------------------------------------------------------------
