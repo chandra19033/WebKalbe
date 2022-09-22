@@ -31,10 +31,10 @@ class Pages extends BaseController
         // $pelatihan = $this->pelatihanModel->where('nama_karyawan', 'ARI GUNAWAN GUNAIDI');
         $pelatihan = $this->pelatihanModel->getPelatihan();
         $data = [
-            'title' => 'Profile',
+            'title' => 'profile',
             'pelatihan' => $pelatihan
         ];
-        var_dump($pelatihan);
+        // var_dump($pelatihan);
         echo view('pages/profile', $data);
     }
 
