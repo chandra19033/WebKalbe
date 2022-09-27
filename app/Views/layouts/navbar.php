@@ -16,7 +16,7 @@
                     Pelatihan
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Mandiri</a>
+                    <a class="dropdown-item" href="/pages/list_pelatihan">Mandiri</a>
                     <a class="dropdown-item" href="#">Sub Koordinat</a>
                 </div>
             </li>

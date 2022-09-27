@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\ListPelatihanModel;
 use App\Models\PelatihanModel;
 
 class Pages extends BaseController
@@ -36,6 +37,27 @@ class Pages extends BaseController
         ];
         // var_dump($pelatihan);
         echo view('pages/profile', $data);
+    }
+
+    public function listpelatihan()
+    {
+        $listpelatihanModel = new ListPelatihanModel();
+        // $listpelatihan = $listpelatihanModel->findAll();
+
+        // var_dump($this->request->getVar('keyword'));
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $listpelatihan = $listpelatihanModel->search($keyword);
+        } else {
+            $listpelatihan = $listpelatihanModel->findAll();
+        }
+
+        $data = [
+            'title' => 'list_pelatihan',
+            'listpelatihan' => $listpelatihan
+        ];
+        // var_dump($listpelatihan);
+        return view('pages/list_pelatihan', $data);
     }
 
     public function login()
