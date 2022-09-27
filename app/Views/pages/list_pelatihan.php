@@ -1,25 +1,28 @@
 <?= $this->extend('layouts/template'); ?>
 
 <?= $this->section('content'); ?>
+<div class="title justify-content-center d-flex py-3">
+    <h1>Pelatihan Yang Diambil</h1>
+</div>
 <section>
     <div class="row justify-content-center padding">
-        <!-- <div class="col-md-8 ftco-animate fadeInUp ftco-animated">
-            <form action="#" class="domain-form" method="post">
+        <div class="col-md-8 ftco-animate fadeInUp ftco-animated">
+            <form action="#" class="domain-form" method="get">
                 <div class="form-group d-md-flex">
                     <input type="text" class="form-control px-4" name="keyword" placeholder="Cari Judul Pelatihan">
                     <button class="search-domain btn btn-primary px-5" type="submit" name="submit">Cari</button>
-                    <input type="submit" class="search-domain btn btn-primary px-5" value="Cari">
+                    <!-- <input type="submit" class="search-domain btn btn-primary px-5" value="Cari"> -->
                 </div>
             </form>
-        </div> -->
-        <form action="" method="get">
+        </div>
+        <!-- <form action="" method="get">
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Cari Judul Pelatihan" name="keyword">
                 <div class="input-group-append">
                     <button class="btn btn-outline-secondary" type="submit" name="submit">Cari</button>
                 </div>
             </div>
-        </form>
+        </form> -->
     </div>
 
 </section>

@@ -4,7 +4,7 @@
 <section id="profile">
     <div class="row profile">
         <div class="left-side col-4 d-flex align-items-center justify-content-center">
-            <img src="<?= base_url("assets/profile.png") ?>" alt="Aswwwwwww">
+            <img src="<?= base_url("assets/profile.png") ?>" alt="">
         </div>
         <div class="row right-side col-8">
             <div class="nama-email text-center" style="height: 0%; color:white">
