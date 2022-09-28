@@ -63,26 +63,26 @@
     <div class="d-flex justify-content-center">
         <div class="title justify-content-center d-flex py-3 mb-5">
             <div style=" color:white;">
-                <img src="<?= base_url("assets/daftar_pelatihan.png") ?>" style="height: 180px" class="center">
+                <a href="/pages/list_pelatihan"><img src="<?= base_url("assets/daftar_pelatihan.png") ?>" style="height: 180px" class="center"></a>
                 <p style=" font-weight: 800; font-size: 32px; text-align: center;">Daftar Pelatihan</p>
             </div>
         </div>
 
         <div class="title justify-content-center d-flex py-3 mb-5">
             <div style=" color:white;">
-                <img src="<?= base_url("assets/daftarkan_subkoordinat.png") ?>" style="height: 180px" class="center">
+                <a href="/pages/list_pelatihan"><img src="<?= base_url("assets/daftarkan_subkoordinat.png") ?>" style="height: 180px" class="center"></a>
                 <p style=" font-weight: 800; font-size: 32px; text-align: center;">Daftarkan Sub Koordinat</p>
             </div>
         </div>
         <div class="title justify-content-center d-flex py-3 mb-5">
             <div style=" color:white;">
-                <img src="<?= base_url("assets/list_subkoordinat.png") ?>" style="height: 180px" class="center">
+                <a href="/pages/list_subkoordinat"><img src="<?= base_url("assets/list_subkoordinat.png") ?>" style="height: 180px" class="center"></a>
                 <p style=" font-weight: 800; font-size: 32px; text-align: center;">List Sub Koordinat</p>
             </div>
         </div>
         <div class="title justify-content-center d-flex py-3 mb-5">
             <div style=" color:white;">
-                <img src="<?= base_url("assets/approve.png") ?>" style="height: 180px" class="center">
+                <a href="/pages/persetujuan"><img src="<?= base_url("assets/approve.png") ?>" style="height: 180px" class="center"></a>
                 <p style=" font-weight: 800; font-size: 32px; text-align: center;">Approve Pelatihan</p>
             </div>
         </div>

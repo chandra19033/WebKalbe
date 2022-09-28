@@ -44,8 +44,11 @@ $routes->set404Override();
 $routes->get('/', 'Pages::index');
 $routes->get('/pages/profile', 'Pages::profile');
 $routes->get('/pages/login', 'Pages::login');
+$routes->post('/pages/login', 'Pages::login');
 $routes->get('/pages/list_pelatihan', 'Pages::listpelatihan');
 $routes->get('/pages/list_subkoordinat', 'Pages::list_subkoordinat');
+$routes->get('/pages/dashboard', 'Pages::dashboard');
+$routes->get('/pages/persetujuan', 'Pages::persetujuan');
 
 /*
  * --------------------------------------------------------------------

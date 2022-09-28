@@ -18,13 +18,7 @@
                     <p class="fw-bold" style="font-size: 22px;">24182471847108</p>
                 </div>
             </div>
-            <div class="col-6 d-flex align-items-center">
-                <img src="<?= base_url("assets/nik.png") ?>" alt="" style="height: 70px">
-                <div class="dekripsi ms-2" style="height: 55px; color:white;">
-                    <p class="fw-light" style="margin-bottom: 0px;">Gol. Karyawan</p>
-                    <p class="fw-bold" style="font-size: 22px;">5</p>
-                </div>
-            </div>
+
             <div class="col-6 d-flex align-items-center">
                 <img src="<?= base_url("assets/nik.png") ?>" alt="" style="height: 70px">
                 <div class="dekripsi ms-2" style="height: 55px; color:white;">

@@ -1,10 +1,10 @@
 <style>
     .btn-kotak {
         /* border: 1px black solid; */
-        margin: 0px 20px;
+        margin: 0px 15px;
         /* color: white; */
         background-image: linear-gradient(#428042, #3BB73B);
-        padding: 5px 20px;
+        padding: 5px 15px;
         border-radius: 10px;
     }
 
@@ -40,22 +40,27 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto">
             <li class="btn-kotak nav-item">
-                <a class=" nav-link" href="">Persetujuan</a>
+                <a class=" nav-link" href="/pages/dashboard">Dashboard</a>
             </li>
+            <li class="btn-kotak nav-item">
+                <a class=" nav-link" href="/pages/persetujuan">Persetujuan</a>
+            </li>
+            <li class="btn-kotak nav-item">
+                <a class=" nav-link" href="/pages/list_subkoordinat">Sub Koordinat</a>
+            </li>
+
             <li class="btn-kotak nav-item dropdown">
                 <a class=" nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Pelatihan
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="/pages/list_pelatihan">Mandiri</a>
-                    <a class="dropdown-item" href="#">Sub Koordinat</a>
+                    <a class="dropdown-item" href="/pages/list_pelatihan">Sub Koordinat</a>
                 </div>
             </li>
-            <li class="btn-kotak nav-item">
-                <a class=" nav-link" href="/">Beranda</a>
-            </li>
+
             <li class="nav-item">
-                <a class="btn-img nav-link" href="/pages/profile">
+                <a class="btn-img nav-link me-3" href="/pages/profile">
                     <img src="<?= base_url("assets/profile.png") ?>" alt="">
                 </a>
             </li>

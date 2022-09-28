@@ -38,5 +38,11 @@ class Home extends BaseController
         echo view('pages/list_subkoordinat');
         echo view('layouts/footer');
     }
-}
+
+    public function dashboard()
+    {
+        echo view('layouts/header');
+        echo view('pages/dashboard');
+        echo view('layouts/footer');
+    }
 }

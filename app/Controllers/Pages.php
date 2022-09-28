@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\ListPelatihanModel;
 use App\Models\PelatihanModel;
+use App\Models\UserModel;
 
 class Pages extends BaseController
 {
@@ -62,9 +63,45 @@ class Pages extends BaseController
 
     public function login()
     {
+        $UserModel = new UserModel();
+        $login = $this->request->getPost('login');
+        if ($login) {
+            $user_email = $this->request->getPost('user_email');
+            $user_password = $this->request->getPost('user_password');
+
+            if ($user_email == '' or $user_password == '') {
+                $err = "Silahkan masukan email dan password";
+            }
+
+            if (empty($err)) {
+                $dataUser = $UserModel->where("user_email", $user_email)->first();
+                if (
+                    $dataUser['user_password'] != md5($user_password)
+                ) {
+                    $err = "password tidak sesuai";
+                }
+            }
+
+            if (empty($err)) {
+                $dataSesi = [
+                    'user_id' => $dataUser['user_id'],
+                    'user_email' => $dataUser['user_email'],
+                    'user_password' => $dataUser['user_password'],
+                ];
+                session()->set($dataSesi);
+                return redirect()->to('/pages/dashboard');
+            }
+
+            if ($err) {
+                session()->setFlashdata('error', $err);
+                return redirect()->to("login");
+            }
+        }
+
         $data = [
             'title' => 'login'
         ];
+
         return view('pages/login', $data);
     }
 
@@ -82,5 +119,22 @@ class Pages extends BaseController
             'title' => 'list_subkoordinat'
         ];
         return view('pages/list_subkoordinat', $data);
+    }
+
+
+    public function dashboard()
+    {
+        $data = [
+            'title' => 'dashboard'
+        ];
+        return view('pages/dashboard', $data);
+    }
+
+    public function persetujuan()
+    {
+        $data = [
+            'title' => 'persetujuan'
+        ];
+        return view('pages/persetujuan', $data);
     }
 }
