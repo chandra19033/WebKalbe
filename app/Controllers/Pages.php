@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\ListPelatihanModel;
 use App\Models\PelatihanModel;
-use App\Models\UserModel;
+
 
 class Pages extends BaseController
 {
@@ -63,7 +63,8 @@ class Pages extends BaseController
 
     public function login()
     {
-        $UserModel = new UserModel();
+        /*
+       $UserModel = new UserModel();
         $login = $this->request->getPost('login');
         if ($login) {
             $user_email = $this->request->getPost('user_email');
@@ -97,12 +98,9 @@ class Pages extends BaseController
                 return redirect()->to("login");
             }
         }
+*/
 
-        $data = [
-            'title' => 'login'
-        ];
-
-        return view('pages/login', $data);
+        return view('pages/login');
     }
 
     public function list_pelatihan()

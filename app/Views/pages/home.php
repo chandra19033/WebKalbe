@@ -1,10 +1,10 @@
 <?= $this->extend('layouts/template'); ?>
-
 <?= $this->section('content'); ?>
+
 <style>
     .home {
         /* The image used */
-        background-image: url("assets/Kalbe.Png");
+        background-image: url(/assets/Kalbe.Png);
         /* Full height */
         height: 85vh;
 
@@ -42,6 +42,7 @@
     }
 </style>
 
+
 <section>
     <div class="home">
         <div class="justify align-items-end col-7">
@@ -59,33 +60,36 @@
     </div>
 </section>
 
-<section class="py-5">
-    <div class="d-flex justify-content-center">
-        <div class="title justify-content-center d-flex py-3 mb-5">
-            <div style=" color:white;">
-                <a href="/pages/list_pelatihan"><img src="<?= base_url("assets/daftar_pelatihan.png") ?>" style="height: 180px" class="center"></a>
-                <p style=" font-weight: 800; font-size: 32px; text-align: center;">Daftar Pelatihan</p>
+<?php if (logged_in()) : ?>
+    <section class="py-5">
+        <div class="d-flex justify-content-center">
+            <div class="title justify-content-center d-flex py-3 mb-5">
+                <div style=" color:white;">
+                    <a href="/pages/list_pelatihan"><img src="<?= base_url("assets/daftar_pelatihan.png") ?>" style="height: 180px" class="center"></a>
+                    <p style=" font-weight: 800; font-size: 32px; text-align: center;">Daftar Pelatihan</p>
+                </div>
             </div>
-        </div>
 
-        <div class="title justify-content-center d-flex py-3 mb-5">
-            <div style=" color:white;">
-                <a href="/pages/list_pelatihan"><img src="<?= base_url("assets/daftarkan_subkoordinat.png") ?>" style="height: 180px" class="center"></a>
-                <p style=" font-weight: 800; font-size: 32px; text-align: center;">Daftarkan Sub Koordinat</p>
+            <div class="title justify-content-center d-flex py-3 mb-5">
+                <div style=" color:white;">
+                    <a href="/pages/list_pelatihan"><img src="<?= base_url("assets/daftarkan_subkoordinat.png") ?>" style="height: 180px" class="center"></a>
+                    <p style=" font-weight: 800; font-size: 32px; text-align: center;">Daftarkan Sub Koordinat</p>
+                </div>
+            </div>
+            <div class="title justify-content-center d-flex py-3 mb-5">
+                <div style=" color:white;">
+                    <a href="/pages/list_subkoordinat"><img src="<?= base_url("assets/list_subkoordinat.png") ?>" style="height: 180px" class="center"></a>
+                    <p style=" font-weight: 800; font-size: 32px; text-align: center;">List Sub Koordinat</p>
+                </div>
+            </div>
+            <div class="title justify-content-center d-flex py-3 mb-5">
+                <div style=" color:white;">
+                    <a href="/pages/persetujuan"><img src="<?= base_url("assets/approve.png") ?>" style="height: 180px" class="center"></a>
+                    <p style=" font-weight: 800; font-size: 32px; text-align: center;">Approve Pelatihan</p>
+                </div>
             </div>
         </div>
-        <div class="title justify-content-center d-flex py-3 mb-5">
-            <div style=" color:white;">
-                <a href="/pages/list_subkoordinat"><img src="<?= base_url("assets/list_subkoordinat.png") ?>" style="height: 180px" class="center"></a>
-                <p style=" font-weight: 800; font-size: 32px; text-align: center;">List Sub Koordinat</p>
-            </div>
-        </div>
-        <div class="title justify-content-center d-flex py-3 mb-5">
-            <div style=" color:white;">
-                <a href="/pages/persetujuan"><img src="<?= base_url("assets/approve.png") ?>" style="height: 180px" class="center"></a>
-                <p style=" font-weight: 800; font-size: 32px; text-align: center;">Approve Pelatihan</p>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
+<?php endif; ?>
+
 <?= $this->endSection(); ?>

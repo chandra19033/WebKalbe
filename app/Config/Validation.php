@@ -33,7 +33,7 @@ class Validation extends BaseConfig
         \CodeIgniter\Validation\FormatRules::class,
         \CodeIgniter\Validation\FileRules::class,
         \CodeIgniter\Validation\CreditCardRules::class,
-        \Myth\Auth\Authentication\Passwords\ValidationRules::class,
+        \Myth\Auth\Authentication\Passwords\ValidationRules::class
     ];
 
     /**

@@ -9,6 +9,7 @@ use CodeIgniter\Filters\Honeypot;
 use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\SecureHeaders;
 
+
 class Filters extends BaseConfig
 {
     /**
@@ -73,6 +74,6 @@ class Filters extends BaseConfig
      * @var array
      */
     public $filters = [
-        'login' => ['before' => ['pages/login']],
+        'login' => ['before' => ['pages/profile']],
     ];
 }

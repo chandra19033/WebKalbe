@@ -12,6 +12,15 @@
         background-image: linear-gradient(#28ABDA, #5EDFF8);
     }
 
+    .dropdown-menu a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+
     .nav-item a {
         color: white !important;
     }
@@ -39,31 +48,42 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto">
-            <li class="btn-kotak nav-item">
-                <a class=" nav-link" href="/pages/dashboard">Dashboard</a>
-            </li>
-            <li class="btn-kotak nav-item">
-                <a class=" nav-link" href="/pages/persetujuan">Persetujuan</a>
-            </li>
-            <li class="btn-kotak nav-item">
-                <a class=" nav-link" href="/pages/list_subkoordinat">Sub Koordinat</a>
-            </li>
+            <?php if (logged_in()) : ?>
+                <li class="btn-kotak nav-item">
+                    <a class=" nav-link" href="/pages/dashboard">Dashboard</a>
+                </li>
+                <li class="btn-kotak nav-item">
+                    <a class=" nav-link" href="/pages/persetujuan">Persetujuan</a>
+                </li>
+                <li class="btn-kotak nav-item">
+                    <a class=" nav-link" href="/pages/list_subkoordinat">Sub Koordinat</a>
+                </li>
 
-            <li class="btn-kotak nav-item dropdown">
-                <a class=" nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Pelatihan
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/pages/list_pelatihan">Mandiri</a>
-                    <a class="dropdown-item" href="/pages/list_pelatihan">Sub Koordinat</a>
-                </div>
-            </li>
+                <li class="btn-kotak nav-item dropdown">
+                    <a class=" nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Pelatihan
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right:0">
+                        <a class="dropdown-item" href="/pages/list_pelatihan">Mandiri</a>
+                        <a class="dropdown-item" href="/pages/list_pelatihan">Sub Koordinat</a>
+                    </div>
+                </li>
 
-            <li class="nav-item">
-                <a class="btn-img nav-link me-3" href="/pages/profile">
-                    <img src="<?= base_url("assets/profile.png") ?>" alt="">
-                </a>
-            </li>
+                <li class="nav-item">
+                    <a class="btn-img nav-link me-3" href="/pages/profile" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="<?= base_url("assets/profile.png") ?>" alt="">
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right:0;">
+                        <a class=" dropdown-item" href="/pages/profile">Profile</a>
+                        <a class="dropdown-item" href="/logout">Logout</a>
+                    </div>
+                </li>
+            <?php else : ?>
+                <li class="btn-kotak nav-item">
+
+                    <a class=" nav-link" href="/login">Login</a>
+                </li>
+            <?php endif; ?>
         </ul>
     </div>
 </nav>
