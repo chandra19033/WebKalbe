@@ -43,6 +43,7 @@ $routes->set404Override();
 
 $routes->get('/', 'Pages::index');
 $routes->get('/pages/profile', 'Pages::profile');
+$routes->get('/pages/tambah/(:segment)', 'Pages::tambah/$1');
 $routes->get('/pages/login', 'Pages::login');
 $routes->get('/pages/list_pelatihan', 'Pages::listpelatihan');
 $routes->get('/pages/list_subkoordinat', 'Pages::list_subkoordinat');

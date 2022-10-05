@@ -4,14 +4,16 @@ namespace App\Controllers;
 
 use App\Models\ListPelatihanModel;
 use App\Models\PelatihanModel;
-
+use CodeIgniter\Database\Query;
 
 class Pages extends BaseController
 {
     protected $pelatihanModel;
+    protected $listpelatihanModel;
     public function __construct()
     {
         $this->pelatihanModel = new PelatihanModel();
+        $this->listpelatihanModel = new ListPelatihanModel();
     }
 
     public function index()
@@ -38,6 +40,39 @@ class Pages extends BaseController
         ];
         // var_dump($pelatihan);
         echo view('pages/profile', $data);
+    }
+
+    public function tambah($id)
+    {
+        $name = user()->Nama;
+        $pelatihan = $this->listpelatihanModel->getPelatihan($id);
+
+        $tampung = $pelatihan[0];
+
+        $data = [
+            'nama_karyawan' =>  strtoupper($name),
+            'nama_pelatihan' => $tampung['nama_pelatihan'],
+            'penyelenggara' => $tampung['penyelenggara']
+        ];
+
+        // dd($data);
+
+        // var_dump($data);
+
+        // $db = \CONFIG\Database::connect();
+        // $builder = $db->table("daftar_pelatihan");
+        // $query = $builder->query
+        // $builder->insert($data);
+
+        if ($this->pelatihanModel->insert($data)) {
+            return redirect()->to('/pages/profile');
+        } else {
+            dd($data);
+        }
+
+        // $this->pelatihanModel->where('nama_karyawan', 'asd')->delete();
+
+        // var_dump($data);
     }
 
     public function listpelatihan()

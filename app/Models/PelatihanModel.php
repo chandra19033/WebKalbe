@@ -7,11 +7,14 @@ use CodeIgniter\Model;
 class PelatihanModel extends Model
 {
     protected $table = 'daftar_pelatihan';
-    protected $useTimestamps = true;
+    protected $useTimestamps = false;
+    // protected $primaryKey  = 'id';
+    protected $allowedFields = ['nama_karyawan', 'nama_pelatihan', 'penyelenggara'];
 
     public function getPelatihan()
     {
-        $this->where('nama_karyawan', 'ARI GUNAWAN GUNAIDI');
+        $name = user()->Nama;
+        $this->where('nama_karyawan', strtoupper($name));
         return $this->findAll();
     }
 }

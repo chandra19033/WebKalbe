@@ -34,7 +34,8 @@
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">Judul Pelatihan</th>
-                    <th scope="col">Penyelenggara </th>
+                    <th scope="col">Penyelenggara</th>
+                    <th scope="col">Status</th>
                 </tr>
             </thead>
             <?php $i = 1; ?>
@@ -43,6 +44,7 @@
                     <td><?= $i++; ?></th>
                     <td><?= $l['nama_pelatihan']; ?></td>
                     <td><?= $l['penyelenggara']; ?></td>
+                    <td><a style="color: black!important;" href="/pages/tambah/<?= $l['id']; ?>">Tambah</a></td>
                 </tr>
             <?php endforeach; ?>
         </table>
