@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Login</title>
+    <title>Login</title>
 
     <!-- Custom fonts for this template-->
     <link href=" <?= base_url(); ?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -63,7 +63,6 @@
                             </div>
                         </div>
 
-
                         <?php if ($config->allowRemembering) : ?>
                             <div class="form-check">
                                 <label class="form-check-label">
@@ -72,7 +71,6 @@
                                 </label>
                             </div>
                         <?php endif; ?>
-
 
                         <div class="text-center text-lg-start mt-4 pt-2">
                             <button type="submit" class="btn btn-primary btn-block"><?= lang('Auth.loginAction') ?></button>
