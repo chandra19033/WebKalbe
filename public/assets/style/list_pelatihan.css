@@ -74,3 +74,12 @@
     border-radius: 5px;
     padding: 7px;
 }
+
+
+.table-hover tbody tr:hover,
+.table-hover tbody tr:hover td,
+.table-hover tbody tr:hover th{
+    background-color:#ff0000 !important;
+    color:rgb(41, 114, 233) !important;
+}
+

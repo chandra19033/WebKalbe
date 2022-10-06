@@ -29,7 +29,7 @@
 
 <section>
     <div class="container">
-        <table class="table table-bordered border-dark">
+        <table class="table table-hover table-bordered border-dark table-striped table-success ">
             <thead>
                 <tr>
                     <th scope="col">No</th>
@@ -38,15 +38,18 @@
                     <th scope="col">Status</th>
                 </tr>
             </thead>
-            <?php $i = 1; ?>
-            <?php foreach ($listpelatihan as $l) : ?>
-                <tr>
-                    <td><?= $i++; ?></th>
-                    <td><?= $l['nama_pelatihan']; ?></td>
-                    <td><?= $l['penyelenggara']; ?></td>
-                    <td><a style="color: black!important;" href="/pages/tambah/<?= $l['id']; ?>">Tambah</a></td>
-                </tr>
-            <?php endforeach; ?>
+
+            <tbody>
+                <?php $i = 1; ?>
+                <?php foreach ($listpelatihan as $l) : ?>
+                    <tr>
+                        <td><?= $i++; ?></th>
+                        <td><?= $l['nama_pelatihan']; ?></td>
+                        <td><?= $l['penyelenggara']; ?></td>
+                        <td><a style="color: black!important;" href="/pages/tambah/<?= $l['id']; ?>">Tambah</a></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
         </table>
     </div>
 </section>

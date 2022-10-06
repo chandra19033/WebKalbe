@@ -1,0 +1,76 @@
+.home {
+    /* The image used */
+    background-image: url(/assets/Kalbe.Png);
+    /* Full height */
+    height: 85vh;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+.justify {
+    padding: 70px;
+    padding-top: 100px;
+}
+
+.title {
+    background-image: linear-gradient(#28ABDA, #5EDFF8);
+    height: 300px;
+    width: 250px;
+}
+
+.d-flex {
+    gap: 20px;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+
+.p {
+    margin: 10px;
+}
+
+.card {
+    border: 0;
+    border-radius: 0;
+    color: #fff;
+    box-shadow: 5px 5px 10px #e1e1e1;
+    padding: 3em 0;
+    border-bottom-right-radius: 4em;
+    border-top-left-radius: 4em;
+    background: linear-gradient(to left, #28ABDA 50%, forestgreen 50%);
+    background-size: 200%;
+    background-position: right;
+    transition: background-position 0.5s ease-out;
+}
+
+.card-icon {
+    margin: 0 1em;
+}
+
+.card-icon i {
+    font-size: 3em;
+}
+
+.card:hover {
+    background-position: left;
+}
+
+.stretched-link::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: auto;
+    content: "";
+    background-color: rgba(0, 0, 0, 0);
+}
