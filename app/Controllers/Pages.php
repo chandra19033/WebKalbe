@@ -46,28 +46,44 @@ class Pages extends BaseController
     {
         $name = user()->Nama;
         $pelatihan = $this->listpelatihanModel->getPelatihan($id);
+        $daftar = $this->pelatihanModel->getPelatihan();
 
         $tampung = $pelatihan[0];
 
-        $data = [
-            'nama_karyawan' =>  strtoupper($name),
-            'nama_pelatihan' => $tampung['nama_pelatihan'],
-            'penyelenggara' => $tampung['penyelenggara']
-        ];
+        $trigger = 0;
 
-        // dd($data);
+        foreach ($daftar as $d) :
+            if ($d['nama_pelatihan'] == $tampung['nama_pelatihan']) {
+                $trigger++;
+            } else {
+                $trigger = $trigger;
+            }
+        endforeach;
 
-        // var_dump($data);
+        // dd($trigger);
 
-        // $db = \CONFIG\Database::connect();
-        // $builder = $db->table("daftar_pelatihan");
-        // $query = $builder->query
-        // $builder->insert($data);
 
-        if ($this->pelatihanModel->insert($data)) {
-            return redirect()->to('/pages/profile');
+        if ($trigger == 0) {
+            $data = [
+                'nama_karyawan' =>  strtoupper($name),
+                'nama_pelatihan' => $tampung['nama_pelatihan'],
+                'penyelenggara' => $tampung['penyelenggara']
+            ];
+
+            $this->pelatihanModel->insert($data);
+            $alert = [
+                'pesan' => 'Pelatihan berhasil ditambahkan',
+                'value' => 1
+            ];
+            session()->setFlashdata('pesan', $alert);
+            return redirect()->to('/pages/list_pelatihan');
         } else {
-            dd($data);
+            $alert = [
+                'pesan' => 'Pelatihan tidak dapat ditambah karena sudah terdaftar',
+                'value' => 0
+            ];
+            session()->setFlashdata('pesan', $alert);
+            return redirect()->to('/pages/list_pelatihan');
         }
 
         // $this->pelatihanModel->where('nama_karyawan', 'asd')->delete();

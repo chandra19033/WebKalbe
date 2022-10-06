@@ -5,6 +5,18 @@
     <h1>Pelatihan Yang Diambil</h1>
 </div>
 <section>
+    <?php if (session()->getFlashdata('pesan')) : ?>
+        <?php $tampung = session()->getFlashdata('pesan'); ?>
+        <?php if ($tampung['value'] == 1) : ?>
+            <div class="alert alert-success" role="alert">
+                <?= $tampung['pesan']; ?>
+            </div>
+        <?php elseif ($tampung['value'] == 0) : ?>
+            <div class="alert alert-danger" role="alert">
+                <?= $tampung['pesan']; ?>
+            </div>
+        <?php endif; ?>
+    <?php endif; ?>
     <div class="row justify-content-center padding">
         <div class="col-md-8 ftco-animate fadeInUp ftco-animated">
             <form action="#" class="domain-form" method="get">
