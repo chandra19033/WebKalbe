@@ -8,14 +8,14 @@
         </div>
         <div class="row right-side col-8">
             <div class="nama-email text-center" style="height: 0%; color:white">
-                <h2 style="font-weight: 800;"><?= user()->Nama ?></h2>
-                <h5 style="font-weight: 400;"><?= user()->email ?></h5>
+                <h2 style="font-weight: 800;"><?= session()->get('Employee_Name') ?></h2>
+                <h5 style="font-weight: 400;"><?= session()->get('Email') ?></h5>
             </div>
             <div class="col-6 d-flex align-items-center">
                 <img src="<?= base_url("assets/nik.png") ?>" alt="" style="height: 70px">
                 <div class="dekripsi ms-2" style="height: 55px; color:white;">
                     <p class="fw-light" style="margin-bottom: 0px;">NIK</p>
-                    <p class="fw-bold" style="font-size: 22px;"><?= user()->NIK ?></p>
+                    <p class="fw-bold" style="font-size: 22px;"><?= session()->get('Employee_ID') ?></p>
                 </div>
             </div>
 
@@ -23,14 +23,14 @@
                 <img src="<?= base_url("assets/nik.png") ?>" alt="" style="height: 70px">
                 <div class="dekripsi ms-2" style="height: 55px; color:white;">
                     <p class="fw-light" style="margin-bottom: 0px;">Jabatan</p>
-                    <p class="fw-bold" style="font-size: 22px;"><?= user()->Jabatan ?></p>
+                    <p class="fw-bold" style="font-size: 22px;"><?= session()->get('Postition_Name') ?></p>
                 </div>
             </div>
             <div class="col-6 d-flex align-items-center">
                 <img src="<?= base_url("assets/nik.png") ?>" alt="" style="height: 70px">
                 <div class="dekripsi ms-2" style="height: 55px; color:white;">
                     <p class="fw-light" style="margin-bottom: 0px;">Departemen / Sub Dept</p>
-                    <p class="fw-bold" style="font-size: 22px;"><?= user()->Departemen ?></p>
+                    <p class="fw-bold" style="font-size: 22px;"><?= session()->get('Organization_Name') ?></p>
                 </div>
             </div>
         </div>

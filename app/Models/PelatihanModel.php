@@ -13,7 +13,7 @@ class PelatihanModel extends Model
 
     public function getPelatihan()
     {
-        $name = user()->Nama;
+        $name = session()->get('Employee_Name');
         $this->where('nama_karyawan', strtoupper($name));
         return $this->findAll();
     }

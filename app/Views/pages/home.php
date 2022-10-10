@@ -98,7 +98,7 @@
     </div>
 </section>
 
-<?php if (logged_in()) : ?>
+<?php if (session()->get('log')) : ?>
     <section class="py-5">
 
         <div class="card-deck d-flex justify-content-center">
@@ -170,6 +170,6 @@
            -->
     </section>
 
-
 <?php endif; ?>
+
 <?= $this->endSection(); ?>

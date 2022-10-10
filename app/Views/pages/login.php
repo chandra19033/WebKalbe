@@ -29,58 +29,93 @@
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
 
                     <div class="divider d-flex justify-content-center align-items-center my-5">
-                        <p class="text-center fw-bold mx-3 mb-0" style=" font-weight: 800; font-size: 60px; color:black;"><?= lang('Auth.loginTitle') ?></p>
+                        <p class="text-center fw-bold mx-3 mb-0" style=" font-weight: 800; font-size: 60px; color:black;">Login</p>
                     </div>
-                    <?= view('Myth\Auth\Views\_message_block') ?>
-                    <form action="<?= url_to('login') ?>" method="post">
-                        <?= csrf_field() ?>
-
-                        <!-- Email input -->
-                        <?php if ($config->validFields === ['email']) : ?>
-                            <div class="form-group">
-                                <label for="login"><?= lang('Auth.email') ?></label>
-                                <input type="email" class="form-control <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" name="login" placeholder="<?= lang('Auth.email') ?>">
-                                <div class="invalid-feedback">
-                                    <?= session('errors.login') ?>
-                                </div>
-                            </div>
-                        <?php else : ?>
-                            <div class="form-group">
-                                <label for="login"><?= lang('Auth.emailOrUsername') ?></label>
-                                <input type="text" class="form-control <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" name="login" placeholder="<?= lang('Auth.emailOrUsername') ?>">
-                                <div class="invalid-feedback">
-                                    <?= session('errors.login') ?>
-                                </div>
-                            </div>
-                        <?php endif; ?>
-
-                        <!-- Password input -->
-                        <div class="form-group">
-                            <label for="password"><?= lang('Auth.password') ?></label>
-                            <input type="password" name="password" class="form-control  <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" placeholder="<?= lang('Auth.password') ?>">
-                            <div class="invalid-feedback">
-                                <?= session('errors.password') ?>
-                            </div>
+                    <?php
+                    // pesan validasi
+                    $errors = session()->getFlashdata('errors');
+                    if (!empty($errors)) { ?>
+                        <div class="alert alert-danger" role="alert">
+                            <ul>
+                                <?php foreach ($errors as $error) : ?>
+                                    <li><?= esc($error) ?></li>
+                                <?php endforeach ?>
+                            </ul>
                         </div>
+                    <?php } ?>
+                    <?php
+                    if (session()->getFlashdata('pesan')) {
+                        echo '<div class="alert alert-success" role="alert">';
+                        echo session()->getFlashdata('pesan');
+                        echo '</div>';
+                    }
+                    ?>
 
-                        <?php if ($config->allowRemembering) : ?>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="checkbox" name="remember" class="form-check-input" <?php if (old('remember')) : ?> checked <?php endif ?>>
-                                    <?= lang('Auth.rememberMe') ?>
+                    <?php
+                    echo form_open('pages/cek_login')
+                    ?>
+                    <div class="form-group has-feedback">
+                        <input type="Email" name="Email" class="form-control" placeholder="Email">
+                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input type="Password" name="Password" class="form-control" placeholder="Password">
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <div class="checkbox icheck">
+                                <label>
+                                    <input type="checkbox"> Remember Me
                                 </label>
                             </div>
-                        <?php endif; ?>
+                        </div>
+                        <!-- Email input 
+                        <div class="form-group">
+                            <label for="login"></label>
+                            <input type="email" class="form-control is-invalid" name="login" placeholder="">
+                            <div class="invalid-feedback">
 
-                        <div class="text-center text-lg-start mt-4 pt-2">
-                            <button type="submit" class="btn btn-primary btn-block"><?= lang('Auth.loginAction') ?></button>
+                            </div>
                         </div>
 
-                    </form>
+                        <div class="form-group">
+                            <label for="login"></label>
+                            <input type="text" class="form-control is-invalid" name="login" placeholder="">
+                            <div class="invalid-feedback">
+
+                            </div>
+                        </div>
+
+-->
+                        <!-- Password input 
+                    <div class="form-group">
+                        <label for="password"></label>
+                        <input type="password" name="password" class="form-control  is-invalid" placeholder=" ">
+                        <div class="invalid-feedback">
+
+                        </div>
+                    </div>
+
+  
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" name="remember" class="form-check-input"  checked >
+                     
+                            </label>
+                        </div>
+                 
+-->
+                        <div class="text-center text-lg-start mt-4 pt-2">
+                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                        </div>
+                    </div>
+                    <?php echo form_close(); ?>
+
 
                 </div>
             </div>
-        </div>
 
     </section>
 

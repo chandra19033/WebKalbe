@@ -48,7 +48,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto">
-            <?php if (logged_in()) : ?>
+            <?php if (session()->get('log')) : ?>
                 <li class="btn-kotak nav-item">
                     <a class=" nav-link" href="/pages/dashboard">Dashboard</a>
                 </li>
@@ -58,7 +58,6 @@
                 <li class="btn-kotak nav-item">
                     <a class=" nav-link" href="/pages/list_subkoordinat">Sub Koordinat</a>
                 </li>
-
                 <li class="btn-kotak nav-item dropdown">
                     <a class=" nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Pelatihan
@@ -75,13 +74,12 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right:0;">
                         <a class=" dropdown-item" href="/pages/profile">Profile</a>
-                        <a class="dropdown-item" href="/logout">Logout</a>
+                        <a class="dropdown-item" href="<?= base_url('pages/logout') ?>">Logout</a>
                     </div>
                 </li>
             <?php else : ?>
                 <li class="btn-kotak nav-item">
-
-                    <a class=" nav-link" href="/login">Login</a>
+                    <a class=" nav-link" href="pages/login">Login</a>
                 </li>
             <?php endif; ?>
         </ul>

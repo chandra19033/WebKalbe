@@ -24,9 +24,7 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
-        'login'      => \Myth\Auth\Filters\LoginFilter::class,
-        'role'       => \Myth\Auth\Filters\RoleFilter::class,
-        'permission' => \Myth\Auth\Filters\PermissionFilter::class,
+        'authfilter'     => \App\Filters\AuthFilter::class,
     ];
 
     /**
@@ -37,12 +35,19 @@ class Filters extends BaseConfig
      */
     public $globals = [
         'before' => [
-            'honeypot',
+            // 'authfilter' => [
+            //     ['except' => ['/', 'login', 'login/*']],
+            // ]
+            // 'honeypot',
             // 'login',
             // 'csrf',
             // 'invalidchars',
         ],
         'after' => [
+            // 'authfilter' => [
+            //     'except' =>
+            //     ['home', 'home/*']
+            // ],
             'toolbar',
             // 'honeypot',
             // 'secureheaders',
@@ -73,7 +78,5 @@ class Filters extends BaseConfig
      *
      * @var array
      */
-    public $filters = [
-        'login' => ['before' => ['pages/profile']],
-    ];
+    public $filters = [];
 }
