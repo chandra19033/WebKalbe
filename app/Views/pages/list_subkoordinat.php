@@ -95,7 +95,7 @@
                         <td scope="col">QA / HCO</th>
                         <td scope="col">Site Head / Group Head</th>
                         <td scope="col">HCO</th>
-                        <td scope="col">See Activity</th>
+                        <td scope="col"><a href="/pages/detail_subkoordinat/<?= $s['id']; ?>" style="color: black;">See Activity</a></th>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

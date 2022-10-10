@@ -140,12 +140,12 @@ class Pages extends BaseController
         ];
         return view('pages/list_subkoordinat', $data);
     }
-    public function detail_subkoordinat()
+    public function detail_subkoordinat($id)
     {
         $data = [
             'title' => 'detail_subkoordinat'
         ];
-        return view('pages/detail_subkoordinat', $data);
+        // return view('pages/detail_subkoordinat', $data);
     }
 
 
