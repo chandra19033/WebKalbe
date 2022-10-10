@@ -100,6 +100,7 @@ class Pages extends BaseController
     {
         $listpelatihanModel = new ListPelatihanModel();
         // $listpelatihan = $listpelatihanModel->findAll();
+        $nama = user()->Nama;
 
         // var_dump($this->request->getVar('keyword'));
         $keyword = $this->request->getVar('keyword');
@@ -111,7 +112,8 @@ class Pages extends BaseController
 
         $data = [
             'title' => 'list_pelatihan',
-            'listpelatihan' => $listpelatihan
+            'listpelatihan' => $listpelatihan,
+            'nama' => $nama
         ];
         // var_dump($listpelatihan);
         return view('pages/list_pelatihan', $data);

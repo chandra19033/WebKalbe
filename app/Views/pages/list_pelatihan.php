@@ -19,6 +19,7 @@
     <?php endif; ?>
     <div class="row justify-content-center padding">
         <div class="col-md-8 ftco-animate fadeInUp ftco-animated">
+            <h3>Daftar Pelatihan Untuk : <?= $nama; ?></h3>
             <form action="#" class="domain-form" method="get">
                 <div class="form-group d-md-flex">
                     <input type="text" class="form-control px-4" name="keyword" placeholder="Cari Judul Pelatihan">
