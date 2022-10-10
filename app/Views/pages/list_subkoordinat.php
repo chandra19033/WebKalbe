@@ -74,7 +74,7 @@
             <thead>
                 <tr>
                     <th scope="col">No</th>
-                    <th scope="col">NIK</th>
+                    <th scope="col">Employee ID</th>
                     <th scope="col">Nama </th>
                     <th scope="col">Dept. Mgr / Group Mgr</th>
                     <th scope="col">QA / HCO</th>
@@ -84,180 +84,24 @@
                 </tr>
             </thead>
 
+            <tbody>
+                <?php $i = 1; ?>
+                <?php foreach ($subkoordinat as $s) : ?>
+                    <tr>
+                        <td scope="col"><?= $i++; ?></th>
+                        <td scope="col"><?= $s['Employee_ID']; ?></th>
+                        <td scope="col"><?= $s['Employee_Name']; ?></th>
+                        <td scope="col"><?= $s['Superior']; ?></th>
+                        <td scope="col">QA / HCO</th>
+                        <td scope="col">Site Head / Group Head</th>
+                        <td scope="col">HCO</th>
+                        <td scope="col">See Activity</th>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
         </table>
     </div>
 </section>
 
-<section>
-    <div class="d-flex flex-row col-11">
-        <div class="col-6 d-flex align-items-center justify-content-center">
-            <img src="<?= base_url("/assets/depart.png") ?>" alt="" style="height: 70px">
-            <div class="dekripsi ms-2" style="height: 55px; color:black;">
-                <p class="fw-light" style="margin-bottom: 0px;">Departemen / Sub Dept</p>
-                <p class="fw-bold" style="font-size: 22px;">HCO / 2</p>
-            </div>
-        </div>
-        <div class="col-6 d-flex align-items-center justify-content-end">
-            <div class="dekripsi ms-2" style="height: 55px; color:black;">
-                <a class="btn btn-primary btn-lg" href="" role="button">Generate PDF ></a>
-            </div>
-        </div>
-    </div>
-</section>
 
-<section>
-    <style>
-        .table {
-            text-align: center;
-        }
-
-        .table th {
-            background-color: #428042;
-            color: white;
-        }
-
-        .table a {
-            /* border: 1px solid black; */
-            text-decoration: none;
-            color: white;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
-            border-radius: 5px;
-            padding: 7px;
-        }
-    </style>
-
-    <div class="container">
-        <table class="table table-bordered border-dark">
-            <thead>
-                <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">NIK</th>
-                    <th scope="col">Nama </th>
-                    <th scope="col">Dept. Mgr / Group Mgr</th>
-                    <th scope="col">QA / HCO</th>
-                    <th scope="col">Site Head / Group Head</th>
-                    <th scope="col">HCO</th>
-                    <th scope="col">See Activity</th>
-                </tr>
-            </thead>
-
-        </table>
-    </div>
-</section>
-
-<section>
-    <div class="d-flex flex-row col-11">
-        <div class="col-6 d-flex align-items-center justify-content-center">
-            <img src="<?= base_url("/assets/depart.png") ?>" alt="" style="height: 70px">
-            <div class="dekripsi ms-2" style="height: 55px; color:black;">
-                <p class="fw-light" style="margin-bottom: 0px;">Departemen / Sub Dept</p>
-                <p class="fw-bold" style="font-size: 22px;">HCO / 3</p>
-            </div>
-        </div>
-        <div class="col-6 d-flex align-items-center justify-content-end">
-            <div class="dekripsi ms-2" style="height: 55px; color:black;">
-                <a class="btn btn-primary btn-lg" href="" role="button">Generate PDF ></a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section>
-    <style>
-        .table {
-            text-align: center;
-        }
-
-        .table th {
-            background-color: #428042;
-            color: white;
-        }
-
-        .table a {
-            /* border: 1px solid black; */
-            text-decoration: none;
-            color: white;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
-            border-radius: 5px;
-            padding: 7px;
-        }
-    </style>
-
-    <div class="container">
-        <table class="table table-bordered border-dark">
-            <thead>
-                <tr>
-
-                    <th scope="col">No</th>
-                    <th scope="col">NIK</th>
-                    <th scope="col">Nama </th>
-                    <th scope="col">Dept. Mgr / Group Mgr</th>
-                    <th scope="col">QA / HCO</th>
-                    <th scope="col">Site Head / Group Head</th>
-                    <th scope="col">HCO</th>
-                    <th scope="col">See Activity</th>
-
-                </tr>
-            </thead>
-
-        </table>
-    </div>
-</section>
-
-<section>
-    <div class="d-flex flex-row col-11">
-        <div class="col-6 d-flex align-items-center justify-content-center">
-            <img src="<?= base_url("/assets/depart.png") ?>" alt="" style="height: 70px">
-            <div class="dekripsi ms-2" style="height: 55px; color:black;">
-                <p class="fw-light" style="margin-bottom: 0px;">Departemen / Sub Dept</p>
-                <p class="fw-bold" style="font-size: 22px;">HCO / 4</p>
-            </div>
-        </div>
-        <div class="col-6 d-flex align-items-center justify-content-end">
-            <div class="dekripsi ms-2" style="height: 55px; color:black;">
-                <a class="btn btn-primary btn-lg" href="" role="button">Generate PDF ></a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section>
-    <style>
-        .table {
-            text-align: center;
-        }
-
-        .table th {
-            background-color: #428042;
-            color: white;
-        }
-
-        .table a {
-            /* border: 1px solid black; */
-            text-decoration: none;
-            color: white;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
-            border-radius: 5px;
-            padding: 7px;
-        }
-    </style>
-
-    <div class="container">
-        <table class="table table-bordered border-dark">
-            <thead>
-                <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">NIK</th>
-                    <th scope="col">Nama </th>
-                    <th scope="col">Dept. Mgr / Group Mgr</th>
-                    <th scope="col">QA / HCO</th>
-                    <th scope="col">Site Head / Group Head</th>
-                    <th scope="col">HCO</th>
-                    <th scope="col">See Activity</th>
-                </tr>
-            </thead>
-
-        </table>
-    </div>
-</section>
 <?= $this->endSection(); ?>
