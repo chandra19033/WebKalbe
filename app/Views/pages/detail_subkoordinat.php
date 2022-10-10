@@ -37,8 +37,8 @@
         <div class="col-6 d-flex align-items-center justify-content-center">
             <img src="<?= base_url("/assets/depart.png") ?>" alt="" style="height: 70px">
             <div class="dekripsi ms-2" style="height: 55px; color:black;">
-                <p class="fw-light" style="margin-bottom: 0px;">Departemen / Sub Dept</p>
-                <p class="fw-bold" style="font-size: 22px;">HCO / 1</p>
+                <p class="fw-light" style="margin-bottom: 0px;">Nama</p>
+                <p class="fw-bold" style="font-size: 22px;"><?= $karyawan['Employee_Name']; ?></p>
             </div>
         </div>
         <div class="container">
@@ -83,14 +83,24 @@
             <thead>
                 <tr>
                     <th scope="col">No</th>
-                    <th scope="col">NIK</th>
                     <th scope="col">Nama </th>
                     <th scope="col">Judul Pelatihan</th>
                     <th scope="col">Penyelenggara</th>
                     <th scope="col">Supervisor</th>
                 </tr>
             </thead>
-
+            <tbody>
+                <?php $i = 1; ?>
+                <?php foreach ($pelatihan as $p) : ?>
+                    <tr>
+                        <td scope="col"><?= $i++; ?></th>
+                        <td scope="col"><?= $karyawan['Employee_Name']; ?> </th>
+                        <td scope="col"><?= $p['nama_pelatihan']; ?></th>
+                        <td scope="col"><?= $p['penyelenggara']; ?></th>
+                        <td scope="col"><?= $karyawan['Superior']; ?></th>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
         </table>
     </div>
 </section>

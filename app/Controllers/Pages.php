@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\ListPelatihanModel;
 use App\Models\PelatihanModel;
+use App\Models\KaryawanModel;
 use App\Models\Model_Auth;
 use CodeIgniter\Database\Query;
 
@@ -11,6 +12,7 @@ class Pages extends BaseController
 {
     protected $pelatihanModel;
     protected $listpelatihanModel;
+    protected $karyawanModel;
 
     public function __construct()
     {
@@ -18,6 +20,8 @@ class Pages extends BaseController
         helper('form');
         $this->Model_Auth = new Model_Auth();
         $this->pelatihanModel = new PelatihanModel();
+        $this->karyawanModel = new KaryawanModel();
+
         $this->listpelatihanModel = new ListPelatihanModel();
     }
 
@@ -38,7 +42,7 @@ class Pages extends BaseController
         // $pelatihan = $builder;
         // $nama_karyawan = 'ARI GUNAWAN GUNAIDI';
         // $pelatihan = $this->pelatihanModel->where('nama_karyawan', 'ARI GUNAWAN GUNAIDI');
-        $pelatihan = $this->pelatihanModel->getPelatihan();
+        $pelatihan = $this->pelatihanModel->getPelatihanMandiri();
         $data = [
             'title' => 'profile',
             'pelatihan' => $pelatihan
@@ -51,7 +55,7 @@ class Pages extends BaseController
     {
         $name = session()->get('Employee_Name');
         $pelatihan = $this->listpelatihanModel->getPelatihan($id);
-        $daftar = $this->pelatihanModel->getPelatihan();
+        $daftar = $this->pelatihanModel->getPelatihanMandiri();
 
         $tampung = $pelatihan[0];
 
@@ -100,7 +104,7 @@ class Pages extends BaseController
     {
         $listpelatihanModel = new ListPelatihanModel();
         // $listpelatihan = $listpelatihanModel->findAll();
-        $nama = user()->Nama;
+        $nama = session()->get('Employee_Name');
 
         // var_dump($this->request->getVar('keyword'));
         $keyword = $this->request->getVar('keyword');
@@ -259,17 +263,28 @@ class Pages extends BaseController
 
     public function list_subkoordinat()
     {
+        $subkoordinat = $this->karyawanModel->subkoordinat();
+
         $data = [
-            'title' => 'list_subkoordinat'
+            'title' => 'list_subkoordinat',
+            'subkoordinat' => $subkoordinat
         ];
         return view('pages/list_subkoordinat', $data);
     }
 
-    public function detail_subkoordinat()
+    public function detail_subkoordinat($name)
     {
+        $pelatihan = $this->pelatihanModel->getPelatihanSub($name);
+        $tampung = $this->karyawanModel->getKaryawan($name);
+        $karyawan = $tampung[0];
+        // dd($karyawan);
+
         $data = [
-            'title' => 'detail_subkoordinat'
+            'title' => 'detail_subkoordinat',
+            'karyawan' => $karyawan,
+            'pelatihan' => $pelatihan
         ];
+
         return view('pages/detail_subkoordinat', $data);
     }
 
