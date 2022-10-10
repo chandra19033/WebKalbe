@@ -261,6 +261,13 @@ class Pages extends BaseController
         ];
         return view('pages/list_subkoordinat', $data);
     }
+    public function detail_subkoordinat()
+    {
+        $data = [
+            'title' => 'detail_subkoordinat'
+        ];
+        return view('pages/detail_subkoordinat', $data);
+    }
 
 
     public function dashboard()
