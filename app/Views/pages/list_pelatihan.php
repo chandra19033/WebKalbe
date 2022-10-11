@@ -59,7 +59,7 @@
                         <td><?= $i++; ?></th>
                         <td><?= $l['nama_pelatihan']; ?></td>
                         <td><?= $l['penyelenggara']; ?></td>
-                        <td><a style="color: black!important;" href="/pages/tambah/<?= $l['id']; ?>">Tambah</a></td>
+                        <td><a style="color: black!important;" href="/pages/tambah/<?= $nama; ?>/<?= $l['id']; ?>">Tambah</a></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

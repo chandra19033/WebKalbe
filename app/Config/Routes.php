@@ -2,6 +2,8 @@
 
 namespace Config;
 
+use CodeIgniter\Commands\Utilities\Routes;
+
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
 
@@ -45,11 +47,12 @@ $routes->get('/', 'Pages::index');
 $routes->get('/pages/profile', 'Pages::profile');
 $routes->get('/pages/tambah/(:segment)', 'Pages::tambah/$1');
 $routes->get('/pages/login', 'Pages::login');
-$routes->get('/pages/list_pelatihan', 'Pages::listpelatihan');
+$routes->get('/pages/list_pelatihan', 'Pages::list_pelatihan');
 $routes->get('/pages/list_subkoordinat', 'Pages::list_subkoordinat');
 $routes->get('/pages/dashboard', 'Pages::dashboard');
 $routes->get('/pages/persetujuan', 'Pages::persetujuan');
 $routes->get('/pages/detail_subkoordinat', 'Pages::detail_subkoordinat');
+$routes->get('/pages/daftarsub', 'Pages::daftar_sub');
 
 /*
  * --------------------------------------------------------------------

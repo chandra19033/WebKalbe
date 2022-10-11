@@ -23,4 +23,10 @@ class PelatihanModel extends Model
         $this->where('nama_karyawan', strtoupper($name));
         return $this->findAll();
     }
+
+    public function getPelatihanbyName($name)
+    {
+        $this->where('nama_karyawan', strtoupper($name));
+        return $this->findAll();
+    }
 }

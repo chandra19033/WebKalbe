@@ -63,8 +63,8 @@
                         Pelatihan
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right:0">
-                        <a class="dropdown-item" href="/pages/list_pelatihan">Mandiri</a>
-                        <a class="dropdown-item" href="/pages/list_pelatihan">Sub Koordinat</a>
+                        <a class="dropdown-item" href="/pages/list_pelatihan/<?= session()->get('Employee_Name'); ?>">Mandiri</a>
+                        <a class="dropdown-item" href="/pages/daftarsub">Sub Koordinat</a>
                     </div>
                 </li>
 
