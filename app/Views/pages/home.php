@@ -92,6 +92,7 @@
                 visi dan misi yang dipegangnya serta bersaing dengan kompetitor lain.</p>
             <p class="lead">
                 <a class="btn btn-primary btn-lg" href="" role="button">Lihat Pelatihan ></a>
+
             </p>
         </div>
 
@@ -102,10 +103,12 @@
     <section class="py-5">
 
         <div class="card-deck d-flex justify-content-center">
+
             <div class="card justify-content-center d-flex py-3 bg-dark mb-3" style="max-width: 18rem;">
+
                 <div class="card-icon" style=" color:white;"><i class="bi bi-circle"></i>
-                    <div class="card-body">
-                        <img src="<?= base_url("assets/daftar_pelatihan.png") ?>" style="height: 160px; width:150px" class="center">
+                    <div class="card-body" data-toggle="tooltip" data-placement="bottom" title="Daftar Pelatihan Mandiri">
+                        <img src="<?= base_url("assets/daftar_pelatihan.png") ?>" style="height: 120px; width:110px" class="center">
                         <a href="/pages/list_pelatihan" class="stretched-link"> </a>
                     </div>
                 </div>
@@ -113,8 +116,8 @@
 
             <div class="card justify-content-center d-flex py-3 bg-dark mb-3" style="max-width: 18rem;">
                 <div class="card-icon" style=" color:white;"><i class="bi bi-circle"></i>
-                    <div class="card-body">
-                        <img src="<?= base_url("assets/daftarkan_subkoordinat.png") ?>" style="height: 160px; width:150px" class="center">
+                    <div class="card-body" data-toggle="tooltip" data-placement="bottom" title="Daftarkan Pelatihan Subkoordinat">
+                        <img src="<?= base_url("assets/daftarkan_subkoordinat.png") ?>" style="height: 120px; width:110px" class="center">
                         <a href="/pages/list_pelatihan" class="stretched-link"> </a>
                     </div>
                 </div>
@@ -122,8 +125,8 @@
 
             <div class="card justify-content-center d-flex py-3 bg-dark mb-3" style="max-width: 18rem;">
                 <div class="card-icon" style=" color:white;"><i class="bi bi-circle"></i>
-                    <div class="card-body">
-                        <img src="<?= base_url("assets/list_subkoordinat.png") ?>" style="height: 160px; width:150px" class="center">
+                    <div class="card-body" data-toggle="tooltip" data-placement="bottom" title="List Subkoordinat">
+                        <img src="<?= base_url("assets/list_subkoordinat.png") ?>" style="height: 120px; width:110px" class="center">
                         <a href="/pages/list_subkoordinat" class="stretched-link"> </a>
                     </div>
                 </div>
@@ -131,44 +134,24 @@
 
             <div class="card justify-content-center d-flex py-3 bg-dark mb-3" style="max-width: 18rem;">
                 <div class="card-icon" style=" color:white;"><i class="bi bi-circle"></i>
-                    <div class="card-body">
-                        <img src="<?= base_url("assets/approve.png") ?>" style="height: 160px; width:150px" class="center">
+                    <div class="card-body" data-toggle="tooltip" data-placement="bottom" title="Approval">
+                        <img src="<?= base_url("assets/approve.png") ?>" style="height: 120px; width:110px" class="center">
                         <a href="/pages/persetujuan" class="stretched-link"> </a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 
-    <div class="d-flex justify-content-center">
-            <div class="title justify-content-center d-flex py-3 mb-5">
-                <div style=" color:white;">
-                    <a href="/pages/list_pelatihan"><img src="<?= base_url("assets/daftar_pelatihan.png") ?>" style="height: 180px" class="center"></a>
-                    <p style=" font-weight: 800; font-size: 32px; text-align: center;">Daftar Pelatihan</p>
-                </div>
-            </div>
-
-            <div class="title justify-content-center d-flex py-3 mb-5">
-                <div style=" color:white;">
-                    <a href="/pages/list_pelatihan"><img src="<?= base_url("assets/daftarkan_subkoordinat.png") ?>" style="height: 180px" class="center"></a>
-                    <p style=" font-weight: 800; font-size: 32px; text-align: center;">Daftarkan Sub Koordinat</p>
-                </div>
-            </div>
-            <div class="title justify-content-center d-flex py-3 mb-5">
-                <div style=" color:white;">
-                    <a href="/pages/list_subkoordinat"><img src="<?= base_url("assets/list_subkoordinat.png") ?>" style="height: 180px" class="center"></a>
-                    <p style=" font-weight: 800; font-size: 32px; text-align: center;">List Sub Koordinat</p>
-                </div>
-            </div>
-            <div class="title justify-content-center d-flex py-3 mb-5">
-                <div style=" color:white;">
-                    <a href="/pages/persetujuan"><img src="<?= base_url("assets/approve.png") ?>" style="height: 180px" class="center"></a>
-                    <p style=" font-weight: 800; font-size: 32px; text-align: center;">Approve Pelatihan</p>
-                </div>
-            </div>
-        </div>
-           -->
     </section>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $(function() {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+        })
+    </script>
 
 <?php endif; ?>
 

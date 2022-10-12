@@ -118,43 +118,6 @@ class Pages extends BaseController
             'title' => 'Login',
         );
 
-        /*
-       $UserModel = new UserModel();
-        $login = $this->request->getPost('login');
-        if ($login) {
-            $user_email = $this->request->getPost('user_email');
-            $user_password = $this->request->getPost('user_password');
-
-            if ($user_email == '' or $user_password == '') {
-                $err = "Silahkan masukan email dan password";
-            }
-
-            if (empty($err)) {
-                $dataUser = $UserModel->where("user_email", $user_email)->first();
-                if (
-                    $dataUser['user_password'] != md5($user_password)
-                ) {
-                    $err = "password tidak sesuai";
-                }
-            }
-
-            if (empty($err)) {
-                $dataSesi = [
-                    'user_id' => $dataUser['user_id'],
-                    'user_email' => $dataUser['user_email'],
-                    'user_password' => $dataUser['user_password'],
-                ];
-                session()->set($dataSesi);
-                return redirect()->to('/pages/dashboard');
-            }
-
-            if ($err) {
-                session()->setFlashdata('error', $err);
-                return redirect()->to("login");
-            }
-        }
-*/
-
         return view('pages/login', $data);
     }
 
@@ -165,14 +128,14 @@ class Pages extends BaseController
                 'label' => 'E-Mail',
                 'rules' => 'required',
                 'errors' => [
-                    'required' => '{field} Wajib Diisi !!!'
+                    'required' => 'Harap isi {field} untuk masuk website RPKC'
                 ]
             ],
             'Password' => [
                 'label' => 'Password',
                 'rules' => 'required',
                 'errors' => [
-                    'required' => '{field} Wajib Diisi !!!'
+                    'required' => 'Harap isi {field} untuk masuk website RPKC !!!'
                 ]
             ],
 
@@ -187,18 +150,23 @@ class Pages extends BaseController
                 session()->set('Employee_ID', $cek['Employee_ID']);
                 session()->set('Employee_Name', $cek['Employee_Name']);
                 session()->set('Postition_Name', $cek['Postition_Name']);
+                session()->set('Job_Title_Name', $cek['Job_Title_Name']);
                 session()->set('Job_Title_Level_Name', $cek['Job_Title_Level_Name']);
                 session()->set('Organization_Name', $cek['Organization_Name']);
                 session()->set('Superior', $cek['Superior']);
                 session()->set('Email', $cek['Email']);
                 session()->set('Password', $cek['Password']);
+                session()->set('Dept_Manager', $cek['Dept_Manager']);
+                session()->set('QA_Manager', $cek['QA_Manager']);
+                session()->set('HCO_Manager', $cek['HCO_Manager']);
+                session()->set('Site/Group_Head', $cek['Site/Group_Head']);
 
                 //$this->setUserMethod($user);
                 return redirect()->to(base_url('/'));
                 //return redirect()->to(base_url('/'));
             } else {
                 //data tidak cocok
-                session()->setFlashdata('pesan', 'Login Gagal !!');
+                session()->setFlashdata('pesan', 'Login gagal, harap masukan kembali Email dan Password');
                 return redirect()->to(base_url('pages/login'));
             }
         } else {
@@ -206,24 +174,6 @@ class Pages extends BaseController
             return redirect()->to(base_url('pages/login'));
         }
     }
-
-    private function setUserMethod($user)
-    {
-        $data =
-            [
-                'No.' => $user['No.'],
-                'Employee_ID' => $user['Employee_ID'],
-                'Employee_Name' => $user['Employee_Name'],
-                'Postition_Name' => $user['Postition_Name'],
-                'Job_Title_Level_Name' => $user['Job_Title_Level_Name'],
-                'Organization_Name' => $user['Organization_Name'],
-                'Superior' => $user['Superior'],
-                'Email' => $user['Email'],
-                'Password' => $user['Password'],
-                'isLoggedIn' => true,
-            ];
-    }
-
 
     public function logout()
     {
@@ -236,6 +186,10 @@ class Pages extends BaseController
         session()->remove('Superior');
         session()->remove('Email');
         session()->remove('Password');
+        session()->remove('Dept_Manager');
+        session()->remove('QA_Manager');
+        session()->remove('HCO_Manager');
+        session()->remove('Site/Group_Head');
         session()->setFlashdata('pesan', 'Logout Sukses !!');
         return redirect()->to(base_url('/'));
     }

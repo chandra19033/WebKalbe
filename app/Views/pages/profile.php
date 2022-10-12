@@ -4,10 +4,10 @@
 <section id="profile">
     <div class="row profile">
         <div class="left-side col-4 d-flex align-items-center justify-content-center">
-            <img src="<?= base_url("assets/profile.png") ?>" alt="">
+            <img src="<?= base_url("assets/profile.png") ?>" style="height: 280px;" alt="">
         </div>
         <div class="row right-side col-8">
-            <div class="nama-email text-center" style="height: 0%; color:white">
+            <div class="nama-email text-center" style="height: 0% ; color:white">
                 <h2 style="font-weight: 800;"><?= session()->get('Employee_Name') ?></h2>
                 <h5 style="font-weight: 400;"><?= session()->get('Email') ?></h5>
             </div>

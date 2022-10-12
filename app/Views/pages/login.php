@@ -55,62 +55,29 @@
                     echo form_open('pages/cek_login')
                     ?>
                     <div class="form-group has-feedback">
-                        <input type="Email" name="Email" class="form-control" placeholder="Email">
+                        <label for="formGroupExampleInput">Email</label>
+                        <input type="Email" name="Email" class="form-control" placeholder="Masukan Email">
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                     </div>
                     <div class="form-group has-feedback">
-                        <input type="Password" name="Password" class="form-control" placeholder="Password">
+                        <label for="formGroupExampleInput2">Password</label>
+                        <input type="Password" name="Password" class="form-control" placeholder="Masukan Password">
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     </div>
 
                     <div class="row">
                         <div class="col-xs-8">
-                            <div class="checkbox icheck">
-                                <label>
+                            <div class="form-check">
+                                <label class="form-check-label">
                                     <input type="checkbox"> Remember Me
                                 </label>
                             </div>
                         </div>
-                        <!-- Email input 
-                        <div class="form-group">
-                            <label for="login"></label>
-                            <input type="email" class="form-control is-invalid" name="login" placeholder="">
-                            <div class="invalid-feedback">
-
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="login"></label>
-                            <input type="text" class="form-control is-invalid" name="login" placeholder="">
-                            <div class="invalid-feedback">
-
-                            </div>
-                        </div>
-
--->
-                        <!-- Password input 
-                    <div class="form-group">
-                        <label for="password"></label>
-                        <input type="password" name="password" class="form-control  is-invalid" placeholder=" ">
-                        <div class="invalid-feedback">
-
-                        </div>
+                    </div>
+                    <div class="text-center text-lg-start mt-4 pt-2">
+                        <button type="submit" class="btn btn-primary btn-block">Login</button>
                     </div>
 
-  
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="checkbox" name="remember" class="form-check-input"  checked >
-                     
-                            </label>
-                        </div>
-                 
--->
-                        <div class="text-center text-lg-start mt-4 pt-2">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-                        </div>
-                    </div>
                     <?php echo form_close(); ?>
 
 
@@ -118,16 +85,6 @@
             </div>
 
     </section>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="<?= base_url(); ?>/vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="<?= base_url(); ?>/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="<?= base_url(); ?>/js/sb-admin-2.min.js"></script>
 
 </body>
 
