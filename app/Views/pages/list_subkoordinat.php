@@ -76,10 +76,11 @@
                     <th scope="col">No</th>
                     <th scope="col">Employee ID</th>
                     <th scope="col">Nama </th>
-                    <th scope="col">Dept. Mgr / Group Mgr</th>
+                    <th scope="col">Jabatan</th>
+                    <!-- <th scope="col">Dept. Mgr / Group Mgr</th>
                     <th scope="col">QA / HCO</th>
                     <th scope="col">Site Head / Group Head</th>
-                    <th scope="col">HCO</th>
+                    <th scope="col">HCO</th> -->
                     <th scope="col">See Activity</th>
                 </tr>
             </thead>
@@ -91,10 +92,11 @@
                         <td scope="col"><?= $i++; ?></th>
                         <td scope="col"><?= $s['Employee_ID']; ?></th>
                         <td scope="col"><?= $s['Employee_Name']; ?></th>
-                        <td scope="col"><?= $s['Superior']; ?></th>
+                        <td scope="col"><?= $s['Postition_Name']; ?></td>
+                        <!-- <td scope="col"></th>
                         <td scope="col">QA / HCO</th>
                         <td scope="col">Site Head / Group Head</th>
-                        <td scope="col">HCO</th>
+                        <td scope="col">HCO</th> -->
                         <td scope="col"><a href="/pages/detail_subkoordinat/<?= $s['Employee_Name']; ?>" style="color: black;">See Activity</a></th>
                     </tr>
                 <?php endforeach; ?>

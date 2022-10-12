@@ -39,18 +39,41 @@
             <div class="dekripsi ms-2" style="height: 55px; color:black;">
                 <p class="fw-light" style="margin-bottom: 0px;">Nama</p>
                 <p class="fw-bold" style="font-size: 22px;"><?= $karyawan['Employee_Name']; ?></p>
+                <p class="fw-bold" style="font-size: 22px;"><?= $karyawan['Postition_Name']; ?></p>
             </div>
         </div>
         <div class="container">
             <table class="table table-bordered border-dark">
                 <thead>
+                    <style>
+                        .coba {
+                            background-color: #32a852 !important;
+                        }
+                    </style>
                     <tr>
-                        <th scope="col">Dpet. Mgr/Group Mgr</th>
-                        <th scope="col">QA / HRD Mgr</th>
-                        <th scope="col">Site Head/Group Head </th>
-                        <th scope="col">HRD Mgr.</th>
+                        <th class="coba" scope="col">Dibuat</th>
+                        <th class="coba" scope="col">Direview</th>
+                        <th class="coba" scope="col">Disetujui</th>
+                        <th class="coba" scope="col">Diketahui</th>
                     </tr>
                 </thead>
+                <thead>
+                    <tr>
+                        <th scope="col">Dpt. Mgr/Group Mgr</th>
+                        <th scope="col">QA / HCO Mgr</th>
+                        <th scope="col">HCO Mgr.</th>
+                        <th scope="col">Site Head/Group Head </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td scope="col">asdasd</td>
+                        <td scope="col">asdasd</td>
+                        <td scope="col">asdasd</td>
+                        <td scope="col">asdasd</td>
+                    </tr>
+                </tbody>
 
             </table>
         </div>
@@ -86,7 +109,7 @@
                     <th scope="col">Nama </th>
                     <th scope="col">Judul Pelatihan</th>
                     <th scope="col">Penyelenggara</th>
-                    <th scope="col">Supervisor</th>
+                    <th scope="col">Superior</th>
                 </tr>
             </thead>
             <tbody>
