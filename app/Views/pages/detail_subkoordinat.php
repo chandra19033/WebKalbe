@@ -33,12 +33,12 @@
 </section>
 
 <section>
-    <div class="d-flex flex-row col-11">
+    <div class="container d-flex flex-row col-11">
         <div class="col-6 d-flex align-items-center justify-content-center">
             <img src="<?= base_url("/assets/depart.png") ?>" alt="" style="height: 70px">
-            <div class="dekripsi ms-2" style="height: 55px; color:black;">
-                <p class="fw-light" style="margin-bottom: 0px;">Nama</p>
-                <p class="fw-bold" style="font-size: 22px;"><?= $karyawan['Employee_Name']; ?></p>
+            <div class="dekripsi ms-2" style="color:black;">
+                <p class="fw-light" style="margin-bottom: 0px;">Nama / Jabatan</p>
+                <p class="fw-bold" style="font-size: 22px; margin-bottom: 0px;"><?= $karyawan['Employee_Name']; ?></p>
                 <p class="fw-bold" style="font-size: 22px;"><?= $karyawan['Postition_Name']; ?></p>
             </div>
         </div>
@@ -68,10 +68,10 @@
 
                 <tbody>
                     <tr>
-                        <td scope="col">asdasd</td>
-                        <td scope="col">asdasd</td>
-                        <td scope="col">asdasd</td>
-                        <td scope="col">asdasd</td>
+                        <td scope="col"><?= $karyawan['Dept_Manager']; ?></td>
+                        <td scope="col"><?= $karyawan['QA_Manager']; ?></td>
+                        <td scope="col"><?= $karyawan['HCO_Manager']; ?></td>
+                        <td scope="col"><?= $karyawan['Site/Group_Head']; ?></td>
                     </tr>
                 </tbody>
 
