@@ -53,18 +53,18 @@
                     <a class=" nav-link" href="/pages/dashboard">Dashboard</a>
                 </li>
                 <li class="btn-kotak nav-item">
-                    <a class=" nav-link" href="/pages/persetujuan">Persetujuan</a>
+                    <a class=" nav-link" href="/pages/persetujuan">Approval</a>
                 </li>
                 <li class="btn-kotak nav-item">
-                    <a class=" nav-link" href="/pages/list_subkoordinat">Sub Koordinat</a>
+                    <a class=" nav-link" href="/pages/list_subkoordinat">Subordinate</a>
                 </li>
                 <li class="btn-kotak nav-item dropdown">
                     <a class=" nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Pelatihan
+                        Training
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right:0">
-                        <a class="dropdown-item" href="/pages/list_pelatihan/<?= session()->get('Employee_Name'); ?>">Mandiri</a>
-                        <a class="dropdown-item" href="/pages/daftarsub">Sub Koordinat</a>
+                        <a class="dropdown-item" href="/pages/list_pelatihan/<?= session()->get('Employee_Name'); ?>">Self-training</a>
+                        <a class="dropdown-item" href="/pages/daftarsub">Subordinate</a>
                     </div>
                 </li>
 

@@ -28,7 +28,7 @@
 
 <section>
     <div class="title justify-content-center d-flex py-3 mb-5">
-        <h1 style="font-weight: 800; color:white; text-shadow: 0px 2.53109px 25.3109px rgba(0, 63, 145, 0.42);">Pelatihan</h1>
+        <h1 style="font-weight: 800; color:white; text-shadow: 0px 2.53109px 25.3109px rgba(0, 63, 145, 0.42);">Training</h1>
     </div>
 </section>
 

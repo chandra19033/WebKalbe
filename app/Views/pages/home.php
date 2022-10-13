@@ -107,25 +107,25 @@
             <div class="card justify-content-center d-flex py-3 bg-dark mb-3" style="max-width: 18rem;">
 
                 <div class="card-icon" style=" color:white;"><i class="bi bi-circle"></i>
-                    <div class="card-body" data-toggle="tooltip" data-placement="bottom" title="Daftar Pelatihan Mandiri">
+                    <div class="card-body" data-toggle="tooltip" data-placement="bottom" title="Self Training List">
                         <img src="<?= base_url("assets/daftar_pelatihan.png") ?>" style="height: 120px; width:110px" class="center">
-                        <a href="/pages/list_pelatihan" class="stretched-link"> </a>
+                        <a href="/pages/list_pelatihan/<?= session()->get('Employee_Name'); ?>" class="stretched-link"> </a>
                     </div>
                 </div>
             </div>
 
             <div class="card justify-content-center d-flex py-3 bg-dark mb-3" style="max-width: 18rem;">
                 <div class="card-icon" style=" color:white;"><i class="bi bi-circle"></i>
-                    <div class="card-body" data-toggle="tooltip" data-placement="bottom" title="Daftarkan Pelatihan Subkoordinat">
+                    <div class="card-body" data-toggle="tooltip" data-placement="bottom" title="Register for Subordinate Training">
                         <img src="<?= base_url("assets/daftarkan_subkoordinat.png") ?>" style="height: 120px; width:110px" class="center">
-                        <a href="/pages/list_pelatihan" class="stretched-link"> </a>
+                        <a href="/pages/daftar_sub" class="stretched-link"> </a>
                     </div>
                 </div>
             </div>
 
             <div class="card justify-content-center d-flex py-3 bg-dark mb-3" style="max-width: 18rem;">
                 <div class="card-icon" style=" color:white;"><i class="bi bi-circle"></i>
-                    <div class="card-body" data-toggle="tooltip" data-placement="bottom" title="List Subkoordinat">
+                    <div class="card-body" data-toggle="tooltip" data-placement="bottom" title="Subordinates List">
                         <img src="<?= base_url("assets/list_subkoordinat.png") ?>" style="height: 120px; width:110px" class="center">
                         <a href="/pages/list_subkoordinat" class="stretched-link"> </a>
                     </div>

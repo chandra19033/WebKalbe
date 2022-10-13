@@ -2,7 +2,7 @@
 
 <?= $this->section('content'); ?>
 <div class="title justify-content-center d-flex py-3">
-    <h1>Pelatihan Yang Diambil</h1>
+    <h1>Training List</h1>
 </div>
 <section>
     <?php if (session()->getFlashdata('pesan')) : ?>
@@ -17,9 +17,11 @@
             </div>
         <?php endif; ?>
     <?php endif; ?>
+
     <div class="row justify-content-center padding">
         <div class="col-md-8 ftco-animate fadeInUp ftco-animated">
             <h3>Daftar Pelatihan Untuk : <?= $nama; ?></h3>
+
             <form action="#" class="domain-form" method="get">
                 <div class="form-group d-md-flex">
                     <input type="text" class="form-control px-4" name="keyword" placeholder="Cari Judul Pelatihan">

@@ -1,6 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<style>
+    body {
+        min-height: 100vh;
+        margin: 0;
+        position: relative;
+    }
+
+    header {
+        min-height: 50px;
+    }
+
+    body::after {
+        content: '';
+        display: block;
+        height: 50px;
+        /* Set same as footer's height */
+    }
+
+    footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 70px;
+    }
+</style>
+
+
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,12 +49,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <footer class="bg-light text-center text-lg-start">
-        <!-- Copyright -->
-        <div class="text-center p-4" style="background-image: linear-gradient(#428042, #3BB73B); color:white;">
+        <div class="text-center p-4" style="background-image: linear-gradient(#428042, #3BB73B); color:white; height:100%;">
             © 2022 - PT Kalbe Farma Tbk
 
         </div>
-        <!-- Copyright -->
     </footer>
 </body>
 
