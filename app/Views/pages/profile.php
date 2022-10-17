@@ -43,6 +43,9 @@
     </div>
 
     <div class="container">
+        <div class="mb-3">
+            <a class="ms-auto bg-primary" style="text-decoration: none; color: white; box-shadow: 0px 4px 4px rgb(0 0 0 / 30%); border-radius: 5px; padding: 7px;" href="/pages/registrasi/<?= session()->get('Employee_Name') ?>">Daftarkan</a>
+        </div>
         <table class="table table-bordered border-dark">
             <thead>
                 <tr>
@@ -61,7 +64,11 @@
                         <td><?= $p['nama_karyawan']; ?></td>
                         <td><?= $p['nama_pelatihan']; ?></td>
                         <td><?= $p['penyelenggara']; ?></td>
-                        <td><a class="bg-primary" href="">Terdaftar</a></td>
+                        <?php if ($karyawan['status_daftar'] == 'open') : ?>
+                            <td><a class="bg-primary" href="">Belum Terdaftar</a></td>
+                        <?php elseif ($karyawan['status_daftar'] == 'close') : ?>
+                            <td><a class="bg-primary" href="">Terdaftar</a></td>
+                        <?php endif; ?>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

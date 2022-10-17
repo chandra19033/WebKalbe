@@ -36,12 +36,14 @@ class Pages extends BaseController
     public function profile()
     {
         $pelatihan = $this->pelatihanModel->getPelatihanMandiri();
+        $tampung = $this->karyawanModel->getKaryawan(session()->get('Employee_Name'));
+        $karyawan = $tampung[0];
 
         $data = [
             'title' => 'profile',
-            'pelatihan' => $pelatihan
+            'pelatihan' => $pelatihan,
+            'karyawan' => $karyawan
         ];
-        // var_dump($pelatihan);
         return view('pages/profile', $data);
     }
 
@@ -49,6 +51,9 @@ class Pages extends BaseController
     {
         $pelatihan = $this->listpelatihanModel->getPelatihan($id);
         $daftar = $this->pelatihanModel->getPelatihanbyName($name);
+        $k = $this->karyawanModel->getKaryawan($name);
+
+        $karyawan = $k[0];
 
         $tampung = $pelatihan[0];
 
@@ -62,24 +67,34 @@ class Pages extends BaseController
             }
         endforeach;
 
-        if ($trigger == 0) {
-            $data = [
-                'nama_karyawan' =>  strtoupper($name),
-                'nama_pelatihan' => $tampung['nama_pelatihan'],
-                'penyelenggara' => $tampung['penyelenggara']
-            ];
+        if ($karyawan['status_daftar'] == 'open') {
+            if ($trigger == 0) {
+                $data = [
+                    'nama_karyawan' =>  strtoupper($name),
+                    'nama_pelatihan' => $tampung['nama_pelatihan'],
+                    'penyelenggara' => $tampung['penyelenggara']
+                ];
 
-            $this->pelatihanModel->insert($data);
+                $this->pelatihanModel->insert($data);
+                $alert = [
+                    'pesan' => 'Pelatihan berhasil ditambahkan',
+                    'value' => 1,
+                    'nama' => $name
+                ];
+                session()->setFlashdata('pesan', $alert);
+                return redirect()->to('/pages/list_pelatihan/' . $name);
+            } else {
+                $alert = [
+                    'pesan' => 'Pelatihan tidak dapat ditambah karena sudah terdaftar',
+                    'value' => 0,
+                    'nama' => $name
+                ];
+                session()->setFlashdata('pesan', $alert);
+                return redirect()->to('/pages/list_pelatihan/' . $name);
+            }
+        } elseif ($karyawan['status_daftar'] == 'close') {
             $alert = [
-                'pesan' => 'Pelatihan berhasil ditambahkan',
-                'value' => 1,
-                'nama' => $name
-            ];
-            session()->setFlashdata('pesan', $alert);
-            return redirect()->to('/pages/list_pelatihan/' . $name);
-        } else {
-            $alert = [
-                'pesan' => 'Pelatihan tidak dapat ditambah karena sudah terdaftar',
+                'pesan' => 'Sudah tidak dapat Daftar karena sudah Submit',
                 'value' => 0,
                 'nama' => $name
             ];
@@ -247,5 +262,12 @@ class Pages extends BaseController
             'subkoordinat' => $subkoordinat
         ];
         return view('pages/daftar_sub', $data);
+    }
+
+    public function registrasi($nama)
+    {
+        $this->karyawanModel->regis($nama);
+
+        return redirect()->to('/pages/profile');
     }
 }

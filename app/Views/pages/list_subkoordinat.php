@@ -59,10 +59,7 @@
                     <th scope="col">Employee ID</th>
                     <th scope="col">Nama </th>
                     <th scope="col">Jabatan</th>
-                    <!-- <th scope="col">Dept. Mgr / Group Mgr</th>
-                    <th scope="col">QA / HCO</th>
-                    <th scope="col">Site Head / Group Head</th>
-                    <th scope="col">HCO</th> -->
+                    <th scope="col">Status</th>
                     <th scope="col">See Activity</th>
                 </tr>
             </thead>
@@ -75,10 +72,11 @@
                         <td scope="col"><?= $s['Employee_ID']; ?></th>
                         <td scope="col"><?= $s['Employee_Name']; ?></th>
                         <td scope="col"><?= $s['Postition_Name']; ?></td>
-                        <!-- <td scope="col"></th>
-                        <td scope="col">QA / HCO</th>
-                        <td scope="col">Site Head / Group Head</th>
-                        <td scope="col">HCO</th> -->
+                        <?php if ($s['status_daftar'] == 'open') : ?>
+                            <td scope="col">Belum Daftar</td>
+                        <?php elseif ($s['status_daftar'] == 'close') : ?>
+                            <td scope="col">Terdaftar</td>
+                        <?php endif; ?>
                         <td scope="col"><a href="/pages/detail_subkoordinat/<?= $s['Employee_Name']; ?>" style="color: black;">See Activity</a></th>
                     </tr>
                 <?php endforeach; ?>

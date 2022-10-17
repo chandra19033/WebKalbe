@@ -102,6 +102,9 @@
     </style>
 
     <div class="container">
+        <div class="mb-3">
+            <a class="ms-auto bg-primary" style="text-decoration: none; color: white; box-shadow: 0px 4px 4px rgb(0 0 0 / 30%); border-radius: 5px; padding: 7px;" href="/pages/registrasi/<?= $karyawan['Employee_Name']; ?>">Daftarkan</a>
+        </div>
         <table class="table table-bordered border-dark">
             <thead>
                 <tr>
