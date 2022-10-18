@@ -7,6 +7,7 @@ use App\Models\PelatihanModel;
 use App\Models\KaryawanModel;
 use App\Models\Model_Auth;
 use CodeIgniter\Database\Query;
+use TCPDF;
 
 class Pages extends BaseController
 {
@@ -269,5 +270,38 @@ class Pages extends BaseController
         $this->karyawanModel->regis($nama);
 
         return redirect()->to('/pages/profile');
+    }
+
+
+
+    public function invoice()
+    {
+        $id = $this->request->uri->getSegment(3);
+
+        $listPelatihan = new \App\Models\ListPelatihanModel();
+        $listPelatihan = $listPelatihan->find($id);
+
+        $html = view('pages/invoice', [
+            'listPelatihan' => $listPelatihan,
+        ]);
+
+        $pdf = new TCPDF('L', 'mm', array(215.9, 330.2), true, 'UTF-8', false);
+
+        $pdf->SetCreator(PDF_CREATOR);
+        $pdf->SetAuthor('Dea Venditama');
+        $pdf->SetTitle('RPKC');
+        $pdf->SetSubject('RPKC');
+
+        $pdf->setPrintHeader(false);
+        $pdf->setPrintFooter(false);
+
+        $pdf->addPage();
+
+        // output the HTML content
+        $pdf->writeHTML($html, true, false, true, false, '');
+        //line ini penting
+        $this->response->setContentType('application/pdf');
+        //Close and output PDF document
+        $pdf->Output('RPKC.pdf', 'I');
     }
 }

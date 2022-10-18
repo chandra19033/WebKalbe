@@ -42,7 +42,7 @@
         </div>
         <div class="col-6 d-flex align-items-center justify-content-end">
             <div class="dekripsi ms-2" style="height: 55px; color:black;">
-                <a class="btn btn-primary btn-lg" href="" role="button">Generate PDF ></a>
+                <a class="btn btn-primary btn-lg" href="/pages/invoice/<?= session()->get('Employee_Name'); ?>" role="button">Generate PDF ></a>
             </div>
         </div>
     </div>
@@ -72,11 +72,7 @@
                         <td scope="col"><?= $s['Employee_ID']; ?></th>
                         <td scope="col"><?= $s['Employee_Name']; ?></th>
                         <td scope="col"><?= $s['Postition_Name']; ?></td>
-                        <?php if ($s['status_daftar'] == 'open') : ?>
-                            <td scope="col">Belum Daftar</td>
-                        <?php elseif ($s['status_daftar'] == 'close') : ?>
-                            <td scope="col">Terdaftar</td>
-                        <?php endif; ?>
+
                         <td scope="col"><a href="/pages/detail_subkoordinat/<?= $s['Employee_Name']; ?>" style="color: black;">See Activity</a></th>
                     </tr>
                 <?php endforeach; ?>

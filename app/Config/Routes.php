@@ -54,6 +54,8 @@ $routes->get('/pages/persetujuan', 'Pages::persetujuan');
 $routes->get('/pages/detail_subkoordinat', 'Pages::detail_subkoordinat');
 $routes->get('/pages/daftarsub', 'Pages::daftar_sub');
 
+$routes->match(['get', 'post'], 'Pages/htmlToPDF', 'Pages::htmlToPDF');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

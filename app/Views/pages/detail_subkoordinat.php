@@ -2,29 +2,6 @@
 <?= $this->extend('layouts/template'); ?>
 
 <?= $this->section('content'); ?>
-<style>
-    .left-side {
-        border-right: 1px solid white;
-    }
-
-    .left-side img {
-        /* width: 100px; */
-        height: 360px;
-    }
-
-    .right-side {
-        padding: 35px;
-    }
-
-    .profile {
-        height: 70vh;
-        background-image: linear-gradient(#428042, #3BB73B);
-    }
-
-    .title {
-        background-image: linear-gradient(#28ABDA, #5EDFF8);
-    }
-</style>
 
 <section>
     <div class="title justify-content-center d-flex py-3 mb-5">
@@ -80,54 +57,35 @@
     </div>
 </section>
 
-<section>
-    <style>
-        .table {
-            text-align: center;
-        }
-
-        .table th {
-            background-color: #428042;
-            color: white;
-        }
-
-        .table a {
-            /* border: 1px solid black; */
-            text-decoration: none;
-            color: white;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
-            border-radius: 5px;
-            padding: 7px;
-        }
-    </style>
-
+<section style="margin-bottom:70px;">
     <div class="container">
         <div class="mb-3">
             <a class="ms-auto bg-primary" style="text-decoration: none; color: white; box-shadow: 0px 4px 4px rgb(0 0 0 / 30%); border-radius: 5px; padding: 7px;" href="/pages/registrasi/<?= $karyawan['Employee_Name']; ?>">Daftarkan</a>
         </div>
         <table class="table table-bordered border-dark">
-            <thead>
-                <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Nama </th>
-                    <th scope="col">Judul Pelatihan</th>
-                    <th scope="col">Penyelenggara</th>
-                    <th scope="col">Superior</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php $i = 1; ?>
-                <?php foreach ($pelatihan as $p) : ?>
+            <table class="table table-hover table-bordered border-dark table-striped table-success">
+                <thead>
                     <tr>
-                        <td scope="col"><?= $i++; ?></th>
-                        <td scope="col"><?= $karyawan['Employee_Name']; ?> </th>
-                        <td scope="col"><?= $p['nama_pelatihan']; ?></th>
-                        <td scope="col"><?= $p['penyelenggara']; ?></th>
-                        <td scope="col"><?= $karyawan['Superior']; ?></th>
+                        <th scope="col">No</th>
+                        <th scope="col">Nama </th>
+                        <th scope="col">Judul Pelatihan</th>
+                        <th scope="col">Penyelenggara</th>
+                        <th scope="col">Superior</th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php $i = 1; ?>
+                    <?php foreach ($pelatihan as $p) : ?>
+                        <tr>
+                            <td scope="col"><?= $i++; ?></th>
+                            <td scope="col"><?= $karyawan['Employee_Name']; ?> </th>
+                            <td scope="col"><?= $p['nama_pelatihan']; ?></th>
+                            <td scope="col"><?= $p['penyelenggara']; ?></th>
+                            <td scope="col"><?= $karyawan['Superior']; ?></th>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
     </div>
 </section>
 
