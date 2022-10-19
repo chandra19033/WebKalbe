@@ -68,12 +68,23 @@
         <table class="table table-bordered border-dark">
             <thead>
                 <tr>
+                    <th scope="col">No</th>
                     <th scope="col">Judul Pelatihan</th>
                     <th scope="col">Penyelenggara</th>
                     <th scope="col">Action </th>
                 </tr>
-
             </thead>
+            <tbody>
+                <?php $i = 1; ?>
+                <?php foreach ($listpelatihan as $l) : ?>
+                    <tr>
+                        <td><?= $i++; ?></th>
+                        <td><?= $l['nama_pelatihan']; ?></td>
+                        <td><?= $l['penyelenggara']; ?></td>
+                        <td><a style="color: black!important;" href="#">Hapus</a><a style="color: black!important;" href="#">Edit</a> </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
         </table>
     </div>
 

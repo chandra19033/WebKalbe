@@ -49,9 +49,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto">
             <?php if (session()->get('log')) : ?>
-                <li class="btn-kotak nav-item">
-                    <a class=" nav-link" href="/pages/dashboard">Dashboard</a>
-                </li>
+
+                <?php if (session()->get('level') == 1) { ?>
+                    <li class="btn-kotak nav-item">
+                        <a class=" nav-link" href="/pages/dashboard">Dashboard</a>
+                    </li>
+                <?php } ?>
+
                 <li class="btn-kotak nav-item">
                     <a class=" nav-link" href="/pages/persetujuan">Approval</a>
                 </li>

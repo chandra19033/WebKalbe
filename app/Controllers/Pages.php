@@ -176,6 +176,7 @@ class Pages extends BaseController
                 session()->set('QA_Manager', $cek['QA_Manager']);
                 session()->set('HCO_Manager', $cek['HCO_Manager']);
                 session()->set('Site/Group_Head', $cek['Site/Group_Head']);
+                session()->set('level', $cek['level']);
 
                 //$this->setUserMethod($user);
                 return redirect()->to(base_url('/'));
@@ -206,6 +207,7 @@ class Pages extends BaseController
         session()->remove('QA_Manager');
         session()->remove('HCO_Manager');
         session()->remove('Site/Group_Head');
+        session()->remove('level');
         session()->setFlashdata('pesan', 'Logout Sukses !!');
         return redirect()->to(base_url('/'));
     }
@@ -240,9 +242,21 @@ class Pages extends BaseController
 
     public function dashboard()
     {
+        $listpelatihanModel = new ListPelatihanModel();
+
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $listpelatihan = $listpelatihanModel->search($keyword);
+        } else {
+            $listpelatihan = $listpelatihanModel->findAll();
+        }
+
         $data = [
-            'title' => 'dashboard'
+            'title' => 'dashboard',
+            'listpelatihan' => $listpelatihan,
+
         ];
+
         return view('pages/dashboard', $data);
     }
 
