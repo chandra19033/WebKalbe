@@ -59,9 +59,11 @@
 
 <section style="margin-bottom:70px;">
     <div class="container">
-        <div class="mb-3">
-            <a class="ms-auto bg-primary" style="text-decoration: none; color: white; box-shadow: 0px 4px 4px rgb(0 0 0 / 30%); border-radius: 5px; padding: 7px;" href="/pages/registrasi/<?= $karyawan['Employee_Name']; ?>">Daftarkan</a>
-        </div>
+        <?php if ($karyawan['status_daftar'] == 'open') : ?>
+            <div class="mb-3">
+                <a class="ms-auto bg-primary" style="text-decoration: none; color: white; box-shadow: 0px 4px 4px rgb(0 0 0 / 30%); border-radius: 5px; padding: 7px;" href="/pages/registrasi/<?= $karyawan['Employee_Name']; ?>">Daftarkan</a>
+            </div>
+        <?php endif; ?>
         <table class="table table-bordered border-dark">
             <table class="table table-hover table-bordered border-dark table-striped table-success">
                 <thead>

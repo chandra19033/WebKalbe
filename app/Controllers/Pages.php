@@ -176,6 +176,7 @@ class Pages extends BaseController
                 session()->set('QA_Manager', $cek['QA_Manager']);
                 session()->set('HCO_Manager', $cek['HCO_Manager']);
                 session()->set('Site/Group_Head', $cek['Site/Group_Head']);
+                session()->set('status_daftar', $cek['status_daftar']);
                 session()->set('level', $cek['level']);
 
                 //$this->setUserMethod($user);
@@ -207,6 +208,7 @@ class Pages extends BaseController
         session()->remove('QA_Manager');
         session()->remove('HCO_Manager');
         session()->remove('Site/Group_Head');
+        session()->remove('status_daftar');
         session()->remove('level');
         session()->setFlashdata('pesan', 'Logout Sukses !!');
         return redirect()->to(base_url('/'));
@@ -283,7 +285,11 @@ class Pages extends BaseController
     {
         $this->karyawanModel->regis($nama);
 
-        return redirect()->to('/pages/profile');
+        if ($nama == session()->get('Employee_Name')) {
+            return redirect()->to('/pages/profile');
+        } else {
+            return redirect()->to('/pages/detail_subkoordinat/' . $nama);
+        }
     }
 
 
