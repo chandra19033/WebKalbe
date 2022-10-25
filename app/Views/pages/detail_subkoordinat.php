@@ -19,46 +19,63 @@
                 <p class="fw-bold" style="font-size: 22px;"><?= $karyawan['Postition_Name']; ?></p>
             </div>
         </div>
-        <div class="container">
-            <table class="table table-bordered border-dark">
-                <thead>
-                    <style>
-                        .coba {
-                            background-color: #32a852 !important;
-                        }
-                    </style>
-                    <tr>
-                        <th class="coba" scope="col">Dibuat</th>
-                        <th class="coba" scope="col">Direview</th>
-                        <th class="coba" scope="col">Disetujui</th>
-                        <th class="coba" scope="col">Diketahui</th>
-                    </tr>
-                </thead>
-                <thead>
-                    <tr>
-                        <th scope="col">Dpt. Mgr/Group Mgr</th>
-                        <th scope="col">QA / HCO Mgr</th>
-                        <th scope="col">HCO Mgr.</th>
-                        <th scope="col">Site Head/Group Head </th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td scope="col"><?= $karyawan['Dept_Manager']; ?></td>
-                        <td scope="col"><?= $karyawan['QA_Manager']; ?></td>
-                        <td scope="col"><?= $karyawan['HCO_Manager']; ?></td>
-                        <td scope="col"><?= $karyawan['Site/Group_Head']; ?></td>
-                    </tr>
-                </tbody>
-
-            </table>
-        </div>
     </div>
 </section>
 
 <section style="margin-bottom:70px;">
     <div class="container">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailModal">
+            Detail Approval
+        </button>
+        <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Detail Approval</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-bordered border-dark">
+                            <thead>
+                                <style>
+                                    .coba {
+                                        background-color: #32a852 !important;
+                                    }
+                                </style>
+                                <tr>
+                                    <th class="coba" scope="col">Dibuat</th>
+                                    <th class="coba" scope="col">Direview</th>
+                                    <th class="coba" scope="col">Disetujui</th>
+                                    <th class="coba" scope="col">Diketahui</th>
+                                </tr>
+                            </thead>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Dpt. Mgr/Group Mgr</th>
+                                    <th scope="col">QA / HCO Mgr</th>
+                                    <th scope="col">HCO Mgr.</th>
+                                    <th scope="col">Site Head/Group Head </th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td scope="col"><?= $karyawan['Dept_Manager']; ?></td>
+                                    <td scope="col"><?= $karyawan['QA_Manager']; ?></td>
+                                    <td scope="col"><?= $karyawan['HCO_Manager']; ?></td>
+                                    <td scope="col"><?= $karyawan['Site/Group_Head']; ?></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <?php if ($karyawan['status_daftar'] == 'open') : ?>
             <div class="mb-3">
                 <a class="ms-auto bg-primary" style="text-decoration: none; color: white; box-shadow: 0px 4px 4px rgb(0 0 0 / 30%); border-radius: 5px; padding: 7px;" href="/pages/registrasi/<?= $karyawan['Employee_Name']; ?>">Daftarkan</a>
