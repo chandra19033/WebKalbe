@@ -8,6 +8,8 @@ use App\Models\KaryawanModel;
 use App\Models\Model_Auth;
 use CodeIgniter\Database\Query;
 use TCPDF;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Pages extends BaseController
 {
@@ -292,8 +294,6 @@ class Pages extends BaseController
         }
     }
 
-
-
     public function invoice()
     {
         $id = $this->request->uri->getSegment(3);
@@ -323,5 +323,42 @@ class Pages extends BaseController
         $this->response->setContentType('application/pdf');
         //Close and output PDF document
         $pdf->Output('RPKC.pdf', 'I');
+    }
+
+    function export()
+    {
+        $listPelatihan = new ListPelatihanModel();
+        $data = $listPelatihan->findAll();
+        $file_name = 'RPKC.xlsx';
+
+        $spreadsheet = new Spreadsheet();
+
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet->setCellValue('A1', 'id');
+        $sheet->setCellValue('B1', 'nama_pelatihan');
+        $sheet->setCellValue('C1', 'penyelenggara');
+        $count = 2;
+
+        foreach ($data as $row) {
+            $sheet->setCellValue('A' . $count, $row['id']);
+            $sheet->setCellValue('B' . $count, $row['nama_pelatihan']);
+            $sheet->setCellValue('C' . $count, $row['penyelenggara']);
+            $count++;
+        }
+
+        $writer = new Xlsx($spreadsheet);
+
+        $writer->save($file_name);
+
+        header("Content-Type: application/vnd.ms-excel");
+        header('Content-Disposition: attachment; filename="' . basename($file_name) . '"');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length:' . filesize($file_name));
+        flush();
+        readfile($file_name);
+
+        exit;
     }
 }

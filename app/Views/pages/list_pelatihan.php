@@ -44,7 +44,7 @@
 
 <section>
     <div class="container">
-        <table class="table table-hover table-bordered border-dark table-striped table-success ">
+        <table class="table table-hover table-striped table-success ">
             <thead>
                 <tr>
                     <th scope="col">No</th>

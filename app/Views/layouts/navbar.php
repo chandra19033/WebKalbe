@@ -83,7 +83,7 @@
                 </li>
             <?php else : ?>
                 <li class="btn-kotak nav-item">
-                    <a class=" nav-link" href="pages/login">Login</a>
+                    <a class=" nav-link" href="pages/login"><img src="assets/login.png" style="width:33px; height:23px; margin-right:5px"> Login</a>
                 </li>
             <?php endif; ?>
         </ul>

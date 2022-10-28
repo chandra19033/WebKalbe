@@ -42,7 +42,8 @@
         </div>
         <div class="col-6 d-flex align-items-center justify-content-end">
             <div class="dekripsi ms-2" style="height: 55px; color:black;">
-                <a class="btn btn-primary btn-lg" href="/pages/invoice/<?= session()->get('Employee_Name'); ?>" role="button">Generate PDF ></a>
+                <a class="btn btn-primary btn-lg" href="/pages/invoice/<?= session()->get('Employee_Name'); ?>" role="button"><img src="<?= base_url("/assets/Vector.png") ?>" style="width:40px; height:29px;"></a>
+                <a class="btn btn-secondary  btn-lg" href="<?php echo base_url('Pages/export'); ?>"> <img src="<?= base_url("/assets/Vector.png") ?>" style="width:40px; height:29px;"></a>
             </div>
         </div>
     </div>
