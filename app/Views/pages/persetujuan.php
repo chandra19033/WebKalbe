@@ -62,13 +62,27 @@
                     <th scope="col">NIK</th>
                     <th scope="col">Nama </th>
                     <th scope="col">Jabatan </th>
-                    <th scope="col">Departemen </th>
-                    <th scope="col">Sub. Dept </th>
                     <th scope="col">Status Approval </th>
                     <th scope="col">See Activity </th>
                 </tr>
-
             </thead>
+            <tbody>
+                <?php $i = 1; ?>
+                <?php foreach ($karyawan as $k) : ?>
+                    <tr>
+                        <td scope="col"><?= $i++; ?></th>
+                        <td scope="col"><?= $k['Employee_ID']; ?></th>
+                        <td scope="col"><?= $k['Employee_Name']; ?></th>
+                        <td scope="col"><?= $k['Postition_Name']; ?></td>
+                        <?php if ($k['status_daftar'] == 'open') : ?>
+                            <td scope="col">Belum Daftar</td>
+                        <?php elseif ($k['status_daftar'] == 'close') : ?>
+                            <td scope="col">Terdaftar</td>
+                        <?php endif; ?>
+                        <td scope="col"><a href="/pages/detail_subkoordinat/<?= $k['Employee_Name']; ?>" style="color: black;">See Activity</a></th>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
         </table>
     </div>
 

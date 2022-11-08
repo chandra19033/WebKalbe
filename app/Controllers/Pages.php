@@ -182,7 +182,7 @@ class Pages extends BaseController
                 session()->set('Dept_Manager', $cek['Dept_Manager']);
                 session()->set('QA_Manager', $cek['QA_Manager']);
                 session()->set('HCO_Manager', $cek['HCO_Manager']);
-                session()->set('Site/Group_Head', $cek['Site/Group_Head']);
+                session()->set('SiteGroup_Head', $cek['SiteGroup_Head']);
                 session()->set('status_daftar', $cek['status_daftar']);
                 session()->set('level', $cek['level']);
 
@@ -214,7 +214,7 @@ class Pages extends BaseController
         session()->remove('Dept_Manager');
         session()->remove('QA_Manager');
         session()->remove('HCO_Manager');
-        session()->remove('Site/Group_Head');
+        session()->remove('SiteGroup_Head');
         session()->remove('status_daftar');
         session()->remove('level');
         session()->setFlashdata('pesan', 'Logout Sukses !!');
@@ -281,8 +281,10 @@ class Pages extends BaseController
 
     public function persetujuan()
     {
+        $karyawan = $this->karyawanModel->approval();
         $data = [
-            'title' => 'persetujuan'
+            'title' => 'persetujuan',
+            'karyawan' => $karyawan
         ];
         return view('pages/persetujuan', $data);
     }
