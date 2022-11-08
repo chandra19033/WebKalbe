@@ -1,6 +1,8 @@
 <?= $this->extend('layouts/template'); ?>
 
 <?= $this->section('content'); ?>
+
+
 <style>
     .left-side {
         border-right: 1px solid white;
@@ -23,6 +25,50 @@
     .title {
         background-image: linear-gradient(#28ABDA, #5EDFF8);
     }
+
+    .dropbtn {
+        background-image: linear-gradient(#428042, #3BB73B);
+        color: white;
+        padding: 5px;
+        font-size: 16px;
+        border: none;
+        border-radius: 10px;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-image: linear-gradient(#28ABDA, #5EDFF8);
+        min-width: 140px;
+
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: white;
+        padding: 10px 12px;
+        text-decoration: none;
+        display: block;
+        font-size: 16px;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+        background-color: #3e8e41;
+    }
 </style>
 
 <section>
@@ -41,16 +87,22 @@
             </div>
         </div>
         <div class="col-6 d-flex align-items-center justify-content-end">
-            <div class="dekripsi ms-2" style="height: 55px; color:black;">
-                <a class="btn btn-primary btn-lg" href="/pages/invoice/<?= session()->get('Employee_Name'); ?>" role="button"><img src="<?= base_url("/assets/Vector.png") ?>" style="width:40px; height:29px;"></a>
-                <a class="btn btn-secondary  btn-lg" href="<?php echo base_url('Pages/export'); ?>"> <img src="<?= base_url("/assets/Vector.png") ?>" style="width:40px; height:29px;"></a>
+            <div class="dekripsi ms-2">
+                <div class="dropdown">
+                    <button class="dropbtn"><img src="<?= base_url("/assets/download3.png") ?>" style="width:30px; height:30px;"> Export</button>
+                    <div class="dropdown-content">
+                        <a class="btn btn-lg" href="/pages/invoice/<?= session()->get('Employee_Name'); ?>" role="button">PDF</a>
+                        <a class="btn btn-lg" href="<?php echo base_url('Pages/export'); ?>">Excel </a>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>
 </section>
 
 <section>
-
 
     <div class="container">
         <table class="table table-hover table-bordered border-dark table-striped table-success">

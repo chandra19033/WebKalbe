@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\CalendarModel;
 use App\Models\ListPelatihanModel;
 use App\Models\PelatihanModel;
 use App\Models\KaryawanModel;
@@ -10,12 +11,15 @@ use CodeIgniter\Database\Query;
 use TCPDF;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use CodeIgniter\Controller;
+use CodeIgniter\HTTP\RequestInterface;
 
 class Pages extends BaseController
 {
     protected $pelatihanModel;
     protected $listpelatihanModel;
     protected $karyawanModel;
+    protected $calendar;
 
     public function __construct()
     {
@@ -35,6 +39,7 @@ class Pages extends BaseController
         ];
         return view('pages/home', $data);
     }
+
 
     public function profile()
     {
@@ -246,23 +251,33 @@ class Pages extends BaseController
 
     public function dashboard()
     {
-        $listpelatihanModel = new ListPelatihanModel();
-
-        $keyword = $this->request->getVar('keyword');
-        if ($keyword) {
-            $listpelatihan = $listpelatihanModel->search($keyword);
-        } else {
-            $listpelatihan = $listpelatihanModel->findAll();
-        }
-
+        $model = new ListPelatihanModel();
         $data = [
             'title' => 'dashboard',
-            'listpelatihan' => $listpelatihan,
-
         ];
-
-        return view('pages/dashboard', $data);
+        $data['listpelatihan']  = $model->getPlthn()->getResult();
+        echo view('/pages/dashboard', $data);
     }
+
+
+    // public function dashboard()
+    // {
+    //     $listpelatihanModel = new ListPelatihanModel();
+
+    //     $keyword = $this->request->getVar('keyword');
+    //     if ($keyword) {
+    //         $listpelatihan = $listpelatihanModel->search($keyword);
+    //     } else {
+    //         $listpelatihan = $listpelatihanModel->findAll();
+    //     }
+
+    //     $data = [
+    //         'title' => 'dashboard',
+
+    //     ];
+
+    //     return view('pages/dashboard', $data);
+    // }
 
     public function persetujuan()
     {
@@ -327,22 +342,24 @@ class Pages extends BaseController
 
     function export()
     {
-        $listPelatihan = new ListPelatihanModel();
-        $data = $listPelatihan->findAll();
+        $daftar_pelatihan = new PelatihanModel();
+        $data = $daftar_pelatihan->findAll();
         $file_name = 'RPKC.xlsx';
 
         $spreadsheet = new Spreadsheet();
 
         $sheet = $spreadsheet->getActiveSheet();
         $sheet->setCellValue('A1', 'id');
-        $sheet->setCellValue('B1', 'nama_pelatihan');
-        $sheet->setCellValue('C1', 'penyelenggara');
-        $count = 2;
+        $sheet->setCellValue('B1', 'nama_karyawan');
+        $sheet->setCellValue('C1', 'nama_pelatihan');
+        $sheet->setCellValue('D1', 'penyelenggara');
+        $count = 4;
 
         foreach ($data as $row) {
             $sheet->setCellValue('A' . $count, $row['id']);
-            $sheet->setCellValue('B' . $count, $row['nama_pelatihan']);
-            $sheet->setCellValue('C' . $count, $row['penyelenggara']);
+            $sheet->setCellValue('B' . $count, $row['nama_karyawan']);
+            $sheet->setCellValue('C' . $count, $row['nama_pelatihan']);
+            $sheet->setCellValue('D' . $count, $row['penyelenggara']);
             $count++;
         }
 

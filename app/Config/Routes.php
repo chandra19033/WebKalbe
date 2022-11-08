@@ -44,6 +44,7 @@ $routes->setAutoRoute(true);
 // $routes->get('/list_pelatihan', 'Home::list_pelatihan');
 
 $routes->get('/', 'Pages::index');
+$routes->get('/', 'Pages::calendar');
 $routes->get('/pages/profile', 'Pages::profile');
 $routes->get('/pages/tambah/(:segment)', 'Pages::tambah/$1');
 $routes->get('/pages/login', 'Pages::login');
@@ -55,6 +56,7 @@ $routes->get('/pages/detail_subkoordinat', 'Pages::detail_subkoordinat');
 $routes->get('/pages/daftarsub', 'Pages::daftar_sub');
 
 $routes->match(['get', 'post'], 'Pages/htmlToPDF', 'Pages::htmlToPDF');
+
 
 /*
  * --------------------------------------------------------------------
