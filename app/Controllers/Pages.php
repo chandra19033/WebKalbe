@@ -115,6 +115,62 @@ class Pages extends BaseController
         // var_dump($data);
     }
 
+    public function tambah_mandiri($name)
+    {
+        $tampung = $this->request->getVar();
+
+        $pelatihan = $tampung;
+        $daftar = $this->pelatihanModel->getPelatihanbyName($name);
+        $k = $this->karyawanModel->getKaryawan($name);
+
+        $karyawan = $k[0];
+
+        $trigger = 0;
+
+        foreach ($daftar as $d) :
+            if ($d['nama_pelatihan'] == $pelatihan['namapelatihan']) {
+                $trigger++;
+            } else {
+                $trigger = $trigger;
+            }
+        endforeach;
+
+        if ($karyawan['status_daftar'] == 'open') {
+            if ($trigger == 0) {
+                $data = [
+                    'nama_karyawan' =>  strtoupper($name),
+                    'nama_pelatihan' => $pelatihan['namapelatihan'],
+                    'penyelenggara' => $pelatihan['penyelenggara']
+                ];
+
+                $this->pelatihanModel->insert($data);
+                $alert = [
+                    'pesan' => 'Pelatihan berhasil ditambahkan',
+                    'value' => 1,
+                    'nama' => $name
+                ];
+                session()->setFlashdata('pesan', $alert);
+                return redirect()->to('/pages/list_pelatihan/' . $name);
+            } else {
+                $alert = [
+                    'pesan' => 'Pelatihan tidak dapat ditambah karena sudah terdaftar',
+                    'value' => 0,
+                    'nama' => $name
+                ];
+                session()->setFlashdata('pesan', $alert);
+                return redirect()->to('/pages/list_pelatihan/' . $name);
+            }
+        } elseif ($karyawan['status_daftar'] == 'close') {
+            $alert = [
+                'pesan' => 'Sudah tidak dapat Daftar karena sudah Submit',
+                'value' => 0,
+                'nama' => $name
+            ];
+            session()->setFlashdata('pesan', $alert);
+            return redirect()->to('/pages/list_pelatihan/' . $name);
+        }
+    }
+
     public function list_pelatihan($nama)
     {
         $listpelatihanModel = new ListPelatihanModel();

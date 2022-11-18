@@ -65,7 +65,7 @@
                                     <td scope="col"><?= $karyawan['Dept_Manager']; ?></td>
                                     <td scope="col"><?= $karyawan['QA_Manager']; ?></td>
                                     <td scope="col"><?= $karyawan['HCO_Manager']; ?></td>
-                                    <td scope="col"><?= $karyawan['Site/Group_Head']; ?></td>
+                                    <td scope="col"><?= $karyawan['SiteGroup_Head']; ?></td>
                                 </tr>
                             </tbody>
                         </table>

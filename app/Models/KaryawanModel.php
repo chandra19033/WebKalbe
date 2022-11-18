@@ -35,9 +35,9 @@ class KaryawanModel extends Model
         // $sql = 'SELECT * FROM users WHERE Dept_Manager = ? OR QA_Manager = ? OR HCO_Manager = ? OR SiteGroup_Head = ?';
         // $this->query($sql, $nama);
         $this->where('Dept_Manager', $nama);
-        $this->where('QA_Manager', $nama);
-        $this->where('HCO_Manager', $nama);
-        $this->where('SiteHead_Group', $nama);
+        // $this->where('QA_Manager', $nama);
+        // $this->where('HCO_Manager', $nama);
+        // $this->where('SiteHead_Group', $nama);
         return $this->findAll();
     }
 }

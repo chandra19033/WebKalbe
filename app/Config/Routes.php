@@ -47,6 +47,7 @@ $routes->get('/', 'Pages::index');
 $routes->get('/', 'Pages::calendar');
 $routes->get('/pages/profile', 'Pages::profile');
 $routes->get('/pages/tambah/(:segment)', 'Pages::tambah/$1');
+$routes->get('/pages/tambah_mandiri/(:segment)', 'Pages::tambah_mandiri/$1');
 $routes->get('/pages/login', 'Pages::login');
 $routes->get('/pages/list_pelatihan', 'Pages::list_pelatihan');
 $routes->get('/pages/list_subkoordinat', 'Pages::list_subkoordinat');
