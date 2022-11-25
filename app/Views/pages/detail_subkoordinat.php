@@ -24,14 +24,14 @@
 
 <section style="margin-bottom:70px;">
     <div class="container">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailModal">
-            Detail Approval
+        <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#detailModal">
+            Riwayat
         </button>
         <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Detail Approval</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Riwayat</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -45,28 +45,23 @@
                                     }
                                 </style>
                                 <tr>
-                                    <th class="coba" scope="col">Dibuat</th>
-                                    <th class="coba" scope="col">Direview</th>
-                                    <th class="coba" scope="col">Disetujui</th>
-                                    <th class="coba" scope="col">Diketahui</th>
-                                </tr>
-                            </thead>
-                            <thead>
-                                <tr>
-                                    <th scope="col">Dpt. Mgr/Group Mgr</th>
-                                    <th scope="col">QA / HCO Mgr</th>
-                                    <th scope="col">HCO Mgr.</th>
-                                    <th scope="col">Site Head/Group Head </th>
+                                    <th class="coba" scope="col">No.</th>
+                                    <th class="coba" scope="col">Nama Karyawan</th>
+                                    <th class="coba" scope="col">Riwayat</th>
+                                    <th class="coba" scope="col">Tanggal/Waktu</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td scope="col"><?= $karyawan['Dept_Manager']; ?></td>
-                                    <td scope="col"><?= $karyawan['QA_Manager']; ?></td>
-                                    <td scope="col"><?= $karyawan['HCO_Manager']; ?></td>
-                                    <td scope="col"><?= $karyawan['SiteGroup_Head']; ?></td>
-                                </tr>
+                                <?php $i = 1; ?>
+                                <?php foreach ($riwayat as $r) : ?>
+                                    <tr>
+                                        <td scope="col"><?= $i++; ?></td>
+                                        <td scope="col"><?= $r['nama_karyawan']; ?></td>
+                                        <td scope="col"><?= $r['riwayat']; ?></td>
+                                        <td scope="col"><?= $r['created_at']; ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
@@ -90,6 +85,7 @@
                         <th scope="col">Judul Pelatihan</th>
                         <th scope="col">Penyelenggara</th>
                         <th scope="col">Superior</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -101,6 +97,7 @@
                             <td scope="col"><?= $p['nama_pelatihan']; ?></th>
                             <td scope="col"><?= $p['penyelenggara']; ?></th>
                             <td scope="col"><?= $karyawan['Superior']; ?></th>
+                            <td scope="col"><a href="#">Hapus</a></th>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

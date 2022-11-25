@@ -7,12 +7,14 @@ use App\Models\ListPelatihanModel;
 use App\Models\PelatihanModel;
 use App\Models\KaryawanModel;
 use App\Models\Model_Auth;
+use App\Models\RiwayatModel;
 use CodeIgniter\Database\Query;
 use TCPDF;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\RequestInterface;
+use CodeIgniter\I18n\Time;
 
 class Pages extends BaseController
 {
@@ -28,6 +30,7 @@ class Pages extends BaseController
         $this->Model_Auth = new Model_Auth();
         $this->pelatihanModel = new PelatihanModel();
         $this->karyawanModel = new KaryawanModel();
+        $this->riwayatModel = new RiwayatModel();
 
         $this->listpelatihanModel = new ListPelatihanModel();
     }
@@ -44,13 +47,15 @@ class Pages extends BaseController
     public function profile()
     {
         $pelatihan = $this->pelatihanModel->getPelatihanMandiri();
+        $riwayat = $this->riwayatModel->getRiwayat();
         $tampung = $this->karyawanModel->getKaryawan(session()->get('Employee_Name'));
         $karyawan = $tampung[0];
 
         $data = [
             'title' => 'profile',
             'pelatihan' => $pelatihan,
-            'karyawan' => $karyawan
+            'karyawan' => $karyawan,
+            'riwayat' => $riwayat
         ];
         return view('pages/profile', $data);
     }
@@ -83,6 +88,12 @@ class Pages extends BaseController
                     'penyelenggara' => $tampung['penyelenggara']
                 ];
 
+                $riwayat = [
+                    'nama_karyawan' =>  strtoupper($name),
+                    'riwayat' => 'Menambahkan pelatihan ' . $tampung['nama_pelatihan']
+                ];
+
+                $this->riwayatModel->insert($riwayat);
                 $this->pelatihanModel->insert($data);
                 $alert = [
                     'pesan' => 'Pelatihan berhasil ditambahkan',
@@ -143,6 +154,12 @@ class Pages extends BaseController
                     'penyelenggara' => $pelatihan['penyelenggara']
                 ];
 
+                $riwayat = [
+                    'nama_karyawan' =>  strtoupper($name),
+                    'riwayat' => 'Menambahkan pelatihan ' . $pelatihan['namapelatihan']
+                ];
+
+                $this->riwayatModel->insert($riwayat);
                 $this->pelatihanModel->insert($data);
                 $alert = [
                     'pesan' => 'Pelatihan berhasil ditambahkan',
@@ -291,6 +308,7 @@ class Pages extends BaseController
     public function detail_subkoordinat($name)
     {
         $pelatihan = $this->pelatihanModel->getPelatihanSub($name);
+        $riwayat = $this->riwayatModel->getRiwayatSub($name);
         $tampung = $this->karyawanModel->getKaryawan($name);
         $karyawan = $tampung[0];
         // dd($karyawan);
@@ -298,7 +316,8 @@ class Pages extends BaseController
         $data = [
             'title' => 'detail_subkoordinat',
             'karyawan' => $karyawan,
-            'pelatihan' => $pelatihan
+            'pelatihan' => $pelatihan,
+            'riwayat' => $riwayat
         ];
 
         return view('pages/detail_subkoordinat', $data);
@@ -359,6 +378,13 @@ class Pages extends BaseController
     public function registrasi($nama)
     {
         $this->karyawanModel->regis($nama);
+
+        $riwayat = [
+            'nama_karyawan' =>  strtoupper($nama),
+            'riwayat' => 'Pengajuan untuk proses Approval'
+        ];
+
+        $this->riwayatModel->insert($riwayat);
 
         if ($nama == session()->get('Employee_Name')) {
             return redirect()->to('/pages/profile');
