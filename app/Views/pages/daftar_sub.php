@@ -10,36 +10,35 @@
 
 <section>
 
-    <div class="container">
-        <table class="table table-hover table-bordered border-dark table-striped table-success">
-            <thead>
-                <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Employee ID</th>
-                    <th scope="col">Nama </th>
-                    <th scope="col">Position</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Daftar Pelatihan</th>
-                </tr>
-            </thead>
+    <table class="table table-hover table-striped table-success">
+        <thead>
+            <tr>
+                <th scope="col">No</th>
+                <th scope="col">Employee ID</th>
+                <th scope="col">Nama </th>
+                <th scope="col">Position</th>
+                <th scope="col">Status</th>
+                <th scope="col">Daftar Pelatihan</th>
+            </tr>
+        </thead>
 
-            <?php $i = 1; ?>
-            <?php foreach ($subkoordinat as $s) : ?>
-                <tr>
-                    <td scope="col"><?= $i++; ?></th>
-                    <td scope="col"><?= $s['Employee_ID']; ?></th>
-                    <td scope="col"><?= $s['Employee_Name']; ?></th>
-                    <td scope="col"><?= $s['Postition_Name']; ?></th>
-                        <?php if ($s['status_daftar'] == 'open') : ?>
-                    <td scope="col">Belum Daftar</td>
-                <?php elseif ($s['status_daftar'] == 'close') : ?>
-                    <td scope="col">Terdaftar</td>
-                <?php endif; ?>
-                <td scope="col"><a href="/pages/list_pelatihan/<?= $s['Employee_Name']; ?>" style="color: black;">Daftar</a></th>
-                </tr>
-            <?php endforeach; ?>
-        </table>
-    </div>
+        <?php $i = 1; ?>
+        <?php foreach ($subkoordinat as $s) : ?>
+            <tr>
+                <td scope="col"><?= $i++; ?></th>
+                <td scope="col"><?= $s['Employee_ID']; ?></th>
+                <td scope="col"><?= $s['Employee_Name']; ?></th>
+                <td scope="col"><?= $s['Postition_Name']; ?></th>
+                    <?php if ($s['status_daftar'] == 'open') : ?>
+                <td scope="col">Belum Daftar</td>
+            <?php elseif ($s['status_daftar'] == 'close') : ?>
+                <td scope="col">Terdaftar</td>
+            <?php endif; ?>
+            <td scope="col"><a href="/pages/list_pelatihan/<?= $s['Employee_Name']; ?>" style="color: black;">Daftar</a></th>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+
 </section>
 
 

@@ -2,11 +2,36 @@
 
 <?= $this->section('content'); ?>
 
+
 <section>
     <div class="title justify-content-center d-flex py-3 mb-5">
         <h1 style="font-weight: 800; color:white; text-shadow: 0px 2.53109px 25.3109px rgba(0, 63, 145, 0.42);">Training</h1>
     </div>
 </section>
+
+<div class="row justify-content-md-center">
+    <div class="col col-lg-2">
+        <button class="btn btn-success mb-2">
+            <a class=" nav-link" href="/pages/dashboard" style="color:white;">Add Training</a>
+        </button>
+    </div>
+    <div class="col col-lg-2">
+        <button class="btn btn-success mb-2">
+            <a class=" nav-link" href="/pages/image_admin" style="color:white;">Add Image</a>
+        </button>
+    </div>
+    <div class="col col-lg-2">
+        <button class="btn btn-success mb-2">
+            <a class=" nav-link" href="/pages/event_admin" style="color:white;">Add Event</a>
+        </button>
+    </div>
+    <div class="col col-lg-2">
+        <button class="btn btn-success mb-2">
+            <a class=" nav-link" href="/pages/employee_admin" style="color:white;">Edit Employee</a>
+        </button>
+    </div>
+</div>
+
 
 <head>
     <meta charset="UTF-8">
@@ -16,32 +41,32 @@
 </head>
 
 <body>
-    <div class="container">
-        <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#addModal">Add New</button>
 
-        <table class="table table-striped">
-            <thead>
+    <button type="button" id="button1" class="btn btn-success mb-2" data-toggle="modal" data-target="#addModal">Add New</button>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Judul Pelatihan</th>
+                <th>Penyelenggara</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($listpelatihan as $row) : ?>
                 <tr>
-                    <th>Judul Pelatihan</th>
-                    <th>Penyelenggara</th>
-                    <th>Action</th>
+                    <td><?= $row->nama_pelatihan; ?></td>
+                    <td><?= $row->penyelenggara; ?></td>
+                    <td>
+                        <a href="#" class="btn btn-info btn-sm btn-edit" data-id="<?= $row->id; ?>" data-nama_pelatihan="<?= $row->nama_pelatihan; ?>" data-penyelenggara="<?= $row->penyelenggara; ?>">Edit</a>
+                        <a href="#" class="btn btn-danger btn-sm btn-delete" data-id="<?= $row->id; ?>">Delete</a>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($listpelatihan as $row) : ?>
-                    <tr>
-                        <td><?= $row->nama_pelatihan; ?></td>
-                        <td><?= $row->penyelenggara; ?></td>
-                        <td>
-                            <a href="#" class="btn btn-info btn-sm btn-edit" data-id="<?= $row->id; ?>" data-nama_pelatihan="<?= $row->nama_pelatihan; ?>" data-penyelenggara="<?= $row->penyelenggara; ?>">Edit</a>
-                            <a href="#" class="btn btn-danger btn-sm btn-delete" data-id="<?= $row->id; ?>">Delete</a>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 
-    </div>
+
 
     <!-- Modal Add Product-->
     <form action="/admin/save" method="post">
@@ -172,5 +197,7 @@
         });
     </script>
 </body>
+
+
 
 <?= $this->endSection(); ?>

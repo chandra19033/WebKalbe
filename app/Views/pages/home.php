@@ -107,10 +107,16 @@
     #calendar {
         width: 400px;
         height: 400px;
-        margin-left: 120px;
+        margin-left: 70px;
         margin-top: 40px;
         margin-bottom: 80px;
 
+    }
+
+    .img {
+        margin-left: 100px;
+        margin-top: 80px;
+        margin-bottom: 80px;
     }
 </style>
 
@@ -125,31 +131,28 @@
             <div class="carousel-item active" data-bs-interval="10000">
                 <img class="d-block w-100" src="/assets/gambar2-1.png" alt="First slide">
                 <div class="carousel-caption d-none d-md-block">
-                    <h3>Rencana Pelatihan Kalbe Cikarang</h3>
-                    <p>Pelatihan ini memiliki satu tujuan bagi sebuah perusahaan, yaitu
-                        meningkatkan performance kerja karyawan sehingga memberikan manfat besar bagi
-                        perkembangan perusahaan dan pada akhirnya, perusahaan dapat mencapai tujuannya sesuai
-                        visi dan misi yang dipegangnya serta bersaing dengan kompetitor lain</p>
+                    <div class="container">
+                        <h3> E-Training Plan Pharma BO </h3>
+                        <p> Training is teaching, or developing in oneself or others, any skills and knowledge or fitness that relate to specific useful competencies. Training has specific goals of improving one's capability, capacity, productivity and performance. It forms the core of apprenticeships and provides the backbone of content at institutes of technology (also known as technical colleges or polytechnics) </p>
+                    </div>
                 </div>
             </div>
             <div class="carousel-item" data-bs-interval="2000">
                 <img class="d-block w-100" src="/assets/gambar1.jpeg" alt="Second slide">
                 <div class="carousel-caption d-none d-md-block">
-                    <h3>Rencana Pelatihan Kalbe Cikarang</h3>
-                    <p>Pelatihan ini memiliki satu tujuan bagi sebuah perusahaan, yaitu
-                        meningkatkan performance kerja karyawan sehingga memberikan manfat besar bagi
-                        perkembangan perusahaan dan pada akhirnya, perusahaan dapat mencapai tujuannya sesuai
-                        visi dan misi yang dipegangnya serta bersaing dengan kompetitor lain</p>
+                    <div class="container">
+                        <h3> E-Training Plan Pharma BO </h3>
+                        <p> Training is teaching, or developing in oneself or others, any skills and knowledge or fitness that relate to specific useful competencies. Training has specific goals of improving one's capability, capacity, productivity and performance. It forms the core of apprenticeships and provides the backbone of content at institutes of technology (also known as technical colleges or polytechnics) </p>
+                    </div>
                 </div>
             </div>
             <div class="carousel-item">
                 <img class="d-block w-100" src="/assets/gambar3.jpeg" alt="Third slide">
                 <div class="carousel-caption d-none d-md-block">
-                    <h3>Rencana Pelatihan Kalbe Cikarang</h3>
-                    <p>Pelatihan ini memiliki satu tujuan bagi sebuah perusahaan, yaitu
-                        meningkatkan performance kerja karyawan sehingga memberikan manfat besar bagi
-                        perkembangan perusahaan dan pada akhirnya, perusahaan dapat mencapai tujuannya sesuai
-                        visi dan misi yang dipegangnya serta bersaing dengan kompetitor lain</p>
+                    <div class="container">
+                        <h3> E-Training Plan Pharma BO </h3>
+                        <p> Training is teaching, or developing in oneself or others, any skills and knowledge or fitness that relate to specific useful competencies. Training has specific goals of improving one's capability, capacity, productivity and performance. It forms the core of apprenticeships and provides the backbone of content at institutes of technology (also known as technical colleges or polytechnics) </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -189,7 +192,31 @@
     <body>
         <div class="row">
             <div class="col">
-                <img class="d-block w-100" src="/assets/gambar1.jpeg" style="height: 400px; width: 100px; margin:60px">
+
+                <?php
+                $files = glob("assets/images/*.*");
+                usort($files, function ($a, $b) {
+                    return filemtime($b) - filemtime($a);
+                });
+
+                for ($i = 0; $i < count($files); $i++) {
+                    $image = $files[$i];
+                    $supported_file = array(
+                        'gif',
+                        'jpg',
+                        'jpeg',
+                        'png'
+                    );
+
+                    $ext = strtolower(pathinfo($image, PATHINFO_EXTENSION));
+                    if (in_array($ext, $supported_file)) {
+                        echo '<img class="img" src="' . $image . '"  width="540" > ';
+                    } else {
+                        continue;
+                    }
+                }
+                ?>
+
             </div>
             <div class="col">
 

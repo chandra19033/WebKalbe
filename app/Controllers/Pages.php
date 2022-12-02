@@ -15,6 +15,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\I18n\Time;
+use App\Models\Fullcalendar_model;
 
 class Pages extends BaseController
 {
@@ -31,7 +32,7 @@ class Pages extends BaseController
         $this->pelatihanModel = new PelatihanModel();
         $this->karyawanModel = new KaryawanModel();
         $this->riwayatModel = new RiwayatModel();
-
+        $this->Fullcalendar_model = new Fullcalendar_model();
         $this->listpelatihanModel = new ListPelatihanModel();
     }
 
@@ -334,6 +335,16 @@ class Pages extends BaseController
         echo view('/pages/dashboard', $data);
     }
 
+    public function employee_admin()
+    {
+        $model = new PelatihanModel();
+        $data = [
+            'title' => 'employee_admin',
+        ];
+        $data['pelatihan']  = $model->getPlthn()->getResult();
+        echo view('/pages/employee_admin', $data);
+    }
+
 
     // public function dashboard()
     // {
@@ -461,5 +472,150 @@ class Pages extends BaseController
         readfile($file_name);
 
         exit;
+    }
+
+
+    // public function upload()
+    // {
+    //     helper(['form', 'url']);
+    //     $config['upload_path'] = "./assets/images";
+    //     $database = \Config\Database::connect();
+    //     $builder = $database->table('image');
+    //     $validateImage = $this->validate([
+    //         'file' => [
+    //             'uploaded[file]',
+    //             'mime_in[file, image/png, image/jpg,image/jpeg, image/gif]',
+    //             'max_size[file, 4096]',
+    //         ],
+    //     ]);
+
+    //     $response = [
+    //         'success' => false,
+    //         'data' => '',
+    //         'msg' => "Image could not upload"
+    //     ];
+    //     if ($validateImage) {
+    //         $imageFile = $this->request->getFile('file');
+    //         $imageFile->move(WRITEPATH . 'uploads');
+
+    //         $data = [
+    //             'img_name' => $imageFile->getClientName(),
+    //             'file'  => $imageFile->getClientMimeType()
+    //         ];
+    //         $save = $builder->insert($data);
+    //         $response = [
+    //             'success' => true,
+    //             'data' => $save,
+    //             'msg' => "Image successfully uploaded"
+    //         ];
+    //     }
+    //     return $this->response->setJSON($response);
+    // }
+
+    public function image_admin()
+    {
+
+        // Validation
+        $input = $this->validate([
+            'file' => 'uploaded[file]|max_size[file,10240]|ext_in[file,jpg,jpeg,docx,pdf,png],'
+        ]);
+
+        $data = ['title' => 'image_admin'];
+
+        if (!$input) { // Not valid
+            $data['validation'] = $this->validator;
+            return view('pages/image_admin', $data);
+        } else { // Valid
+
+            if ($file = $this->request->getFile('file')) {
+                if ($file->isValid() && !$file->hasMoved()) {
+                    // Get file name and extension
+                    $name = $file->getName();
+                    $ext = $file->getClientExtension();
+
+                    // Get random file name
+                    $newName = $file->getRandomName();
+
+                    // Store file in public/uploads/ folder
+                    $file->move('../public/assets/images', $newName);
+
+
+
+                    // File path to display preview
+                    $filepath = base_url() . "/assets/images/" . $newName;
+
+                    if (file_exists($filepath)) {
+                        unlink($filepath);
+                    }
+
+                    // Set Session
+                    session()->setFlashdata('message', 'Uploaded Successfully!');
+                    session()->setFlashdata('alert-class', 'alert-success');
+                    session()->setFlashdata('filepath', $filepath);
+                    session()->setFlashdata('extension', $ext);
+                } else {
+                    // Set Session
+                    session()->setFlashdata('message', 'File not uploaded.');
+                    session()->setFlashdata('alert-class', 'alert-danger');
+                }
+            }
+        }
+        return view('pages/image_admin', $data);
+    }
+
+    // Calendar
+
+    public function event_admin()
+    {
+        $data = [
+            'title' => 'event_admin',
+        ];
+        return view('pages/event_admin', $data);
+    }
+
+    function load()
+    {
+        $event_data = $this->fullcalendar_model->fetch_all_event();
+        foreach ($event_data->result_array() as $row) {
+            $data[] = array(
+                'id' => $row['id'],
+                'title' => $row['title'],
+                'start' => $row['start_event'],
+                'end' => $row['end_event']
+            );
+        }
+        return view('fullcalendar', $data);
+    }
+
+    function insert()
+    {
+        if ($this->input->post('title')) {
+            $data = array(
+                'title'  => $this->input->post('title'),
+                'start_event' => $this->input->post('start'),
+                'end_event' => $this->input->post('end')
+            );
+            $this->GambarModel->insert_event($data);
+        }
+    }
+
+    function update()
+    {
+        if ($this->input->post('id')) {
+            $data = array(
+                'title'   => $this->input->post('title'),
+                'start_event' => $this->input->post('start'),
+                'end_event'  => $this->input->post('end')
+            );
+
+            $this->fullcalendar_model->update_event($data, $this->input->post('id'));
+        }
+    }
+
+    function delete()
+    {
+        if ($this->input->post('id')) {
+            $this->fullcalendar_model->delete_event($this->input->post('id'));
+        }
     }
 }

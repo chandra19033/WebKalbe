@@ -1,4 +1,4 @@
-.container{
+.container_01{
     margin-bottom: 100px;
 }
 .padding {
@@ -87,7 +87,24 @@
     color: rgb(41, 114, 233) !important;
 }
 
-#button1{
-    margin-left: 80px;
+.left-side {
+    border-right: 1px solid white;
 }
 
+.left-side img {
+    /* width: 100px; */
+    height: 360px;
+}
+
+.right-side {
+    padding: 35px;
+}
+
+.profile {
+    height: 70vh;
+    background-image: linear-gradient(#428042, #3BB73B);
+}
+
+#button1{
+    margin-bottom: 80px;
+}

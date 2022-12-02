@@ -62,6 +62,7 @@
 
 .table {
     text-align: center;
+    margin-bottom: 80px;
 }
 
 .table th {
@@ -84,4 +85,8 @@
 .table-hover tbody tr:hover th {
     background-color: #ff0000 !important;
     color: rgb(41, 114, 233) !important;
+}
+
+#button1{
+    margin-left: 60px;
 }

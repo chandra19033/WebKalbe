@@ -3,10 +3,10 @@
 namespace App\Controllers;
 
 use App\Models\ListPelatihanModel;
+use App\Models\PelatihanModel;
 
 class Admin extends BaseController
 {
-
 
     public function save()
     {
@@ -37,5 +37,24 @@ class Admin extends BaseController
         $id = $this->request->getPost('id');
         $model->deletePelatihan($id);
         return redirect()->to('/pages/dashboard');
+    }
+
+    public function add()
+    {
+        $model = new PelatihanModel();
+        $id = $this->request->getPost('id');
+        $data = array(
+            'notes'       => $this->request->getPost('notes'),
+        );
+        $model->updatePelatihan($data, $id);
+        return redirect()->to('/pages/employee_admin');
+    }
+
+    public function hapus()
+    {
+        $model = new PelatihanModel();
+        $id = $this->request->getPost('id');
+        $model->deletePelatihan($id);
+        return redirect()->to('/pages/employee_admin');
     }
 }
