@@ -22,22 +22,4 @@ class RiwayatModel extends Model
         $this->where('nama_karyawan', strtoupper($name));
         return $this->findAll();
     }
-
-    public function savePelatihan($data)
-    {
-        $query = $this->db->table('list_pelatihan')->insert($data);
-        return $query;
-    }
-
-    public function updatePelatihan($data, $id)
-    {
-        $query = $this->db->table('list_pelatihan')->update($data, array('id' => $id));
-        return $query;
-    }
-
-    public function deletePelatihan($id)
-    {
-        $query = $this->db->table('list_pelatihan')->delete(array('id' => $id));
-        return $query;
-    }
 }

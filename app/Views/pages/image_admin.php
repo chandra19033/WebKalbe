@@ -36,10 +36,6 @@
 <!doctype html>
 <html>
 
-<head>
-    <title>How to upload an image file and display preview in CodeIgniter 4</title>
-</head>
-
 <body>
 
     <div class="container">
@@ -62,7 +58,7 @@
                 if (session()->has('filepath')) { ?>
 
                     <?php
-                    if (session()->getFlashdata('extension') == 'jpg' || session()->getFlashdata('extension') == 'jpeg') {
+                    if (session()->getFlashdata('extension') == 'jpg' || session()->getFlashdata('extension') == 'jpeg' || session()->getFlashdata('extension') == 'png') {
                     ?>
                         <img src="<?= session()->getFlashdata('filepath') ?>" with="200px" height="200px"><br>
 
@@ -112,6 +108,7 @@
 </body>
 
 </html>
+
 
 
 <?= $this->endSection(); ?>

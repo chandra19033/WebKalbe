@@ -31,6 +31,18 @@
     </div>
 </div>
 
+<div class="col-6 d-flex " id="class1">
+    <div class="dekripsi ms-2">
+        <div class="dropdown">
+            <button class="dropbtn"><img src="<?= base_url("/assets/download3.png") ?>" style="width:30px; height:30px;"> Export</button>
+            <div class="dropdown-content">
+                <a class="btn btn-lg" href="/pages/invoice/<?= session()->get('Employee_Name'); ?>" role="button">PDF</a>
+                <a class="btn btn-lg" href="<?php echo base_url('Pages/export'); ?>">Excel </a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <table class="table table-hover table-striped table-success">
     <thead>
         <tr>

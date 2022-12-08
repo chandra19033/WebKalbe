@@ -104,3 +104,74 @@
     height: 70vh;
     background-image: linear-gradient(#428042, #3BB73B);
 }
+
+#class1{
+    margin-left: 80px;
+    margin-bottom: 10px;
+}
+
+.left-side {
+    border-right: 1px solid white;
+}
+
+.left-side img {
+    /* width: 100px; */
+    height: 360px;
+}
+
+.right-side {
+    padding: 35px;
+}
+
+.profile {
+    height: 70vh;
+    background-image: linear-gradient(#428042, #3BB73B);
+}
+
+.title {
+    background-image: linear-gradient(#28ABDA, #5EDFF8);
+}
+
+.dropbtn {
+    background-image: linear-gradient(#428042, #3BB73B);
+    color: white;
+    padding: 5px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-image: linear-gradient(#28ABDA, #5EDFF8);
+    min-width: 140px;
+
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 10px 12px;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}

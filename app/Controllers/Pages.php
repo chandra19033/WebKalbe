@@ -448,13 +448,15 @@ class Pages extends BaseController
         $sheet->setCellValue('B1', 'nama_karyawan');
         $sheet->setCellValue('C1', 'nama_pelatihan');
         $sheet->setCellValue('D1', 'penyelenggara');
-        $count = 4;
+        $sheet->setCellValue('E1', 'notes');
+        $count = 2;
 
         foreach ($data as $row) {
             $sheet->setCellValue('A' . $count, $row['id']);
             $sheet->setCellValue('B' . $count, $row['nama_karyawan']);
             $sheet->setCellValue('C' . $count, $row['nama_pelatihan']);
             $sheet->setCellValue('D' . $count, $row['penyelenggara']);
+            $sheet->setCellValue('E' . $count, $row['notes']);
             $count++;
         }
 
