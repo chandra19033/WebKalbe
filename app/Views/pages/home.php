@@ -220,7 +220,7 @@
             </div>
             <div class="col">
 
-                <div id='calendar'></div>
+
             </div>
         </div>
 

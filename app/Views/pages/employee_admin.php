@@ -1,4 +1,4 @@
-<?= $this->extend('layouts/template'); ?>
+<?= $this->extend('layouts/admin'); ?>
 
 <?= $this->section('content'); ?>
 
@@ -7,29 +7,6 @@
         <h1 style="font-weight: 800; color:white; text-shadow: 0px 2.53109px 25.3109px rgba(0, 63, 145, 0.42);">Edit Employee</h1>
     </div>
 </section>
-
-<div class="row justify-content-md-center">
-    <div class="col col-lg-2">
-        <button class="btn btn-success mb-2">
-            <a class=" nav-link" href="/pages/dashboard" style="color:white;">Add Training</a>
-        </button>
-    </div>
-    <div class="col col-lg-2">
-        <button class="btn btn-success mb-2">
-            <a class=" nav-link" href="/pages/image_admin" style="color:white;">Add Image</a>
-        </button>
-    </div>
-    <div class="col col-lg-2">
-        <button class="btn btn-success mb-2">
-            <a class=" nav-link" href="/pages/event_admin" style="color:white;">Add Event</a>
-        </button>
-    </div>
-    <div class="col col-lg-2">
-        <button class="btn btn-success mb-2">
-            <a class=" nav-link" href="/pages/employee_admin" style="color:white;">Edit Employee</a>
-        </button>
-    </div>
-</div>
 
 <div class="col-6 d-flex " id="class1">
     <div class="dekripsi ms-2">

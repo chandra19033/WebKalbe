@@ -1,137 +1,94 @@
-<!DOCTYPE html>
+<?= $this->extend('layouts/admin') ?>
+<?= $this->section('content') ?>
 
-
-<html>
-
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            var calendar = $('#calendar').fullCalendar({
-                editable: true,
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'month,agendaWeek,agendaDay'
-                },
-                events: "<?php echo base_url(); ?>fullcalendar/load",
-                selectable: true,
-                selectHelper: true,
-                select: function(start, end, allDay) {
-                    var title = prompt("Enter Event Title");
-                    if (title) {
-                        var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
-                        var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
-                        $.ajax({
-                            url: "<?php echo base_url(); ?>fullcalendar/insert",
-                            type: "POST",
-                            data: {
-                                title: title,
-                                start: start,
-                                end: end
-                            },
-                            success: function() {
-                                calendar.fullCalendar('refetchEvents');
-                                alert("Added Successfully");
-                            }
-                        })
-                    }
-                },
-                editable: true,
-                eventResize: function(event) {
-                    var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
-                    var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
-
-                    var title = event.title;
-
-                    var id = event.id;
-
-                    $.ajax({
-                        url: "<?php echo base_url(); ?>fullcalendar/update",
-                        type: "POST",
-                        data: {
-                            title: title,
-                            start: start,
-                            end: end,
-                            id: id
-                        },
-                        success: function() {
-                            calendar.fullCalendar('refetchEvents');
-                            alert("Event Update");
-                        }
-                    })
-                },
-                eventDrop: function(event) {
-                    var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
-                    //alert(start);
-                    var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
-                    //alert(end);
-                    var title = event.title;
-                    var id = event.id;
-                    $.ajax({
-                        url: "<?php echo base_url(); ?>fullcalendar/update",
-                        type: "POST",
-                        data: {
-                            title: title,
-                            start: start,
-                            end: end,
-                            id: id
-                        },
-                        success: function() {
-                            calendar.fullCalendar('refetchEvents');
-                            alert("Event Updated");
-                        }
-                    })
-                },
-                eventClick: function(event) {
-                    if (confirm("Are you sure you want to remove it?")) {
-                        var id = event.id;
-                        $.ajax({
-                            url: "<?php echo base_url(); ?>fullcalendar/delete",
-                            type: "POST",
-                            data: {
-                                id: id
-                            },
-                            success: function() {
-                                calendar.fullCalendar('refetchEvents');
-                                alert('Event Removed');
-                            }
-                        })
-                    }
-                }
-            });
-        });
-    </script>
-</head>
-
-<body>
-    <br />
-    <div class="row justify-content-md-center">
-        <div class="col col-lg-2">
-            <button class="btn btn-success mb-2">
-                <a class=" nav-link" href="/pages/dashboard" style="color:white;">Dashboard</a>
-            </button>
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+    </div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Earnings (Monthly)
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col col-lg-2">
-            <button class="btn btn-success mb-2">
-                <a class=" nav-link" href="/pages/image_admin" style="color:white;">Add Image</a>
-            </button>
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Earnings (Annual)
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col col-lg-2">
-            <button class="btn btn-success mb-2">
-                <a class=" nav-link" href="/pages/event_admin" style="color:white;">Add Event</a>
-            </button>
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
+                            </div>
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-auto">
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                </div>
+                                <div class="col">
+                                    <div class="progress progress-sm mr-2">
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Pending Requests Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Pending Requests
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <br />
-    <div class="container">
-        <div id="calendar"></div>
-    </div>
-</body>
-
-</html>
+    <!-- Content Row -->
+</div>
+<?= $this->endSection() ?>

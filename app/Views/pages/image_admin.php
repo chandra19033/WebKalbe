@@ -1,4 +1,4 @@
-<?= $this->extend('layouts/template'); ?>
+<?= $this->extend('layouts/admin'); ?>
 
 <?= $this->section('content'); ?>
 
@@ -8,29 +8,6 @@
     </div>
 
 </section>
-
-<div class="row justify-content-md-center">
-    <div class="col col-lg-2">
-        <button class="btn btn-success mb-2">
-            <a class=" nav-link" href="/pages/dashboard" style="color:white;">Add Training</a>
-        </button>
-    </div>
-    <div class="col col-lg-2">
-        <button class="btn btn-success mb-2">
-            <a class=" nav-link" href="/pages/image_admin" style="color:white;">Add Image</a>
-        </button>
-    </div>
-    <div class="col col-lg-2">
-        <button class="btn btn-success mb-2">
-            <a class=" nav-link" href="/pages/event_admin" style="color:white;">Add Event</a>
-        </button>
-    </div>
-    <div class="col col-lg-2">
-        <button class="btn btn-success mb-2">
-            <a class=" nav-link" href="/pages/employee_admin" style="color:white;">Edit Employee</a>
-        </button>
-    </div>
-</div>
 
 
 <!doctype html>

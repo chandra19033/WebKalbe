@@ -1,4 +1,4 @@
-<?= $this->extend('layouts/template'); ?>
+<?= $this->extend('layouts/admin'); ?>
 
 <?= $this->section('content'); ?>
 
@@ -9,7 +9,8 @@
     </div>
 </section>
 
-<div class="row justify-content-md-center">
+
+<!-- <div class="row justify-content-md-center">
     <div class="col col-lg-2">
         <button class="btn btn-success mb-2">
             <a class=" nav-link" href="/pages/dashboard" style="color:white;">Add Training</a>
@@ -30,7 +31,7 @@
             <a class=" nav-link" href="/pages/employee_admin" style="color:white;">Edit Employee</a>
         </button>
     </div>
-</div>
+</div> -->
 
 
 <head>
@@ -44,7 +45,7 @@
 
     <button type="button" id="button1" class="btn btn-success mb-2" data-toggle="modal" data-target="#addModal">Add New</button>
 
-    <table class="table table-striped">
+    <table class="table table-hover table-striped table-success">
         <thead>
             <tr>
                 <th>Judul Pelatihan</th>
