@@ -34,17 +34,9 @@ class Pages extends BaseController
         $this->pelatihanModel = new PelatihanModel();
         $this->karyawanModel = new KaryawanModel();
         $this->riwayatModel = new RiwayatModel();
-<<<<<<< Updated upstream
         $this->Fullcalendar_model = new Fullcalendar_model();
-=======
-<<<<<<< HEAD
         $this->approvalModel = new ApprovalModel();
         $this->rejectModel = new RejectModel();
-
-=======
-        $this->Fullcalendar_model = new Fullcalendar_model();
->>>>>>> 197aa8a9cd8603208444a90beb2f0acc9a61847f
->>>>>>> Stashed changes
         $this->listpelatihanModel = new ListPelatihanModel();
     }
 
@@ -506,9 +498,6 @@ class Pages extends BaseController
         exit;
     }
 
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
     public function persetujuan()
     {
         $dept_manager = $this->karyawanModel->dept_manager();
@@ -734,9 +723,7 @@ class Pages extends BaseController
         $this->rejectModel->insert($reject);
 
         return redirect()->to('/pages/persetujuan');
-=======
->>>>>>> Stashed changes
-
+    }
     // public function upload()
     // {
     //     helper(['form', 'url']);
@@ -879,9 +866,5 @@ class Pages extends BaseController
         if ($this->input->post('id')) {
             $this->fullcalendar_model->delete_event($this->input->post('id'));
         }
-<<<<<<< Updated upstream
-=======
->>>>>>> 197aa8a9cd8603208444a90beb2f0acc9a61847f
->>>>>>> Stashed changes
     }
 }
