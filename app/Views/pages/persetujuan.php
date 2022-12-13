@@ -55,35 +55,262 @@
     </style>
 
     <div class="container">
-        <table class="table table-bordered border-dark">
-            <thead>
-                <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">NIK</th>
-                    <th scope="col">Nama </th>
-                    <th scope="col">Jabatan </th>
-                    <th scope="col">Status Approval </th>
-                    <th scope="col">See Activity </th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php $i = 1; ?>
-                <?php foreach ($karyawan as $k) : ?>
+        <?php if ($dept_manager != NULL) : ?>
+            <h3>Sebagai Department Manager</h3>
+            <table class="table table-bordered border-dark">
+                <thead>
                     <tr>
-                        <td scope="col"><?= $i++; ?></th>
-                        <td scope="col"><?= $k['Employee_ID']; ?></th>
-                        <td scope="col"><?= $k['Employee_Name']; ?></th>
-                        <td scope="col"><?= $k['Postition_Name']; ?></td>
-                        <?php if ($k['status_daftar'] == 'open') : ?>
-                            <td scope="col">Belum Daftar</td>
-                        <?php elseif ($k['status_daftar'] == 'close') : ?>
-                            <td scope="col">Terdaftar</td>
-                        <?php endif; ?>
-                        <td scope="col"><a href="/pages/detail_subkoordinat/<?= $k['Employee_Name']; ?>" style="color: black;">See Activity</a></th>
+                        <th scope="col">No</th>
+                        <th scope="col">NIK</th>
+                        <th scope="col">Nama </th>
+                        <th scope="col">Jabatan </th>
+                        <th scope="col">Status Approval </th>
+                        <th scope="col">Action </th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php $i = 1; ?>
+                    <?php foreach ($dept_manager as $d) : ?>
+                        <tr>
+                            <td scope="col"><?= $i++; ?></th>
+                            <td scope="col"><?= $d['Employee_ID']; ?></th>
+                            <td scope="col"><?= $d['Employee_Name']; ?></th>
+                            <td scope="col"><?= $d['Postition_Name']; ?></td>
+                            <?php if ($d['status_daftar'] == 'open') : ?>
+                                <td scope="col">On Progresss</td>
+                                <td scope="col">-</td>
+                            <?php elseif ($d['status_daftar'] == '0') : ?>
+                                <td scope="col">Rejected</td>
+                                <td scope="col">-</td>
+                            <?php elseif ($d['status_daftar'] == '1') : ?>
+                                <td scope="col">Need Approve</td>
+                                <td scope="col"><a href="/pages/detail_approval/<?= $d['Employee_Name']; ?>" style="color: black;">See Activity</a>
+                                    <a href="/pages/approve_1/<?= $d['Employee_Name']; ?>" style="color: white; background-color:#3BB73B;">Approve</a>
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                                        Reject
+                                    </button>
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Reject</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="/pages/reject_1/<?= $d['Employee_Name']; ?>" method="GET">
+                                                        <div class="form-group mb-3">
+                                                            <label for="exampleInputPassword1">Alasan Reject</label>
+                                                            <input type="text" class="form-control" name="reason" id="reason">
+                                                        </div>
+                                                        <button type="submit" class="btn btn-danger">Reject</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php elseif ($d['status_daftar'] != '1') : ?>
+                                <td scope="col">Approved</td>
+                                <td scope="col">-</td>
+                            <?php endif; ?>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php endif; ?>
+        <?php if ($qa_manager != NULL) : ?>
+            <h3>Sebagai QA Manager</h3>
+            <table class="table table-bordered border-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">NIK</th>
+                        <th scope="col">Nama </th>
+                        <th scope="col">Jabatan </th>
+                        <th scope="col">Status Approval </th>
+                        <th scope="col">Action </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $i = 1; ?>
+                    <?php foreach ($qa_manager as $q) : ?>
+                        <tr>
+                            <td scope="col"><?= $i++; ?></th>
+                            <td scope="col"><?= $q['Employee_ID']; ?></th>
+                            <td scope="col"><?= $q['Employee_Name']; ?></th>
+                            <td scope="col"><?= $q['Postition_Name']; ?></td>
+                            <?php if ($q['status_daftar'] == 'open' || $q['status_daftar'] == '1') : ?>
+                                <td scope="col">On Progresss</td>
+                                <td scope="col">-</td>
+                            <?php elseif ($q['status_daftar'] == '0') : ?>
+                                <td scope="col">Rejected</td>
+                                <td scope="col">-</td>
+                            <?php elseif ($q['status_daftar'] == '2') : ?>
+                                <td scope="col">Need Approve</td>
+                                <td scope="col"><a href="/pages/detail_approval/<?= $q['Employee_Name']; ?>" style="color: black;">See Activity</a>
+                                    <a href="/pages/approve_2/<?= $q['Employee_Name']; ?>" style="color: white; background-color:#3BB73B;">Approve</a>
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                                        Reject
+                                    </button>
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Reject</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="/pages/reject_2/<?= $q['Employee_Name']; ?>" method="GET">
+                                                        <div class="form-group mb-3">
+                                                            <label for="exampleInputPassword1">Alasan Reject</label>
+                                                            <input type="text" class="form-control" name="reason" id="reason">
+                                                        </div>
+                                                        <button type="submit" class="btn btn-danger">Reject</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php elseif ($q['status_daftar'] != '2') : ?>
+                                <td scope="col">Approved</td>
+                                <td scope="col">-</td>
+                            <?php endif; ?>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php endif; ?>
+        <?php if ($hco_manager != NULL) : ?>
+            <h3>Sebagai HCO Manager</h3>
+            <table class="table table-bordered border-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">NIK</th>
+                        <th scope="col">Nama </th>
+                        <th scope="col">Jabatan </th>
+                        <th scope="col">Status Approval </th>
+                        <th scope="col">Action </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $i = 1; ?>
+                    <?php foreach ($hco_manager as $h) : ?>
+                        <tr>
+                            <td scope="col"><?= $i++; ?></th>
+                            <td scope="col"><?= $h['Employee_ID']; ?></th>
+                            <td scope="col"><?= $h['Employee_Name']; ?></th>
+                            <td scope="col"><?= $h['Postition_Name']; ?></td>
+                            <?php if ($h['status_daftar'] == 'open' || $h['status_daftar'] == '1' || $h['status_daftar'] == '2') : ?>
+                                <td scope="col">On Progresss</td>
+                                <td scope="col">-</td>
+                            <?php elseif ($h['status_daftar'] == '0') : ?>
+                                <td scope="col">Rejected</td>
+                                <td scope="col">-</td>
+                            <?php elseif ($h['status_daftar'] == '3') : ?>
+                                <td scope="col">Need Approve</td>
+                                <td scope="col"><a href="/pages/detail_approval/<?= $h['Employee_Name']; ?>" style="color: black;">See Activity</a>
+                                    <a href="/pages/approve_3/<?= $h['Employee_Name']; ?>" style="color: white; background-color:#3BB73B;">Approve</a>
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                                        Reject
+                                    </button>
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Reject</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="/pages/reject_3/<?= $h['Employee_Name']; ?>" method="GET">
+                                                        <div class="form-group mb-3">
+                                                            <label for="exampleInputPassword1">Alasan Reject</label>
+                                                            <input type="text" class="form-control" name="reason" id="reason">
+                                                        </div>
+                                                        <button type="submit" class="btn btn-danger">Reject</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php elseif ($h['status_daftar'] != '3') : ?>
+                                <td scope="col">Approved</td>
+                                <td scope="col">-</td>
+                            <?php endif; ?>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php endif; ?>
+        <?php if ($sitegroup_head != NULL) : ?>
+            <h3>Sebagai Site Group Head</h3>
+            <table class="table table-bordered border-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">NIK</th>
+                        <th scope="col">Nama </th>
+                        <th scope="col">Jabatan </th>
+                        <th scope="col">Status Approval </th>
+                        <th scope="col">Action </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $i = 1; ?>
+                    <?php foreach ($sitegroup_head as $s) : ?>
+                        <tr>
+                            <td scope="col"><?= $i++; ?></th>
+                            <td scope="col"><?= $s['Employee_ID']; ?></th>
+                            <td scope="col"><?= $s['Employee_Name']; ?></th>
+                            <td scope="col"><?= $s['Postition_Name']; ?></td>
+                            <?php if ($s['status_daftar'] == 'open' || $s['status_daftar'] == '1' || $s['status_daftar'] == '2' || $s['status_daftar'] == '3') : ?>
+                                <td scope="col">On Progresss</td>
+                                <td scope="col">-</td>
+                            <?php elseif ($s['status_daftar'] == '0') : ?>
+                                <td scope="col">Rejected</td>
+                                <td scope="col">-</td>
+                            <?php elseif ($s['status_daftar'] == '4') : ?>
+                                <td scope="col">Need Approve</td>
+                                <td scope="col"><a href="/pages/detail_approval/<?= $s['Employee_Name']; ?>" style="color: black;">See Activity</a>
+                                    <a href="/pages/approve_4/<?= $s['Employee_Name']; ?>" style="color: white; background-color:#3BB73B;">Approve</a>
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                                        Reject
+                                    </button>
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Reject</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="/pages/reject_4/<?= $s['Employee_Name']; ?>" method="GET">
+                                                        <div class="form-group mb-3">
+                                                            <label for="exampleInputPassword1">Alasan Reject</label>
+                                                            <input type="text" class="form-control" name="reason" id="reason">
+                                                        </div>
+                                                        <button type="submit" class="btn btn-danger">Reject</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php elseif ($s['status_daftar'] != '4') : ?>
+                                <td scope="col">Approved</td>
+                                <td scope="col">-</td>
+                            <?php endif; ?>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php endif; ?>
     </div>
 
     <?= $this->endSection(); ?>

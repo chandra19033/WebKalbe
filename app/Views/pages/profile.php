@@ -43,16 +43,16 @@
     </div>
 
     <div class="container">
-        <?php if (session()->get('status_daftar') == 'open') : ?>
+        <?php if (session()->get('status_daftar') == 'open' || session()->get('status_daftar') == '0') : ?>
             <div class="mb-3">
                 <a class="ms-auto bg-primary" style="text-decoration: none; color: white; box-shadow: 0px 4px 4px rgb(0 0 0 / 30%); border-radius: 5px; padding: 7px;" href="/pages/registrasi/<?= session()->get('Employee_Name') ?>">Daftarkan</a>
             </div>
         <?php endif; ?>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailModal">
+        <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#detailModal">
             Riwayat
         </button>
         <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog" role="document" style="max-width: 900px;">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Riwayat</h5>
@@ -60,7 +60,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" style="max-height: 450px; overflow-y: scroll;">
                         <table class="table table-bordered border-dark">
                             <thead>
                                 <style>
@@ -70,6 +70,7 @@
                                 </style>
                                 <tr>
                                     <th class="coba" scope="col">No.</th>
+                                    <th class="coba" scope="col">NIK</th>
                                     <th class="coba" scope="col">Nama Karyawan</th>
                                     <th class="coba" scope="col">Riwayat</th>
                                     <th class="coba" scope="col">Tanggal/Waktu</th>
@@ -77,13 +78,21 @@
                             </thead>
 
                             <tbody>
+                                <style>
+                                    .left-table {
+                                        text-align: left;
+                                    }
+                                </style>
+                                <style>
+                                </style>
                                 <?php $i = 1; ?>
                                 <?php foreach ($riwayat as $r) : ?>
                                     <tr>
-                                        <td scope="col"><?= $i++; ?></td>
-                                        <td scope="col"><?= $r['nama_karyawan']; ?></td>
-                                        <td scope="col"><?= $r['riwayat']; ?></td>
-                                        <td scope="col"><?= $r['created_at']; ?></td>
+                                        <td class="left-table" scope="col"><?= $i++; ?></td>
+                                        <td class="left-table" scope="col"><?= $r['NIK']; ?></td>
+                                        <td class="left-table" scope="col"><?= $r['nama_karyawan']; ?></td>
+                                        <td class="left-table" scope="col"><?= $r['riwayat']; ?></td>
+                                        <td class="left-table" scope="col"><?= $r['created_at']; ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
@@ -95,6 +104,64 @@
                 </div>
             </div>
         </div>
+        <?php if (session()->get('status_daftar') == '0') : ?>
+            <button type="button" class="btn btn-danger mb-4" data-toggle="modal" data-target="#rejectModal">
+                Alasan di-Reject
+            </button>
+            <div class="modal fade" id="rejectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document" style="max-width: 900px;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Alasan Reject</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" style="max-height: 450px; overflow-y: scroll;">
+                            <table class="table table-bordered border-dark">
+                                <thead>
+                                    <style>
+                                        .coba {
+                                            background-color: #32a852 !important;
+                                        }
+                                    </style>
+                                    <tr>
+                                        <th class="coba" scope="col">No.</th>
+                                        <th class="coba" scope="col">Nama Karyawan</th>
+                                        <th class="coba" scope="col">Reject Oleh</th>
+                                        <th class="coba" scope="col">Alasan Reject</th>
+                                        <th class="coba" scope="col">Tanggal/Waktu</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <style>
+                                        .left-table {
+                                            text-align: left;
+                                        }
+                                    </style>
+                                    <style>
+                                    </style>
+                                    <?php $i = 1; ?>
+                                    <?php foreach ($reject as $rj) : ?>
+                                        <tr>
+                                            <td class="left-table" scope="col"><?= $i++; ?></td>
+                                            <td class="left-table" scope="col"><?= $rj['nama_karyawan']; ?></td>
+                                            <td class="left-table" scope="col"><?= $rj['reject_by']; ?></td>
+                                            <td class="left-table" scope="col"><?= $rj['reason']; ?></td>
+                                            <td class="left-table" scope="col"><?= $rj['created_at']; ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
         <table class="table table-bordered border-dark">
             <thead>
                 <tr>
@@ -103,6 +170,9 @@
                     <th scope="col">Nama Pelatihan</th>
                     <th scope="col">Penyelenggara</th>
                     <th scope="col">Status</th>
+                    <?php if ($karyawan['status_daftar'] == 'open' || $karyawan['status_daftar'] == '0') : ?>
+                        <th scope="col"></th>
+                    <?php endif; ?>
                 </tr>
             </thead>
             <tbody>
@@ -113,10 +183,38 @@
                         <td><?= $p['nama_karyawan']; ?></td>
                         <td><?= $p['nama_pelatihan']; ?></td>
                         <td><?= $p['penyelenggara']; ?></td>
-                        <?php if ($karyawan['status_daftar'] == 'open') : ?>
+                        <?php if ($karyawan['status_daftar'] == 'open' || $karyawan['status_daftar'] == '0') : ?>
                             <td><a class="bg-primary" href="">Belum Terdaftar</a></td>
                         <?php elseif ($karyawan['status_daftar'] == 'close') : ?>
                             <td><a class="bg-primary" href="">Terdaftar</a></td>
+                        <?php endif; ?>
+                        <?php if ($karyawan['status_daftar'] == 'open' || $karyawan['status_daftar'] == '0') : ?>
+                            <td scope="col"><button style="border-radius: 5px;" type="button" class="btn-danger" data-toggle="modal" data-target="#hapusPelatihan">
+                                    Hapus
+                                </button></th>
+                                <div class="modal fade" id="hapusPelatihan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Hapus Pelatihan</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body" style="color: black;">
+                                                Menghapus pelatihan <?= $p['nama_pelatihan']; ?>, Apakah anda yakin?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <a type="button" class="btn btn-danger" href="/pages/hapus_pelatihan/<?= session()->get('Employee_Name'); ?>/<?= $p['id']; ?>">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php elseif ($karyawan['status_daftar'] == 'Approved') : ?>
+                            <td><?= $karyawan['status_daftar']; ?></td>
+                        <?php else : ?>
+                            <td>On Progress</td>
                         <?php endif; ?>
                     </tr>
                 <?php endforeach; ?>

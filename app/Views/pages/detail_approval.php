@@ -24,65 +24,50 @@
 
 <section style="margin-bottom:70px;">
     <div class="container">
-        <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#detailModal">
-            Riwayat
+        <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#approveModal">
+            Approve
         </button>
-        <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document" style="max-width: 900px;">
+        <div class="modal fade" id="approveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Riwayat</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Approve</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body" style="max-height: 450px; overflow-y: scroll;">
-                        <table class="table table-striped">
-                            <thead>
-                                <style>
-                                    .coba {
-                                        background-color: #32a852 !important;
-                                    }
-                                </style>
-                                <tr>
-                                    <th class="coba" scope="col">No.</th>
-                                    <th class="coba" scope="col">NIK</th>
-                                    <th class="coba" scope="col">Nama Karyawan</th>
-                                    <th class="coba" scope="col">Riwayat</th>
-                                    <th class="coba" scope="col">Tanggal/Waktu</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <style>
-                                    td {
-                                        text-align: left;
-                                    }
-                                </style>
-                                <?php $i = 1; ?>
-                                <?php foreach ($riwayat as $r) : ?>
-                                    <tr>
-                                        <td scope="col"><?= $i++; ?></td>
-                                        <td scope="col"><?= $r['NIK']; ?></td>
-                                        <td scope="col"><?= $r['nama_karyawan']; ?></td>
-                                        <td scope="col"><?= $r['riwayat']; ?></td>
-                                        <td scope="col"><?= $r['created_at']; ?></td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
+                    <div class="modal-body">
+                        <p>Yakin ingin melakukan Approve pada karyawan?</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <a type="button" class="btn btn-success" data-dismiss="modal">Approve</a>
                     </div>
                 </div>
             </div>
         </div>
-        <?php if ($karyawan['status_daftar'] == 'open') : ?>
-            <div class="mb-3">
-                <a class="ms-auto bg-primary" style="text-decoration: none; color: white; box-shadow: 0px 4px 4px rgb(0 0 0 / 30%); border-radius: 5px; padding: 7px;" href="/pages/registrasi/<?= $karyawan['Employee_Name']; ?>">Daftarkan</a>
+        <button type="button" class="btn btn-danger mb-3" data-toggle="modal" data-target="#rejectModal">
+            Reject
+        </button>
+        <div class="modal fade" id="rejectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Approve</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Yakin ingin melakukan Reject pada karyawan?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <a type="button" class="btn btn-danger" data-dismiss="modal">Approve</a>
+                    </div>
+                </div>
             </div>
-        <?php endif; ?>
+        </div>
         <table class="table table-bordered border-dark">
             <table class="table table-hover table-bordered border-dark table-striped table-success">
                 <thead>

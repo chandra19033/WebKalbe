@@ -25,19 +25,70 @@ class KaryawanModel extends Model
     public function regis($nama)
     {
         $this->where('Employee_Name', $nama);
-        $this->set('status_daftar', 'close');
+        $this->set('status_daftar', '1');
         $this->update();
     }
 
-    public function approval()
+    public function dept_manager()
     {
         $nama = session()->get('Employee_Name');
-        // $sql = 'SELECT * FROM users WHERE Dept_Manager = ? OR QA_Manager = ? OR HCO_Manager = ? OR SiteGroup_Head = ?';
-        // $this->query($sql, $nama);
         $this->where('Dept_Manager', $nama);
-        // $this->where('QA_Manager', $nama);
-        // $this->where('HCO_Manager', $nama);
-        // $this->where('SiteHead_Group', $nama);
         return $this->findAll();
+    }
+
+    public function qa_manager()
+    {
+        $nama = session()->get('Employee_Name');
+        $this->where('QA_Manager', $nama);
+        return $this->findAll();
+    }
+
+    public function hco_manager()
+    {
+        $nama = session()->get('Employee_Name');
+        $this->where('HCO_Manager', $nama);
+        return $this->findAll();
+    }
+
+    public function sitegroup_head()
+    {
+        $nama = session()->get('Employee_Name');
+        $this->where('SiteGroup_Head', $nama);
+        return $this->findAll();
+    }
+
+    public function status_dept_manager($nama)
+    {
+        $this->where('Employee_Name', $nama);
+        $this->set('status_daftar', '2');
+        $this->update();
+    }
+
+    public function status_qa_manager($nama)
+    {
+        $this->where('Employee_Name', $nama);
+        $this->set('status_daftar', '3');
+        $this->update();
+    }
+
+    public function status_hco_manager($nama)
+    {
+        $this->where('Employee_Name', $nama);
+        $this->set('status_daftar', '4');
+        $this->update();
+    }
+
+    public function status_sitegroup_head($nama)
+    {
+        $this->where('Employee_Name', $nama);
+        $this->set('status_daftar', 'Approved');
+        $this->update();
+    }
+
+    public function status_rejected($nama)
+    {
+        $this->where('Employee_Name', $nama);
+        $this->set('status_daftar', '0');
+        $this->update();
     }
 }

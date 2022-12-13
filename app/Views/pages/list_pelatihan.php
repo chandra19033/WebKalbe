@@ -42,7 +42,42 @@
 </section>
 
 <section>
+<<<<<<< Updated upstream
 
+=======
+<<<<<<< HEAD
+    <div class="container">
+        <div class="mb-3">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Pelatihan dari Luar
+            </button>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Pelatihan dari Luar</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/pages/tambah_mandiri/<?= $nama; ?>" method="GET">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Nama Pelatihan</label>
+                                    <input type="text" class="form-control" name="namapelatihan" id="namapelatihanluar">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="exampleInputPassword1">Penyelenggara</label>
+                                    <input type="text" class="form-control" name="penyelenggara" id="penyelenggaraluar">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+=======
+
+>>>>>>> Stashed changes
     <div class="mb-3">
         <!-- Button trigger modal -->
         <button type="button" id="button1" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -77,6 +112,10 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary">Save changes</button>
                     </div> -->
+<<<<<<< Updated upstream
+=======
+>>>>>>> 197aa8a9cd8603208444a90beb2f0acc9a61847f
+>>>>>>> Stashed changes
                 </div>
             </div>
         </div>

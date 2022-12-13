@@ -30,12 +30,28 @@ class PelatihanModel extends Model
         return $this->findAll();
     }
 
+<<<<<<< Updated upstream
     public function getPelatihan($id)
+=======
+<<<<<<< HEAD
+    public function getPelatihanbyId($id)
+=======
+    public function getPelatihan($id)
+>>>>>>> 197aa8a9cd8603208444a90beb2f0acc9a61847f
+>>>>>>> Stashed changes
     {
         $this->where('id', $id);
         return $this->findAll();
     }
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+    public function hapus($id)
+    {
+        $this->delete(['id' => $id]);
+=======
+>>>>>>> Stashed changes
     public function getPlthn()
     {
         $builder = $this->db->table('daftar_pelatihan');
@@ -59,5 +75,9 @@ class PelatihanModel extends Model
     {
         $query = $this->db->table('daftar_pelatihan')->delete(array('id' => $id));
         return $query;
+<<<<<<< Updated upstream
+=======
+>>>>>>> 197aa8a9cd8603208444a90beb2f0acc9a61847f
+>>>>>>> Stashed changes
     }
 }

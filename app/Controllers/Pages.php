@@ -2,11 +2,13 @@
 
 namespace App\Controllers;
 
+use App\Models\ApprovalModel;
 use App\Models\CalendarModel;
 use App\Models\ListPelatihanModel;
 use App\Models\PelatihanModel;
 use App\Models\KaryawanModel;
 use App\Models\Model_Auth;
+use App\Models\RejectModel;
 use App\Models\RiwayatModel;
 use CodeIgniter\Database\Query;
 use TCPDF;
@@ -32,7 +34,17 @@ class Pages extends BaseController
         $this->pelatihanModel = new PelatihanModel();
         $this->karyawanModel = new KaryawanModel();
         $this->riwayatModel = new RiwayatModel();
+<<<<<<< Updated upstream
         $this->Fullcalendar_model = new Fullcalendar_model();
+=======
+<<<<<<< HEAD
+        $this->approvalModel = new ApprovalModel();
+        $this->rejectModel = new RejectModel();
+
+=======
+        $this->Fullcalendar_model = new Fullcalendar_model();
+>>>>>>> 197aa8a9cd8603208444a90beb2f0acc9a61847f
+>>>>>>> Stashed changes
         $this->listpelatihanModel = new ListPelatihanModel();
     }
 
@@ -50,13 +62,15 @@ class Pages extends BaseController
         $pelatihan = $this->pelatihanModel->getPelatihanMandiri();
         $riwayat = $this->riwayatModel->getRiwayat();
         $tampung = $this->karyawanModel->getKaryawan(session()->get('Employee_Name'));
+        $reject = $this->rejectModel->getReject(session()->get('Employee_Name'));
         $karyawan = $tampung[0];
 
         $data = [
             'title' => 'profile',
             'pelatihan' => $pelatihan,
             'karyawan' => $karyawan,
-            'riwayat' => $riwayat
+            'riwayat' => $riwayat,
+            'reject' => $reject
         ];
         return view('pages/profile', $data);
     }
@@ -91,7 +105,8 @@ class Pages extends BaseController
 
                 $riwayat = [
                     'nama_karyawan' =>  strtoupper($name),
-                    'riwayat' => 'Menambahkan pelatihan ' . $tampung['nama_pelatihan']
+                    'riwayat' => 'Menambahkan pelatihan ' . $tampung['nama_pelatihan'],
+                    'nik' => $karyawan['Employee_ID']
                 ];
 
                 $this->riwayatModel->insert($riwayat);
@@ -157,7 +172,8 @@ class Pages extends BaseController
 
                 $riwayat = [
                     'nama_karyawan' =>  strtoupper($name),
-                    'riwayat' => 'Menambahkan pelatihan ' . $pelatihan['namapelatihan']
+                    'riwayat' => 'Menambahkan pelatihan ' . $pelatihan['namapelatihan'],
+                    'nik' => $karyawan['Employee_ID']
                 ];
 
                 $this->riwayatModel->insert($riwayat);
@@ -265,7 +281,7 @@ class Pages extends BaseController
                 //return redirect()->to(base_url('/'));
             } else {
                 //data tidak cocok
-                session()->setFlashdata('pesan', 'Login gagal, harap masukan kembali Email dan Password');
+                session()->setFlashdata('pesan',    'Login gagal, harap masukan kembali Email dan Password');
                 return redirect()->to(base_url('pages/login'));
             }
         } else {
@@ -365,16 +381,6 @@ class Pages extends BaseController
     //     return view('pages/dashboard', $data);
     // }
 
-    public function persetujuan()
-    {
-        $karyawan = $this->karyawanModel->approval();
-        $data = [
-            'title' => 'persetujuan',
-            'karyawan' => $karyawan
-        ];
-        return view('pages/persetujuan', $data);
-    }
-
     public function daftar_sub()
     {
         $subkoordinat = $this->karyawanModel->subkoordinat();
@@ -388,11 +394,15 @@ class Pages extends BaseController
 
     public function registrasi($nama)
     {
+        $tampung = $this->karyawanModel->getKaryawan($nama);
+        $karyawan = $tampung[0];
         $this->karyawanModel->regis($nama);
+        $this->approvalModel->regis($nama);
 
         $riwayat = [
             'nama_karyawan' =>  strtoupper($nama),
-            'riwayat' => 'Pengajuan untuk proses Approval'
+            'riwayat' => 'Pengajuan untuk proses Approval',
+            'nik' => $karyawan['Employee_ID']
         ];
 
         $this->riwayatModel->insert($riwayat);
@@ -402,6 +412,26 @@ class Pages extends BaseController
         } else {
             return redirect()->to('/pages/detail_subkoordinat/' . $nama);
         }
+    }
+
+    public function hapus_pelatihan($nama = 0, $id = 0)
+    {
+        $tampung = $this->karyawanModel->getKaryawan($nama);
+        $karyawan = $tampung[0];
+        $tampung = $this->pelatihanModel->getPelatihanbyId($id);
+        $pelatihan = $tampung[0];
+
+        $riwayat = [
+            'nama_karyawan' =>  strtoupper($nama),
+            'riwayat' => 'Menghapus pelatihan ' . $pelatihan['nama_pelatihan'],
+            'nik' => $karyawan['Employee_ID']
+        ];
+
+        $this->riwayatModel->insert($riwayat);
+
+        $this->pelatihanModel->hapus($id);
+
+        return redirect()->to('/pages/detail_subkoordinat/' . $nama);
     }
 
     public function invoice()
@@ -476,6 +506,236 @@ class Pages extends BaseController
         exit;
     }
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+    public function persetujuan()
+    {
+        $dept_manager = $this->karyawanModel->dept_manager();
+        $qa_manager = $this->karyawanModel->qa_manager();
+        $hco_manager = $this->karyawanModel->hco_manager();
+        $sitegroup_head = $this->karyawanModel->sitegroup_head();
+        $data = [
+            'title' => 'persetujuan',
+            'dept_manager' => $dept_manager,
+            'qa_manager' => $qa_manager,
+            'hco_manager' => $hco_manager,
+            'sitegroup_head' => $sitegroup_head
+        ];
+
+        // dd($data);
+        return view('pages/persetujuan', $data);
+    }
+
+    public function detail_approval($name)
+    {
+        $pelatihan = $this->pelatihanModel->getPelatihanSub($name);
+        $riwayat = $this->riwayatModel->getRiwayatSub($name);
+        $tampung = $this->karyawanModel->getKaryawan($name);
+        $karyawan = $tampung[0];
+
+        $data = [
+            'title' => 'detail_approval',
+            'karyawan' => $karyawan,
+            'pelatihan' => $pelatihan,
+            'riwayat' => $riwayat
+        ];
+
+        return view('pages/detail_approval', $data);
+    }
+
+    public function approve_1($nama)
+    {
+        $tampung = $this->karyawanModel->getKaryawan($nama);
+        $karyawan = $tampung[0];
+
+        $this->approvalModel->approved_dept_manager($nama);
+        $this->karyawanModel->status_dept_manager($nama);
+
+        $riwayat = [
+            'nama_karyawan' =>  strtoupper($nama),
+            'riwayat' => 'Telah di Approve oleh Department Manager',
+            'nik' => $karyawan['Employee_ID']
+        ];
+
+        $this->riwayatModel->insert($riwayat);
+
+        return redirect()->to('/pages/persetujuan');
+    }
+
+    public function approve_2($nama)
+    {
+        $tampung = $this->karyawanModel->getKaryawan($nama);
+        $karyawan = $tampung[0];
+
+        $this->approvalModel->approved_qa_manager($nama);
+        $this->karyawanModel->status_qa_manager($nama);
+
+        $riwayat = [
+            'nama_karyawan' =>  strtoupper($nama),
+            'riwayat' => 'Telah di Approve oleh QA Manager',
+            'nik' => $karyawan['Employee_ID']
+        ];
+
+        $this->riwayatModel->insert($riwayat);
+
+        return redirect()->to('/pages/persetujuan');
+    }
+
+    public function approve_3($nama)
+    {
+        $tampung = $this->karyawanModel->getKaryawan($nama);
+        $karyawan = $tampung[0];
+
+        $this->approvalModel->approved_hco_manager($nama);
+        $this->karyawanModel->status_hco_manager($nama);
+
+        $riwayat = [
+            'nama_karyawan' =>  strtoupper($nama),
+            'riwayat' => 'Telah di Approve oleh HCO Manager',
+            'nik' => $karyawan['Employee_ID']
+        ];
+
+        $this->riwayatModel->insert($riwayat);
+
+        return redirect()->to('/pages/persetujuan');
+    }
+
+    public function approve_4($nama)
+    {
+        $tampung = $this->karyawanModel->getKaryawan($nama);
+        $karyawan = $tampung[0];
+
+        $this->approvalModel->approved_sitegroup_head($nama);
+        $this->karyawanModel->status_sitegroup_head($nama);
+
+        $riwayat = [
+            'nama_karyawan' =>  strtoupper($nama),
+            'riwayat' => 'Telah di Approve oleh Site Group Head',
+            'nik' => $karyawan['Employee_ID']
+        ];
+
+        $this->riwayatModel->insert($riwayat);
+
+        return redirect()->to('/pages/persetujuan');
+    }
+
+    public function reject_1($nama)
+    {
+        $reject = $this->request->getVar();
+
+        $tampung = $this->karyawanModel->getKaryawan($nama);
+        $karyawan = $tampung[0];
+
+        $this->approvalModel->rejected_dept_manager($nama);
+        $this->karyawanModel->status_rejected($nama);
+
+        $riwayat = [
+            'nama_karyawan' =>  strtoupper($nama),
+            'riwayat' => 'Telah di Reject oleh Department Manager',
+            'nik' => $karyawan['Employee_ID']
+        ];
+
+        $this->riwayatModel->insert($riwayat);
+
+        $reject = [
+            'nama_karyawan' => strtoupper($nama),
+            'reject_by' => 'Department Manager',
+            'reason' => $reject['reason']
+        ];
+
+        $this->rejectModel->insert($reject);
+
+        return redirect()->to('/pages/persetujuan');
+    }
+
+    public function reject_2($nama)
+    {
+        $reject = $this->request->getVar();
+
+        $tampung = $this->karyawanModel->getKaryawan($nama);
+        $karyawan = $tampung[0];
+
+        $this->approvalModel->rejected_qa_manager($nama);
+        $this->karyawanModel->status_rejected($nama);
+
+        $riwayat = [
+            'nama_karyawan' =>  strtoupper($nama),
+            'riwayat' => 'Telah di Reject oleh QA Manager',
+            'nik' => $karyawan['Employee_ID']
+        ];
+
+        $this->riwayatModel->insert($riwayat);
+
+        $reject = [
+            'nama_karyawan' => strtoupper($nama),
+            'reject_by' => 'QA Manager',
+            'reason' => $reject['reason']
+        ];
+
+        $this->rejectModel->insert($reject);
+
+        return redirect()->to('/pages/persetujuan');
+    }
+
+    public function reject_3($nama)
+    {
+        $reject = $this->request->getVar();
+
+        $tampung = $this->karyawanModel->getKaryawan($nama);
+        $karyawan = $tampung[0];
+
+        $this->approvalModel->rejected_hco_manager($nama);
+        $this->karyawanModel->status_rejected($nama);
+
+        $riwayat = [
+            'nama_karyawan' =>  strtoupper($nama),
+            'riwayat' => 'Telah di Reject oleh HCO Manager',
+            'nik' => $karyawan['Employee_ID']
+        ];
+
+        $this->riwayatModel->insert($riwayat);
+
+        $reject = [
+            'nama_karyawan' => strtoupper($nama),
+            'reject_by' => 'HCO Manager',
+            'reason' => $reject['reason']
+        ];
+
+        $this->rejectModel->insert($reject);
+
+        return redirect()->to('/pages/persetujuan');
+    }
+
+    public function reject_4($nama)
+    {
+        $reject = $this->request->getVar();
+
+        $tampung = $this->karyawanModel->getKaryawan($nama);
+        $karyawan = $tampung[0];
+
+        $this->approvalModel->rejected_sitegroup_head($nama);
+        $this->karyawanModel->status_rejected($nama);
+
+        $riwayat = [
+            'nama_karyawan' =>  strtoupper($nama),
+            'riwayat' => 'Telah di Reject oleh Site Group Head',
+            'nik' => $karyawan['Employee_ID']
+        ];
+
+        $this->riwayatModel->insert($riwayat);
+
+        $reject = [
+            'nama_karyawan' => strtoupper($nama),
+            'reject_by' => 'Site Group Head',
+            'reason' => $reject['reason']
+        ];
+
+        $this->rejectModel->insert($reject);
+
+        return redirect()->to('/pages/persetujuan');
+=======
+>>>>>>> Stashed changes
 
     // public function upload()
     // {
@@ -619,5 +879,9 @@ class Pages extends BaseController
         if ($this->input->post('id')) {
             $this->fullcalendar_model->delete_event($this->input->post('id'));
         }
+<<<<<<< Updated upstream
+=======
+>>>>>>> 197aa8a9cd8603208444a90beb2f0acc9a61847f
+>>>>>>> Stashed changes
     }
 }

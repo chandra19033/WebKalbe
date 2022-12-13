@@ -8,7 +8,7 @@ class RiwayatModel extends Model
 {
     protected $table = 'riwayat';
     protected $useTimestamps = true;
-    protected $allowedFields = ['nama_karyawan', 'riwayat', 'penyelenggara'];
+    protected $allowedFields = ['nama_karyawan', 'riwayat', 'nik'];
 
     public function getRiwayat()
     {

@@ -54,6 +54,7 @@ $routes->get('/pages/list_subkoordinat', 'Pages::list_subkoordinat');
 $routes->get('/pages/dashboard', 'Pages::dashboard');
 $routes->get('/pages/persetujuan', 'Pages::persetujuan');
 $routes->get('/pages/detail_subkoordinat', 'Pages::detail_subkoordinat');
+// $routes->get('/pages/detail_approval', 'Pages::detail_approval');
 $routes->get('/pages/daftarsub', 'Pages::daftar_sub');
 $routes->post('pages/image_admin', 'Pages::image_admin');
 $routes->match(['get', 'post'], 'Pages/htmlToPDF', 'Pages::htmlToPDF');

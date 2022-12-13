@@ -39,6 +39,29 @@
         <?php endforeach; ?>
     </table>
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+            <?php $i = 1; ?>
+            <?php foreach ($subkoordinat as $s) : ?>
+                <tr>
+                    <td scope="col"><?= $i++; ?></th>
+                    <td scope="col"><?= $s['Employee_ID']; ?></th>
+                    <td scope="col"><?= $s['Employee_Name']; ?></th>
+                    <td scope="col"><?= $s['Postition_Name']; ?></th>
+                        <?php if ($s['status_daftar'] == 'open') : ?>
+                    <td scope="col">Belum Daftar</td>
+                <?php elseif ($s['status_daftar'] != 'open') : ?>
+                    <td scope="col">Terdaftar</td>
+                <?php endif; ?>
+                <td scope="col"><a href="/pages/list_pelatihan/<?= $s['Employee_Name']; ?>" style="color: black;">Daftar</a></th>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+    </div>
+=======
+>>>>>>> 197aa8a9cd8603208444a90beb2f0acc9a61847f
+>>>>>>> Stashed changes
 </section>
 
 
