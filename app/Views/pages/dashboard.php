@@ -48,8 +48,8 @@
     <table class="table table-hover table-striped table-success">
         <thead>
             <tr>
-                <th>Judul Pelatihan</th>
-                <th>Penyelenggara</th>
+                <th>Training Title</th>
+                <th>Organizer</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -83,13 +83,13 @@
                     <div class="modal-body">
 
                         <div class="form-group">
-                            <label>Judul Pelatihan</label>
-                            <input type="text" class="form-control" name="nama_pelatihan" placeholder="Judul Pelatihan">
+                            <label>Training Title</label>
+                            <input type="text" class="form-control" name="nama_pelatihan" placeholder="Add Training Title">
                         </div>
 
                         <div class="form-group">
-                            <label>Penyelenggara</label>
-                            <input type="text" class="form-control" name="penyelenggara" placeholder="Penyelenggara">
+                            <label>Organizer</label>
+                            <input type="text" class="form-control" name="penyelenggara" placeholder="Add Organizer">
                         </div>
 
 
@@ -118,13 +118,13 @@
                     <div class="modal-body">
 
                         <div class="form-group">
-                            <label>Judul Pelatihan</label>
-                            <input type="text" class="form-control nama_pelatihan" name="nama_pelatihan" placeholder="Nama Pelatihan">
+                            <label>Training Title</label>
+                            <input type="text" class="form-control nama_pelatihan" name="nama_pelatihan" placeholder="Add Training Title">
                         </div>
 
                         <div class="form-group">
-                            <label>Penyelenggara</label>
-                            <input type="text" class="form-control penyelenggara" name="penyelenggara" placeholder="Penyelenggara">
+                            <label>Organizer</label>
+                            <input type="text" class="form-control penyelenggara" name="penyelenggara" placeholder="Add Organizer">
                         </div>
 
                     </div>

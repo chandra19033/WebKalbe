@@ -82,3 +82,7 @@
     background-color: #ff0000 !important;
     color: rgb(41, 114, 233) !important;
 }
+
+.dropdown{
+    margin-bottom: 20px;
+}

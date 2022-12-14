@@ -69,6 +69,10 @@
     color: white;
 }
 
+.table td {
+    text-align: center;
+}
+
 .table a {
     /* border: 1px solid black; */
     text-decoration: none;

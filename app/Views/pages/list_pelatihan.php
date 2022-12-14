@@ -2,7 +2,7 @@
 
 <?= $this->section('content'); ?>
 <div class="title justify-content-center d-flex py-3">
-    <h1>Training List</h1>
+    <h1>Training List For "<?= $nama; ?>"</h1>
 </div>
 <section>
     <?php if (session()->getFlashdata('pesan')) : ?>
@@ -20,12 +20,11 @@
 
     <div class="row justify-content-center padding">
         <div class="col-md-8 ftco-animate fadeInUp ftco-animated">
-            <h3>Daftar Pelatihan Untuk : <?= $nama; ?></h3>
 
             <form action="/pages/list_pelatihan/<?= $nama; ?>" class="domain-form" method="get">
                 <div class="form-group d-md-flex">
-                    <input type="text" class="form-control px-4" name="keyword" placeholder="Cari Judul Pelatihan">
-                    <button class="search-domain btn btn-primary px-5" type="submit" name="submit">Cari</button>
+                    <input type="text" class="form-control px-4" name="keyword" placeholder="Search for Training Title">
+                    <button class="search-domain btn btn-primary px-5" type="submit" name="submit">Search</button>
                 </div>
             </form>
         </div>
@@ -42,84 +41,14 @@
 </section>
 
 <section>
-<<<<<<< Updated upstream
-
-=======
-<<<<<<< HEAD
-    <div class="container">
-        <div class="mb-3">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                Pelatihan dari Luar
-            </button>
-
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Pelatihan dari Luar</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="/pages/tambah_mandiri/<?= $nama; ?>" method="GET">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Nama Pelatihan</label>
-                                    <input type="text" class="form-control" name="namapelatihan" id="namapelatihanluar">
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label for="exampleInputPassword1">Penyelenggara</label>
-                                    <input type="text" class="form-control" name="penyelenggara" id="penyelenggaraluar">
-                                </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </form>
-                        </div>
-                    </div>
-=======
-
->>>>>>> Stashed changes
     <div class="mb-3">
         <!-- Button trigger modal -->
         <button type="button" id="button1" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
             External Training
         </button>
-
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">External Training</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="/pages/tambah_mandiri/<?= $nama; ?>" method="GET">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Training Title</label>
-                                <input type="text" class="form-control" name="namapelatihan" id="namapelatihanluar">
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="exampleInputPassword1">Organizer</label>
-                                <input type="text" class="form-control" name="penyelenggara" id="penyelenggaraluar">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-                    </div>
-                    <!-- <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div> -->
-<<<<<<< Updated upstream
-=======
->>>>>>> 197aa8a9cd8603208444a90beb2f0acc9a61847f
->>>>>>> Stashed changes
-                </div>
-            </div>
-        </div>
     </div>
+
+
     <table class="table table-hover table-striped table-success ">
         <thead>
             <tr>
@@ -137,11 +66,72 @@
                     <td><?= $i++; ?></th>
                     <td><?= $l['nama_pelatihan']; ?></td>
                     <td><?= $l['penyelenggara']; ?></td>
-                    <td><a style="color: black!important;" href="/pages/tambah/<?= $nama; ?>/<?= $l['id']; ?>">Tambah</a></td>
+                    <td><a style="color: black!important;" href="/pages/tambah/<?= $nama; ?>/<?= $l['id']; ?>">Add Training</a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Pelatihan dari Luar</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/pages/tambah_mandiri/<?= $nama; ?>" method="GET">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nama Pelatihan</label>
+                            <input type="text" class="form-control" name="namapelatihan" id="namapelatihanluar">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="exampleInputPassword1">Penyelenggara</label>
+                            <input type="text" class="form-control" name="penyelenggara" id="penyelenggaraluar">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+
+
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">External Training</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/pages/tambah_mandiri/<?= $nama; ?>" method="GET">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Training Title</label>
+                                    <input type="text" class="form-control" name="namapelatihan" id="namapelatihanluar">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="exampleInputPassword1">Organizer</label>
+                                    <input type="text" class="form-control" name="penyelenggara" id="penyelenggaraluar">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                        <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div> -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </section>
 

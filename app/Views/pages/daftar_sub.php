@@ -15,10 +15,10 @@
             <tr>
                 <th scope="col">No</th>
                 <th scope="col">Employee ID</th>
-                <th scope="col">Nama </th>
+                <th scope="col">Employee Name </th>
                 <th scope="col">Position</th>
                 <th scope="col">Status</th>
-                <th scope="col">Daftar Pelatihan</th>
+                <th scope="col">Register Training</th>
             </tr>
         </thead>
 
@@ -30,38 +30,17 @@
                 <td scope="col"><?= $s['Employee_Name']; ?></th>
                 <td scope="col"><?= $s['Postition_Name']; ?></th>
                     <?php if ($s['status_daftar'] == 'open') : ?>
-                <td scope="col">Belum Daftar</td>
+                <td scope="col">Not Registered</td>
             <?php elseif ($s['status_daftar'] == 'close') : ?>
-                <td scope="col">Terdaftar</td>
+                <td scope="col">Registered</td>
             <?php endif; ?>
-            <td scope="col"><a href="/pages/list_pelatihan/<?= $s['Employee_Name']; ?>" style="color: black;">Daftar</a></th>
+            <td scope="col"><a href="/pages/list_pelatihan/<?= $s['Employee_Name']; ?>" style="color: black;">Register</a></th>
             </tr>
         <?php endforeach; ?>
     </table>
 
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-            <?php $i = 1; ?>
-            <?php foreach ($subkoordinat as $s) : ?>
-                <tr>
-                    <td scope="col"><?= $i++; ?></th>
-                    <td scope="col"><?= $s['Employee_ID']; ?></th>
-                    <td scope="col"><?= $s['Employee_Name']; ?></th>
-                    <td scope="col"><?= $s['Postition_Name']; ?></th>
-                        <?php if ($s['status_daftar'] == 'open') : ?>
-                    <td scope="col">Belum Daftar</td>
-                <?php elseif ($s['status_daftar'] != 'open') : ?>
-                    <td scope="col">Terdaftar</td>
-                <?php endif; ?>
-                <td scope="col"><a href="/pages/list_pelatihan/<?= $s['Employee_Name']; ?>" style="color: black;">Daftar</a></th>
-                </tr>
-            <?php endforeach; ?>
-        </table>
     </div>
-=======
->>>>>>> 197aa8a9cd8603208444a90beb2f0acc9a61847f
->>>>>>> Stashed changes
+
 </section>
 
 

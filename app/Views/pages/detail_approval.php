@@ -68,58 +68,58 @@
                 </div>
             </div>
         </div>
-        <table class="table table-bordered border-dark">
-            <table class="table table-hover table-bordered border-dark table-striped table-success">
-                <thead>
-                    <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Nama </th>
-                        <th scope="col">Judul Pelatihan</th>
-                        <th scope="col">Penyelenggara</th>
-                        <th scope="col">Superior</th>
+    </div>
+    <table class="table table-hover table-striped table-success">
+        <thead>
+            <tr>
+                <th scope="col">No</th>
+                <th scope="col">Employee Name </th>
+                <th scope="col">Training Title</th>
+                <th scope="col">Organizer</th>
+                <th scope="col">Superior</th>
+                <?php if ($karyawan['status_daftar'] == 'open') : ?>
+                    <th scope="col"></th>
+                <?php endif; ?>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $i = 1; ?>
+            <?php foreach ($pelatihan as $p) : ?>
+                <tr>
+                    <td scope="col"><?= $i++; ?></th>
+                    <td scope="col"><?= $karyawan['Employee_Name']; ?> </th>
+                    <td scope="col"><?= $p['nama_pelatihan']; ?></th>
+                    <td scope="col"><?= $p['penyelenggara']; ?></th>
+                    <td scope="col"><?= $karyawan['Superior']; ?></th>
                         <?php if ($karyawan['status_daftar'] == 'open') : ?>
-                            <th scope="col"></th>
-                        <?php endif; ?>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $i = 1; ?>
-                    <?php foreach ($pelatihan as $p) : ?>
-                        <tr>
-                            <td scope="col"><?= $i++; ?></th>
-                            <td scope="col"><?= $karyawan['Employee_Name']; ?> </th>
-                            <td scope="col"><?= $p['nama_pelatihan']; ?></th>
-                            <td scope="col"><?= $p['penyelenggara']; ?></th>
-                            <td scope="col"><?= $karyawan['Superior']; ?></th>
-                                <?php if ($karyawan['status_daftar'] == 'open') : ?>
-                            <td scope="col"><button style="border-radius: 5px;" type="button" class="btn-danger" data-toggle="modal" data-target="#hapusPelatihan">
-                                    Hapus
-                                </button></th>
-                                <div class="modal fade" id="hapusPelatihan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Hapus Pelatihan</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body" style="color: black;">
-                                                Menghapus pelatihan <?= $p['nama_pelatihan']; ?>, Apakah anda yakin?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <a type="button" class="btn btn-danger" href="/pages/hapus_pelatihan/<?= $karyawan['Employee_Name']; ?>/<?= $p['id']; ?>">Delete</a>
-                                            </div>
-                                        </div>
+                    <td scope="col"><button style="border-radius: 5px;" type="button" class="btn-danger" data-toggle="modal" data-target="#hapusPelatihan">
+                            Hapus
+                        </button></th>
+                        <div class="modal fade" id="hapusPelatihan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Hapus Pelatihan</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body" style="color: black;">
+                                        Menghapus pelatihan <?= $p['nama_pelatihan']; ?>, Apakah anda yakin?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <a type="button" class="btn btn-danger" href="/pages/hapus_pelatihan/<?= $karyawan['Employee_Name']; ?>/<?= $p['id']; ?>">Delete</a>
                                     </div>
                                 </div>
-                            <?php endif; ?>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-    </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
 </section>
 
 
