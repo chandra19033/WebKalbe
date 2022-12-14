@@ -41,34 +41,6 @@
 </section>
 
 <section>
-<<<<<<< Updated upstream
-    <div class="mb-3">
-        <!-- Button trigger modal -->
-        <button type="button" id="button1" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            External Training
-        </button>
-    </div>
-
-
-    <table class="table table-hover table-striped table-success ">
-        <thead>
-            <tr>
-                <th scope="col">No</th>
-                <th scope="col">Training Title</th>
-                <th scope="col">Organizer</th>
-                <th scope="col">Status</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <?php $i = 1; ?>
-            <?php foreach ($listpelatihan as $l) : ?>
-                <tr>
-                    <td><?= $i++; ?></th>
-                    <td><?= $l['nama_pelatihan']; ?></td>
-                    <td><?= $l['penyelenggara']; ?></td>
-                    <td><a style="color: black!important;" href="/pages/tambah/<?= $nama; ?>/<?= $l['id']; ?>">Add Training</a></td>
-=======
     <div class="container">
         <div class="mb-3">
             <!-- Button trigger modal -->
@@ -114,7 +86,6 @@
                     <th scope="col">Training Title</th>
                     <th scope="col">Organizer</th>
                     <th scope="col">Status</th>
->>>>>>> Stashed changes
                 </tr>
             </thead>
 
