@@ -41,6 +41,7 @@
 </section>
 
 <section>
+<<<<<<< Updated upstream
     <div class="mb-3">
         <!-- Button trigger modal -->
         <button type="button" id="button1" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -67,10 +68,69 @@
                     <td><?= $l['nama_pelatihan']; ?></td>
                     <td><?= $l['penyelenggara']; ?></td>
                     <td><a style="color: black!important;" href="/pages/tambah/<?= $nama; ?>/<?= $l['id']; ?>">Add Training</a></td>
+=======
+    <div class="container">
+        <div class="mb-3">
+            <!-- Button trigger modal -->
+            <button type="button" id="button1" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                External Training
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">External Training</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/pages/tambah_mandiri/<?= $nama; ?>" method="GET">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Training Title</label>
+                                    <input type="text" class="form-control" name="namapelatihan" id="namapelatihanluar">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="exampleInputPassword1">Organizer</label>
+                                    <input type="text" class="form-control" name="penyelenggara" id="penyelenggaraluar">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                        <!-- <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <table class="table table-hover table-striped table-success ">
+            <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Training Title</th>
+                    <th scope="col">Organizer</th>
+                    <th scope="col">Status</th>
+>>>>>>> Stashed changes
                 </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+            </thead>
+
+            <tbody>
+                <?php $i = 1; ?>
+                <?php foreach ($listpelatihan as $l) : ?>
+                    <tr>
+                        <td><?= $i++; ?></th>
+                        <td><?= $l['nama_pelatihan']; ?></td>
+                        <td><?= $l['penyelenggara']; ?></td>
+                        <td><a style="color: black!important;" href="/pages/tambah/<?= $nama; ?>/<?= $l['id']; ?>">Tambah</a></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

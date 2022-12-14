@@ -88,6 +88,7 @@ class Pages extends BaseController
         endforeach;
 
         if ($karyawan['status_daftar'] == 'open') {
+            // dd($karyawan);
             if ($trigger == 0) {
                 $data = [
                     'nama_karyawan' =>  strtoupper($name),
@@ -119,7 +120,7 @@ class Pages extends BaseController
                 session()->setFlashdata('pesan', $alert);
                 return redirect()->to('/pages/list_pelatihan/' . $name);
             }
-        } elseif ($karyawan['status_daftar'] == 'close') {
+        } elseif ($karyawan['status_daftar'] != 'open') {
             $alert = [
                 'pesan' => 'Sudah tidak dapat Daftar karena sudah Submit',
                 'value' => 0,
@@ -155,6 +156,7 @@ class Pages extends BaseController
         endforeach;
 
         if ($karyawan['status_daftar'] == 'open') {
+
             if ($trigger == 0) {
                 $data = [
                     'nama_karyawan' =>  strtoupper($name),
@@ -186,7 +188,7 @@ class Pages extends BaseController
                 session()->setFlashdata('pesan', $alert);
                 return redirect()->to('/pages/list_pelatihan/' . $name);
             }
-        } elseif ($karyawan['status_daftar'] == 'close') {
+        } elseif ($karyawan['status_daftar'] != 'open') {
             $alert = [
                 'pesan' => 'Sudah tidak dapat Daftar karena sudah Submit',
                 'value' => 0,
