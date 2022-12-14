@@ -14,7 +14,7 @@
         <div class="col-6 d-flex align-items-center justify-content-center">
             <img src="<?= base_url("/assets/depart.png") ?>" alt="" style="height: 70px">
             <div class="dekripsi ms-2" style="color:black;">
-                <p class="fw-light" style="margin-bottom: 0px;">Nama / Jabatan</p>
+                <p class="fw-light" style="margin-bottom: 0px;">Name / Position</p>
                 <p class="fw-bold" style="font-size: 22px; margin-bottom: 0px;"><?= $karyawan['Employee_Name']; ?></p>
                 <p class="fw-bold" style="font-size: 22px;"><?= $karyawan['Postition_Name']; ?></p>
             </div>
@@ -37,7 +37,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Yakin ingin melakukan Approve pada karyawan?</p>
+                        <p>Are you sure you want to Approve the Training?</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -59,7 +59,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Yakin ingin melakukan Reject pada karyawan?</p>
+                        <p>Are you sure you want to Reject the Training?</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -94,19 +94,19 @@
                         <td scope="col"><?= $karyawan['Superior']; ?></th>
                             <?php if ($karyawan['status_daftar'] == 'open') : ?>
                         <td scope="col"><button style="border-radius: 5px;" type="button" class="btn-danger" data-toggle="modal" data-target="#hapusPelatihan">
-                                Hapus
+                                Delete
                             </button></th>
                             <div class="modal fade" id="hapusPelatihan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Hapus Pelatihan</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">Delete Training</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                         <div class="modal-body" style="color: black;">
-                                            Menghapus pelatihan <?= $p['nama_pelatihan']; ?>, Apakah anda yakin?
+                                            Remove <?= $p['nama_pelatihan']; ?> Training, Are You Sure?
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

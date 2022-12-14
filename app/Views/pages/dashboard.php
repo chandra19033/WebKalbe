@@ -44,29 +44,29 @@
 <body>
 
     <button type="button" id="button1" class="btn btn-success mb-2" data-toggle="modal" data-target="#addModal">Add New</button>
-
-    <table class="table table-hover table-striped table-success">
-        <thead>
-            <tr>
-                <th>Training Title</th>
-                <th>Organizer</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($listpelatihan as $row) : ?>
+    <div class="container">
+        <table class="table table-hover table-striped table-success">
+            <thead>
                 <tr>
-                    <td><?= $row->nama_pelatihan; ?></td>
-                    <td><?= $row->penyelenggara; ?></td>
-                    <td>
-                        <a href="#" class="btn btn-info btn-sm btn-edit" data-id="<?= $row->id; ?>" data-nama_pelatihan="<?= $row->nama_pelatihan; ?>" data-penyelenggara="<?= $row->penyelenggara; ?>">Edit</a>
-                        <a href="#" class="btn btn-danger btn-sm btn-delete" data-id="<?= $row->id; ?>">Delete</a>
-                    </td>
+                    <th>Training Title</th>
+                    <th>Organizer</th>
+                    <th>Action</th>
                 </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-
+            </thead>
+            <tbody>
+                <?php foreach ($listpelatihan as $row) : ?>
+                    <tr>
+                        <td><?= $row->nama_pelatihan; ?></td>
+                        <td><?= $row->penyelenggara; ?></td>
+                        <td>
+                            <a href="#" class="btn btn-info btn-sm btn-edit" data-id="<?= $row->id; ?>" data-nama_pelatihan="<?= $row->nama_pelatihan; ?>" data-penyelenggara="<?= $row->penyelenggara; ?>">Edit</a>
+                            <a href="#" class="btn btn-danger btn-sm btn-delete" data-id="<?= $row->id; ?>">Delete</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 
 
     <!-- Modal Add Product-->
