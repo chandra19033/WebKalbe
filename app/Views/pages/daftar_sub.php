@@ -34,7 +34,7 @@
                 <?php elseif ($s['status_daftar'] != 'open') : ?>
                     <td scope="col">On Progress</td>
                 <?php endif; ?>
-                <td scope="col"><a href="/pages/list_pelatihan/<?= $s['Employee_Name']; ?>" style="color: black;">Register</a></th>
+                <td scope="col"><a href="/pages/list_pelatihan/<?= $s['Employee_Name']; ?>" class="btn btn-success " style="color: white;">Register</a></th>
                 </tr>
             <?php endforeach; ?>
         </table>

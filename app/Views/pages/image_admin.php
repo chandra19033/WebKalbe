@@ -13,8 +13,14 @@
 <!doctype html>
 <html>
 
-<body>
+<head>
+    <meta charset='utf-8' />
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
 
+</head>
+
+<body>
     <div class="container">
 
         <div class="row">
@@ -51,7 +57,6 @@
                 <?php $validation = \Config\Services::validation(); ?>
 
                 <form method="post" action="<?= site_url('pages/image_admin') ?>" enctype="multipart/form-data">
-
                     <?= csrf_field(); ?>
                     <div class="form-group">
                         <label for="file">File:</label>
@@ -61,9 +66,12 @@
 
 
                     </div>
-                    <input id="button1" type="submit" class="btn btn-success" name="submit" value="Upload">
-                    <input id="button1" type="submit" class="btn btn-danger" name="button1" value="Delete" />
+                    <input id="button_image" type="submit" class="btn btn-success" name="submit" value="Upload Image">
+                    <br><br>
+                    <input id="button_image" type="submit" class="btn btn-danger" name="button1" value="Delete All Image" />
+
                 </form>
+
 
                 <?php
                 if (isset($_POST['button1'])) {
@@ -82,6 +90,7 @@
             </div>
         </div>
     </div>
+
 </body>
 
 </html>

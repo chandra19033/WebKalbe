@@ -10,20 +10,18 @@ use App\Models\KaryawanModel;
 use App\Models\Model_Auth;
 use App\Models\RejectModel;
 use App\Models\RiwayatModel;
+use App\Models\EventModel;
 use CodeIgniter\Database\Query;
-use TCPDF;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\I18n\Time;
-use App\Models\Fullcalendar_model;
 
 class Pages extends BaseController
 {
     protected $pelatihanModel;
     protected $listpelatihanModel;
     protected $karyawanModel;
+    protected $eventModel;
     protected $calendar;
 
     public function __construct()
@@ -34,20 +32,21 @@ class Pages extends BaseController
         $this->pelatihanModel = new PelatihanModel();
         $this->karyawanModel = new KaryawanModel();
         $this->riwayatModel = new RiwayatModel();
-        $this->Fullcalendar_model = new Fullcalendar_model();
         $this->approvalModel = new ApprovalModel();
         $this->rejectModel = new RejectModel();
+        $this->eventModel = new EventModel();
         $this->listpelatihanModel = new ListPelatihanModel();
     }
 
     public function index()
     {
+        $model = new EventModel();
         $data = [
-            'title' => 'Home | Rencana Pelatihan Kalbe Cikarang'
+            'title' => 'Home | Rencana Pelatihan Kalbe Cikarang',
         ];
+        $data['eventmodel']  = $model->getNewEvent1()->getResult();
         return view('pages/home', $data);
     }
-
 
     public function profile()
     {
@@ -93,7 +92,7 @@ class Pages extends BaseController
                 $data = [
                     'nama_karyawan' =>  strtoupper($name),
                     'nama_pelatihan' => $tampung['nama_pelatihan'],
-                    'penyelenggara' => $tampung['penyelenggara']
+                    'penyelenggara' => $tampung['penyelenggara'],
                 ];
 
                 $riwayat = [
@@ -235,14 +234,14 @@ class Pages extends BaseController
                 'label' => 'E-Mail',
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Harap isi {field} untuk masuk website RPKC'
+                    'required' => 'Please fill in {field} to enter the website'
                 ]
             ],
             'Password' => [
                 'label' => 'Password',
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Harap isi {field} untuk masuk website RPKC !!!'
+                    'required' => 'Please fill in {field} to enter the website'
                 ]
             ],
 
@@ -275,7 +274,7 @@ class Pages extends BaseController
                 //return redirect()->to(base_url('/'));
             } else {
                 //data tidak cocok
-                session()->setFlashdata('pesan',    'Login gagal, harap masukan kembali Email dan Password');
+                session()->setFlashdata('pesan',    'Login failed, please re-enter your Email and Password');
                 return redirect()->to(base_url('pages/login'));
             }
         } else {
@@ -345,6 +344,17 @@ class Pages extends BaseController
         echo view('/pages/dashboard', $data);
     }
 
+
+    public function event_admin()
+    {
+        $model = new EventModel();
+        $data = [
+            'title' => 'event_admin',
+        ];
+        $data['eventmodel']  = $model->getEvent()->getResult();
+        return view('pages/event_admin', $data);
+    }
+
     public function employee_admin()
     {
         $model = new PelatihanModel();
@@ -354,26 +364,6 @@ class Pages extends BaseController
         $data['pelatihan']  = $model->getPlthn()->getResult();
         echo view('/pages/employee_admin', $data);
     }
-
-
-    // public function dashboard()
-    // {
-    //     $listpelatihanModel = new ListPelatihanModel();
-
-    //     $keyword = $this->request->getVar('keyword');
-    //     if ($keyword) {
-    //         $listpelatihan = $listpelatihanModel->search($keyword);
-    //     } else {
-    //         $listpelatihan = $listpelatihanModel->findAll();
-    //     }
-
-    //     $data = [
-    //         'title' => 'dashboard',
-
-    //     ];
-
-    //     return view('pages/dashboard', $data);
-    // }
 
     public function daftar_sub()
     {
@@ -426,78 +416,6 @@ class Pages extends BaseController
         $this->pelatihanModel->hapus($id);
 
         return redirect()->to('/pages/detail_subkoordinat/' . $nama);
-    }
-
-    public function invoice()
-    {
-        $id = $this->request->uri->getSegment(3);
-
-        $listPelatihan = new \App\Models\ListPelatihanModel();
-        $listPelatihan = $listPelatihan->find($id);
-
-        $html = view('pages/invoice', [
-            'listPelatihan' => $listPelatihan,
-        ]);
-
-        $pdf = new TCPDF('L', 'mm', array(215.9, 330.2), true, 'UTF-8', false);
-
-        $pdf->SetCreator(PDF_CREATOR);
-        $pdf->SetAuthor('Dea Venditama');
-        $pdf->SetTitle('RPKC');
-        $pdf->SetSubject('RPKC');
-
-        $pdf->setPrintHeader(false);
-        $pdf->setPrintFooter(false);
-
-        $pdf->addPage();
-
-        // output the HTML content
-        $pdf->writeHTML($html, true, false, true, false, '');
-        //line ini penting
-        $this->response->setContentType('application/pdf');
-        //Close and output PDF document
-        $pdf->Output('RPKC.pdf', 'I');
-    }
-
-    function export()
-    {
-        $daftar_pelatihan = new PelatihanModel();
-        $data = $daftar_pelatihan->findAll();
-        $file_name = 'RPKC.xlsx';
-
-        $spreadsheet = new Spreadsheet();
-
-        $sheet = $spreadsheet->getActiveSheet();
-        $sheet->setCellValue('A1', 'id');
-        $sheet->setCellValue('B1', 'nama_karyawan');
-        $sheet->setCellValue('C1', 'nama_pelatihan');
-        $sheet->setCellValue('D1', 'penyelenggara');
-        $sheet->setCellValue('E1', 'notes');
-        $count = 2;
-
-        foreach ($data as $row) {
-            $sheet->setCellValue('A' . $count, $row['id']);
-            $sheet->setCellValue('B' . $count, $row['nama_karyawan']);
-            $sheet->setCellValue('C' . $count, $row['nama_pelatihan']);
-            $sheet->setCellValue('D' . $count, $row['penyelenggara']);
-            $sheet->setCellValue('E' . $count, $row['notes']);
-            $count++;
-        }
-
-        $writer = new Xlsx($spreadsheet);
-
-        $writer->save($file_name);
-
-        header("Content-Type: application/vnd.ms-excel");
-        header('Content-Disposition: attachment; filename="' . basename($file_name) . '"');
-        header('Expires: 0');
-        header('Cache-Control: must-revalidate');
-        header('Pragma: public');
-        header('Content-Length:' . filesize($file_name));
-        flush();
-        readfile($file_name);
-
-        exit;
     }
 
     public function persetujuan()
@@ -726,42 +644,6 @@ class Pages extends BaseController
 
         return redirect()->to('/pages/persetujuan');
     }
-    // public function upload()
-    // {
-    //     helper(['form', 'url']);
-    //     $config['upload_path'] = "./assets/images";
-    //     $database = \Config\Database::connect();
-    //     $builder = $database->table('image');
-    //     $validateImage = $this->validate([
-    //         'file' => [
-    //             'uploaded[file]',
-    //             'mime_in[file, image/png, image/jpg,image/jpeg, image/gif]',
-    //             'max_size[file, 4096]',
-    //         ],
-    //     ]);
-
-    //     $response = [
-    //         'success' => false,
-    //         'data' => '',
-    //         'msg' => "Image could not upload"
-    //     ];
-    //     if ($validateImage) {
-    //         $imageFile = $this->request->getFile('file');
-    //         $imageFile->move(WRITEPATH . 'uploads');
-
-    //         $data = [
-    //             'img_name' => $imageFile->getClientName(),
-    //             'file'  => $imageFile->getClientMimeType()
-    //         ];
-    //         $save = $builder->insert($data);
-    //         $response = [
-    //             'success' => true,
-    //             'data' => $save,
-    //             'msg' => "Image successfully uploaded"
-    //         ];
-    //     }
-    //     return $this->response->setJSON($response);
-    // }
 
     public function image_admin()
     {
@@ -812,61 +694,5 @@ class Pages extends BaseController
             }
         }
         return view('pages/image_admin', $data);
-    }
-
-    // Calendar
-
-    public function event_admin()
-    {
-        $data = [
-            'title' => 'event_admin',
-        ];
-        return view('pages/event_admin', $data);
-    }
-
-    function load()
-    {
-        $event_data = $this->fullcalendar_model->fetch_all_event();
-        foreach ($event_data->result_array() as $row) {
-            $data[] = array(
-                'id' => $row['id'],
-                'title' => $row['title'],
-                'start' => $row['start_event'],
-                'end' => $row['end_event']
-            );
-        }
-        return view('fullcalendar', $data);
-    }
-
-    function insert()
-    {
-        if ($this->input->post('title')) {
-            $data = array(
-                'title'  => $this->input->post('title'),
-                'start_event' => $this->input->post('start'),
-                'end_event' => $this->input->post('end')
-            );
-            $this->GambarModel->insert_event($data);
-        }
-    }
-
-    function update()
-    {
-        if ($this->input->post('id')) {
-            $data = array(
-                'title'   => $this->input->post('title'),
-                'start_event' => $this->input->post('start'),
-                'end_event'  => $this->input->post('end')
-            );
-
-            $this->fullcalendar_model->update_event($data, $this->input->post('id'));
-        }
-    }
-
-    function delete()
-    {
-        if ($this->input->post('id')) {
-            $this->fullcalendar_model->delete_event($this->input->post('id'));
-        }
     }
 }

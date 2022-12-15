@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\ListPelatihanModel;
 use App\Models\PelatihanModel;
+use App\Models\EventModel;
 
 class Admin extends BaseController
 {
@@ -56,5 +57,38 @@ class Admin extends BaseController
         $id = $this->request->getPost('id');
         $model->deletePelatihan($id);
         return redirect()->to('/pages/employee_admin');
+    }
+
+    public function save_event()
+    {
+        $model = new EventModel();
+        $data = array(
+            'Event_Title'       => $this->request->getPost('Event_Title'),
+            'Description'       => $this->request->getPost('Description'),
+            'Date'              => $this->request->getPost('Date'),
+        );
+        $model->saveEvent($data);
+        return redirect()->to('/pages/event_admin');
+    }
+
+    public function update_event()
+    {
+        $model = new EventModel();
+        $id = $this->request->getPost('id');
+        $data = array(
+            'Event_Title'       => $this->request->getPost('Event_Title'),
+            'Description'       => $this->request->getPost('Description'),
+            'Date'              => $this->request->getPost('Date'),
+        );
+        $model->updateEvent($data, $id);
+        return redirect()->to('/pages/event_admin');
+    }
+
+    public function delete_event()
+    {
+        $model = new EventModel();
+        $id = $this->request->getPost('id');
+        $model->deleteEvent($id);
+        return redirect()->to('/pages/event_admin');
     }
 }

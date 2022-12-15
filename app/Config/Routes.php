@@ -43,21 +43,21 @@ $routes->setAutoRoute(true);
 // $routes->get('/login', 'Home::login');
 // $routes->get('/list_pelatihan', 'Home::list_pelatihan');
 
+
 $routes->get('/', 'Pages::index');
-$routes->get('/', 'Pages::calendar');
-$routes->get('/pages/profile', 'Pages::profile');
+$routes->get('/pages/profile', 'Pages::profile', ['filter' => 'authfilter']);
 $routes->get('/pages/tambah/(:segment)', 'Pages::tambah/$1');
 $routes->get('/pages/tambah_mandiri/(:segment)', 'Pages::tambah_mandiri/$1');
-$routes->get('/pages/login', 'Pages::login');
-$routes->get('/pages/list_pelatihan', 'Pages::list_pelatihan');
-$routes->get('/pages/list_subkoordinat', 'Pages::list_subkoordinat');
-$routes->get('/pages/dashboard', 'Pages::dashboard');
-$routes->get('/pages/persetujuan', 'Pages::persetujuan');
-$routes->get('/pages/detail_subkoordinat', 'Pages::detail_subkoordinat');
-// $routes->get('/pages/detail_approval', 'Pages::detail_approval');
-$routes->get('/pages/daftarsub', 'Pages::daftar_sub');
-$routes->post('pages/image_admin', 'Pages::image_admin');
-$routes->match(['get', 'post'], 'Pages/htmlToPDF', 'Pages::htmlToPDF');
+$routes->get('/auth/login', 'Auth::login');
+$routes->get('/pages/list_pelatihan', 'Pages::list_pelatihan', ['filter' => 'authfilter']);
+$routes->get('/pages/list_subkoordinat', 'Pages::list_subkoordinat', ['filter' => 'authfilter']);
+$routes->get('/pages/dashboard', 'Pages::dashboard', ['filter' => 'authfilter']);
+$routes->get('/pages/persetujuan', 'Pages::persetujuan', ['filter' => 'authfilter']);
+$routes->get('/pages/detail_subkoordinat', 'Pages::detail_subkoordinat', ['filter' => 'authfilter']);
+$routes->get('/pages/detail_approval', 'Pages::detail_approval', ['filter' => 'authfilter']);
+$routes->get('/pages/daftarsub', 'Pages::daftar_sub', ['filter' => 'authfilter']);
+$routes->post('pages/image_admin', 'Pages::image_admin', ['filter' => 'authfilter']);
+$routes->match(['get', 'post'], 'Export/htmlToPDF', 'Export::htmlToPDF');
 
 
 /*

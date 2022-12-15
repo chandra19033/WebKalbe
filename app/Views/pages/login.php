@@ -9,8 +9,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Login</title>
-
     <!-- Custom fonts for this template-->
     <link href=" <?= base_url(); ?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -56,12 +54,12 @@
                     ?>
                     <div class="form-group has-feedback">
                         <label for="formGroupExampleInput">Email</label>
-                        <input type="Email" name="Email" class="form-control" placeholder="Masukan Email">
+                        <input type="Email" name="Email" class="form-control" placeholder="Enter Your Email">
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                     </div>
                     <div class="form-group has-feedback">
                         <label for="formGroupExampleInput2">Password</label>
-                        <input type="Password" name="Password" class="form-control" placeholder="Masukan Password">
+                        <input type="Password" name="Password" class="form-control" placeholder="Enter Your Password">
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     </div>
 
