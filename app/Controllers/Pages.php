@@ -91,7 +91,9 @@ class Pages extends BaseController
             // dd($karyawan);
             if ($trigger == 0) {
                 $data = [
+                    'nik' => $karyawan['Employee_ID'],
                     'nama_karyawan' =>  strtoupper($name),
+                    'jabatan' => $karyawan['Postition_Name'],
                     'nama_pelatihan' => $tampung['nama_pelatihan'],
                     'penyelenggara' => $tampung['penyelenggara']
                 ];
@@ -159,7 +161,9 @@ class Pages extends BaseController
 
             if ($trigger == 0) {
                 $data = [
+                    'nik' => $karyawan['Employee_ID'],
                     'nama_karyawan' =>  strtoupper($name),
+                    'jabatan' => $karyawan['Postition_Name'],
                     'nama_pelatihan' => $pelatihan['namapelatihan'],
                     'penyelenggara' => $pelatihan['penyelenggara']
                 ];

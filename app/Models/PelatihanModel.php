@@ -9,7 +9,7 @@ class PelatihanModel extends Model
     protected $table = 'daftar_pelatihan';
     protected $useTimestamps = false;
     // protected $primaryKey  = 'id';
-    protected $allowedFields = ['nama_karyawan', 'nama_pelatihan', 'penyelenggara', 'notes'];
+    protected $allowedFields = ['nik', 'nama_karyawan', 'jabatan', 'nama_pelatihan', 'penyelenggara', 'notes'];
 
     public function getPelatihanMandiri()
     {
