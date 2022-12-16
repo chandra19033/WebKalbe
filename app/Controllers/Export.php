@@ -76,23 +76,27 @@ class Export extends BaseController
         $file_name = 'RPKC.xlsx';
 
         $spreadsheet = new Spreadsheet();
-        $spreadsheet->getActiveSheet()->getStyle('A1:E1')->getFont()->setBold(true);
+        $spreadsheet->getActiveSheet()->getStyle('A1:G1')->getFont()->setBold(true);
 
         $sheet = $spreadsheet->getActiveSheet();
         $sheet->setCellValue('A1', 'id');
-        $sheet->setCellValue('B1', 'nama_karyawan');
-        $sheet->setCellValue('C1', 'nama_pelatihan');
-        $sheet->setCellValue('D1', 'penyelenggara');
-        $sheet->setCellValue('E1', 'notes');
+        $sheet->setCellValue('B1', 'NIK');
+        $sheet->setCellValue('C1', 'Jabatan');
+        $sheet->setCellValue('D1', 'Nama');
+        $sheet->setCellValue('E1', 'Judul Pelatihan');
+        $sheet->setCellValue('F1', 'Penyelenggara');
+        $sheet->setCellValue('G1', 'Notes');
         $count = 2;
         $i = 1;
 
         foreach ($data as $row) {
             $sheet->setCellValue('A' . $count, $i++);
-            $sheet->setCellValue('B' . $count, $row['nama_karyawan']);
-            $sheet->setCellValue('C' . $count, $row['nama_pelatihan']);
-            $sheet->setCellValue('D' . $count, $row['penyelenggara']);
-            $sheet->setCellValue('E' . $count, $row['notes']);
+            $sheet->setCellValue('B' . $count, $row['nik']);
+            $sheet->setCellValue('C' . $count, $row['nama_karyawan']);
+            $sheet->setCellValue('D' . $count, $row['jabatan']);
+            $sheet->setCellValue('E' . $count, $row['nama_pelatihan']);
+            $sheet->setCellValue('F' . $count, $row['penyelenggara']);
+            $sheet->setCellValue('G' . $count, $row['notes']);
             $count++;
         }
 
@@ -120,24 +124,28 @@ class Export extends BaseController
 
         $spreadsheet = new Spreadsheet();
 
-        $spreadsheet->getActiveSheet()->getStyle('A1:E1')->getFont()->setBold(true);
+        $spreadsheet->getActiveSheet()->getStyle('A1:G1')->getFont()->setBold(true);
 
         $sheet = $spreadsheet->getActiveSheet();
 
         $sheet->setCellValue('A1', 'id');
-        $sheet->setCellValue('B1', 'Nama');
-        $sheet->setCellValue('C1', 'Judul Pelatihan');
-        $sheet->setCellValue('D1', 'Penyelenggara');
-        $sheet->setCellValue('E1', 'Notes');
+        $sheet->setCellValue('B1', 'NIK');
+        $sheet->setCellValue('C1', 'Jabatan');
+        $sheet->setCellValue('D1', 'Nama');
+        $sheet->setCellValue('E1', 'Judul Pelatihan');
+        $sheet->setCellValue('F1', 'Penyelenggara');
+        $sheet->setCellValue('G1', 'Notes');
         $count = 2;
         $i = 1;
 
         foreach ($data as $row) {
             $sheet->setCellValue('A' . $count, $i++);
-            $sheet->setCellValue('B' . $count, $row['nama_karyawan']);
-            $sheet->setCellValue('C' . $count, $row['nama_pelatihan']);
-            $sheet->setCellValue('D' . $count, $row['penyelenggara']);
-            $sheet->setCellValue('E' . $count, $row['notes']);
+            $sheet->setCellValue('B' . $count, $row['nik']);
+            $sheet->setCellValue('C' . $count, $row['nama_karyawan']);
+            $sheet->setCellValue('D' . $count, $row['jabatan']);
+            $sheet->setCellValue('E' . $count, $row['nama_pelatihan']);
+            $sheet->setCellValue('F' . $count, $row['penyelenggara']);
+            $sheet->setCellValue('G' . $count, $row['notes']);
             $count++;
         }
 
