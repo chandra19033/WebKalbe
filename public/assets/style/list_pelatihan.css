@@ -68,7 +68,14 @@
 .table th {
     background-color: #428042;
     color: white;
+    
 }
+
+/* td {
+    height: 60px;
+    vertical-align: middle;
+} */
+
 
 .table a {
     /* border: 1px solid black; */

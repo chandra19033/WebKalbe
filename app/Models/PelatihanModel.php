@@ -62,4 +62,20 @@ class PelatihanModel extends Model
         $query = $this->db->table('daftar_pelatihan')->delete(array('id' => $id));
         return $query;
     }
+
+    public function getPlthn()
+    {
+        $builder = $this->db->table('daftar_pelatihan');
+        $builder->select('*');
+        return $builder->get();
+    }
+
+    public function export()
+    {
+        $name = session()->get('Employee_Name');
+        return $this->db->table('daftar_pelatihan')
+            ->join('users', 'users.Employee_Name=daftar_pelatihan.nama_karyawan')
+            ->where('users.Superior', strtoupper($name))
+            ->get()->getResultArray();
+    }
 }

@@ -75,7 +75,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Form Tambah Data Pelatihan</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Add Training Data Form</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -110,7 +110,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Form Edit Data Pelatihan</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Training Data Edit Form</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -145,14 +145,14 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Delete Data Pelatihan</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Delete Data</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
 
-                        <h4>Are you sure want to delete this Data?</h4>
+                        <h4>Are you sure want to delete this data?</h4>
 
                     </div>
                     <div class="modal-footer">

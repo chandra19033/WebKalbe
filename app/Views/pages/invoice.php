@@ -37,22 +37,25 @@
     </p>
 
     <table cellpadding="4" style="font-size: 10px;">
-        <tr>
-            <th><strong>No</strong></th>
-            <th><strong>NIK</strong></th>
-            <th><strong>Nama</strong></th>
-            <th><strong>Jabatan</strong></th>
-            <th><strong>Judul Pelatihan</strong></th>
-            <th><strong>Penyelenggara</strong></th>
-        </tr>
-        <tr>
-            <td>null</td>
-            <td>null</td>
-            <td>null</td>
-            <td>null</td>
-            <td>null</td>
-            <td>null</td>
-        </tr>
+        <thead>
+            <tr>
+                <th><strong>No</strong></th>
+                <th><strong>Nama</strong></th>
+                <th><strong>NIK</strong></th>
+                <th><strong>Judul Pelatihan</strong></th>
+                <th><strong>Jabatan</strong></th>
+                <th><strong>Penyelenggara</strong></th>
+                <!-- <th><strong>Judul Pelatihan</strong></th>
+                <th><strong>Penyelenggara</strong></th> -->
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
     </table>
 </body>
 

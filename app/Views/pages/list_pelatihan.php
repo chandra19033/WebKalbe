@@ -96,7 +96,7 @@
                         <td><?= $i++; ?></th>
                         <td><?= $l['nama_pelatihan']; ?></td>
                         <td><?= $l['penyelenggara']; ?></td>
-                        <td><a style="color: black!important;" href="/pages/tambah/<?= $nama; ?>/<?= $l['id']; ?>">Add Training</a></td>
+                        <td><a style="color: white!important;" class="btn btn-success " href="/pages/tambah/<?= $nama; ?>/<?= $l['id']; ?>">Add</a></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -115,11 +115,11 @@
                 <div class="modal-body">
                     <form action="/pages/tambah_mandiri/<?= $nama; ?>" method="GET">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Nama Pelatihan</label>
+                            <label for="exampleInputEmail1">Training Title</label>
                             <input type="text" class="form-control" name="namapelatihan" id="namapelatihanluar">
                         </div>
                         <div class="form-group mb-3">
-                            <label for="exampleInputPassword1">Penyelenggara</label>
+                            <label for="exampleInputPassword1">Organizer</label>
                             <input type="text" class="form-control" name="penyelenggara" id="penyelenggaraluar">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>

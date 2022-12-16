@@ -87,8 +87,8 @@
                 <div class="dropdown">
                     <button class="dropbtn"><img src="<?= base_url("/assets/download3.png") ?>" style="width:30px; height:30px;"> Download</button>
                     <div class="dropdown-content">
-                        <a class="btn btn-lg" href="/pages/invoice/<?= session()->get('Employee_Name'); ?>" role="button">PDF</a>
-                        <a class="btn btn-lg" href="<?php echo base_url('Pages/export'); ?>">Excel </a>
+                        <a class="btn btn-lg" href="/export/invoice/<?= session()->get('Employee_Name'); ?>" role="button">PDF</a>
+                        <a class="btn btn-lg" href="<?php echo base_url('export/export2'); ?>">Excel </a>
                     </div>
                 </div>
 
@@ -126,7 +126,7 @@
                         <?php else : ?>
                             <td scope="col">Registered</td>
                         <?php endif; ?>
-                        <td scope="col"><a href="/pages/detail_subkoordinat/<?= $s['Employee_Name']; ?>" style="color: black;">See Activity</a></th>
+                        <td scope="col"><a href="/pages/detail_subkoordinat/<?= $s['Employee_Name']; ?>" class="btn btn-success " style="color: white;">See Activity</a></th>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
